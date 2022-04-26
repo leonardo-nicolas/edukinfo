@@ -1,0 +1,286 @@
+[
+  {
+    "id": 1,
+    "nome": "Curso de Angular",
+    "descricao": "Crie sites e aplicações Web dinâmicas e muito robusta, com uma ferramenta bem poderosa criada pelo Google.",
+    "preco": 349.98,
+    "descontinuado": false,
+    "imagensSlideCurso": [
+      {
+        "url": "@baseUrl%/assets/images/Angular-splash.svg",
+        "altTxt": "Angular",
+        "descricao": "Angular, um framework de desenvolvimento de aplicações para web, desenvolvido pelo Google."
+      },
+      {
+        "url": "@baseUrl%/assets/images/Angular-splash-2.svg",
+        "altTxt": "Angular + Angular Universal + Angular Material",
+        "descricao": "Angular em conjunto com Angular Universal e Angular Material"
+      },
+      {
+        "url": "@baseUrl%/assets/images/html5-css3-spash.svg",
+        "altTxt": "HTML 5 + CSS 3",
+        "descricao": "HTML 5 e CSS 3: Desenvolvendo páginas da web"
+      },
+      {
+        "url": "@baseUrl%/assets/images/nodejs-splash.svg",
+        "altTxt": "Node.JS",
+        "descricao": "Node.JS: Uma ferramenta revolucionária que possibilitou rodar aplicações em JavaScript/TypeScript fora dos navegadores, tornando possível criar aplicações apenas usando JavaScript. O NodeJS, é um JavaScript \"compilado\" em modo grosseiro de se dizer."
+      },
+      {
+        "url": "@baseUrl%/assets/images/sass-splash.svg",
+        "altTxt": "SASS",
+        "descricao": "SASS: Um CSS convencional, porém com riquezas de recursos. É um CSS pré-processado e convertido para linguagem de CSS padrão de navegadores."
+      },
+      {
+        "url": "@baseUrl%/assets/images/less-splash.svg",
+        "altTxt": "LESS",
+        "descricao": "LESS: Significa Leaner Style Sheets, é uma extensão de linguagem compatível com versões anteriores para a linguagem CSS."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "nome": "Curso de VueJS + Nuxt.JS",
+    "descricao": "Crie sites e aplicações WEB dinâmicos com muita robustez, apenas usando JavaScript  ",
+    "preco": 299.65,
+    "descontinuado": false,
+    "imagensSlideCurso": [
+      {
+        "url": "@baseUrl%/assets/images/vuejs-splash.svg",
+        "altTxt": "Vue.JS",
+        "descricao": "Vue.JS: Um framework de desenvolvimento web progressivo, desenvolvido pela comunidade para web, desenvolvido pela comunidade de projetos open-source e adotado, inclusive, pela Nintendo."
+      },
+      {
+        "url": "@baseUrl%/assets/images/vuejs-splash-2.svg",
+        "altTxt": "Vue.JS + NuxtJS + Vuetify",
+        "descricao": "Vue.JS em conjunto com NuxtJS (Um framework exclusivo para trabalhar em conjunto com Vue.JS e fazer o Server-Side Rendering) + Vuetify (Framework CSS do Material Design para Vue.JS)."
+      },
+      {
+        "url": "@baseUrl%/assets/images/html5-css3-spash.svg",
+        "altTxt": "HTML 5 + CSS 3",
+        "descricao": "HTML 5 e CSS 3: Desenvolvendo páginas da web"
+      },
+      {
+        "url": "@baseUrl%/assets/images/nodejs-splash.svg",
+        "altTxt": "Node.JS",
+        "descricao": "Node.JS: Uma ferramenta revolucionária que possibilitou rodar aplicações em JavaScript/TypeScript fora dos navegadores, tornando possível criar aplicações apenas usando JavaScript. O NodeJS, é um JavaScript \"compilado\" em modo grosseiro de se dizer."
+      },
+      {
+        "url": "@baseUrl%/assets/images/sass-splash.svg",
+        "altTxt": "SASS",
+        "descricao": "SASS: Um CSS convencional, porém com riquezas de recursos. É um CSS pré-processado e convertido para linguagem de CSS padrão de navegadores."
+      },
+      {
+        "url": "@baseUrl%/assets/images/less-splash.svg",
+        "altTxt": "LESS",
+        "descricao": "LESS: Significa Leaner Style Sheets, é uma extensão de linguagem compatível com versões anteriores para a linguagem CSS."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "nome": "Curso de React + Next.JS",
+    "descricao": "Crie sites e aplicações Web dinâmicas e muito robusta, com uma ferramenta bem poderosa criada pelo Facebook, em conjunto com um poderoso framework para esta ferramenta, criado pela comunide.",
+    "preco": 328.58,
+    "descontinuado": false,
+    "imagensSlideCurso": [
+      {
+        "url": "@baseUrl%/assets/images/react-splash.svg",
+        "altTxt": "React",
+        "descricao": "React: Uma biblioteca JavaScript para aplicações WEB desenvolvida pelo Facebook"
+      },
+      {
+        "url": "@baseUrl%/assets/images/react-splash-2.svg",
+        "altTxt": "React + Next.JS + MUI",
+        "descricao": "React em conjunto com Next.JS (Um framework exclusivo para trabalhar em conjunto con React e fazer o Server-Side Rendering) + MUI (Framework CSS do Material Design para React JS)."
+      },
+      {
+        "url": "@baseUrl%/assets/images/html5-css3-spash.svg",
+        "altTxt": "HTML 5 + CSS 3",
+        "descricao": "HTML 5 e CSS 3: Desenvolvendo páginas da web"
+      },
+      {
+        "url": "@baseUrl%/assets/images/nodejs-splash.svg",
+        "altTxt": "Node.JS",
+        "descricao": "Node.JS: Uma ferramenta revolucionária que possibilitou rodar aplicações em JavaScript/TypeScript fora dos navegadores, tornando possível criar aplicações apenas usando JavaScript. O NodeJS, é um JavaScript \"compilado\" em modo grosseiro de se dizer."
+      },
+      {
+        "url": "@baseUrl%/assets/images/sass-splash.svg",
+        "altTxt": "SASS",
+        "descricao": "SASS: Um CSS convencional, porém com riquezas de recursos. É um CSS pré-processado e convertido para linguagem de CSS padrão de navegadores."
+      },
+      {
+        "url": "@baseUrl%/assets/images/less-splash.svg",
+        "altTxt": "LESS",
+        "descricao": "LESS: Significa Leaner Style Sheets, é uma extensão de linguagem compatível com versões anteriores para a linguagem CSS."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "nome": "Curso de Flutter",
+    "descricao": "Crie aplicações para Celular, PC (ou Mac) e WEB, apenas utilizando esta ferramenta desenvolvida pelo Google. Codifique uma vez e rode em qualquer sistema, navegador ou celular. Aplicativos como o NuBank® utilizam esta tecnologia.",
+    "preco": 381.97,
+    "descontinuado": false,
+    "imagensSlideCurso": [
+      {
+        "url": "@baseUrl%/assets/images/flutter-logo-4k-qn.jpg",
+        "altTxt": "Flutter",
+        "descricao": "Flutter: um framework desenvolvido pelo Google, que utiliza a linguagem de programação DART (também criada pelo Google), para desenvolvimento de aplicativos que rode em qualquer dispositivo (PC e celudar) e em qualuer sistema (Seja em Android, em Windows, em Linux, como uma aplicação WEB também ou até mesmo em qualquer sistema da Apple), de forma muito elegante (quando se trata de design), segurança também e muito mais. O aplicativo do NuBank é um exemplo perfeito de uma aplicativo feito com Flutter."
+      },
+      {
+        "url": "@baseUrl%/assets/images/dart-wallpaper.jpg",
+        "altTxt": "Dart",
+        "descricao": "Dart: Uma linguagem de programação desenvolvido pelo Google, para competir com o JavaScript na época, mas a idéia não vingou com os demais navegadores e, hoje é a linguagem importante para desenvolvimento de aplicativos multiplataforma utilizando o framework Flutter. Dart é uma linguagem extremamente similar ao Java. Aliás, quem vem do Java para o Flutter, se sentirá em casa ao codificar e se sentirá mais confortável ainda (vai sentir uma diferença como nunca tinha sentido antes), na hora de executar a aplicação feita com DART, de tão rápida que é a linguagem."
+      },
+      {
+        "url": "@baseUrl%/assets/images/multiplataforma-flutter-dart.png",
+        "altTxt": "Multiplataforma Dart+Flutter",
+        "descricao": "Aplicações multiplataforma de verdade utilizando a linguagem DART e o framework FLUTTER, ambos desenvolvidos pelo Google. "
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "nome": "Curso de Web Design completo",
+    "descricao": "Crie Sites completos e páginas da web, desde a prototipagem até os designs e codificações.",
+    "preco": 629.89,
+    "descontinuado": false,
+    "imagensSlideCurso": [
+      {
+        "url": "@baseUrl%/assets/images/capa-como-ser-um-web-designer.jpg",
+        "altTxt": "Agencia de Web Designer",
+        "descricao": "Uma mesa de escritório com um computador mostrando os detalhes sobre ser Web Designer"
+      },
+      {
+        "url": "@baseUrl%/assets/images/capa-mulher-web-designer.png",
+        "altTxt": "Mulher Web Designer",
+        "descricao": "Uma mulher representando ser uma profissional de web designer."
+      },
+      {
+        "url": "@baseUrl%/assets/images/capa-linguagens-em-alta.jpg",
+        "altTxt": "Ilustração de linguagens em alta",
+        "descricao": "Ilustração de linguagens e softwares de designers em alta"
+      },
+      {
+        "url": "@baseUrl%/assets/images/mulher-designer.jpg",
+        "altTxt": "Profissional designer mulher em agência",
+        "descricao": "Profissional de Designer mulher modelando protótipo de um projeto."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "nome": "Curso de Design Gráfico",
+    "descricao": "Crie artes e diagramações para divulgações diversas",
+    "preco": 524.97,
+    "descontinuado": false,
+    "imagensSlideCurso": [
+      {
+        "url": "@baseUrl%/assets/images/prancheta-banner-designer-grafico.png",
+        "altTxt": "Softwares profissionais para o designer",
+        "descricao": "Apresentação rápida do Curso de Designer gráfico: Softwares da Adobe e CorelDRAW."
+      },
+      {
+        "url": "@baseUrl%/assets/images/mulher-designer.jpg",
+        "altTxt": "Profissional designer mulher em agência",
+        "descricao": "Profissional de Designer mulher modelando protótipo de um projeto."
+      },
+      {
+        "url": "@baseUrl%/assets/images/Ilustracao-agencia-publicidade-notebook-tablet.png",
+        "altTxt": "Notebook e tablet para desenho",
+        "descricao": "Ilustracao de uma agencia de publicidade, modelando desenho em algum software em um notebook e utilizando um tablet, para desenhar as linhas e traços."
+      },
+      {
+        "url": "@baseUrl%/assets/images/mulher-designer-grafico.png",
+        "altTxt": "Profissional designer mulher modelando um cartão de visita",
+        "descricao": "Profissional de Designer gráfico mulher modelando um cartão de visita no Adobe Illustrator."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "nome": "Curso de Publicidade e Propaganda",
+    "descricao": "Aprenda a como usar corretamente as redes sociais e fazer divulgações",
+    "preco": 825.43,
+    "descontinuado": false,
+    "imagensSlideCurso": [
+      {
+        "url": "@baseUrl%/assets/images/publicidade.png",
+        "altTxt": "Publicitario com megafone",
+        "descricao": "Um rapaz publicitário segurando um megafone e com um tablet na mão."
+      },
+      {
+        "url": "@baseUrl%/assets/images/publicidade-e1513761867172-720.jpg",
+        "altTxt": "Idéias de Publicidade",
+        "descricao": "Um megafone apontando para vários tipos de meio de comunicações diferentes."
+      },
+      {
+        "url": "@baseUrl%/assets/images/publicidade-em-londres.png",
+        "altTxt": "Publicidade em telão de Londres",
+        "descricao": "Um conjunto de telão com propaganda de várias empresas e marcas de vários ramos e empresas diferentes, mas empresas essas, multinacionais. Telão esse em um dos prédios em Londres."
+      },
+      {
+        "url": "@baseUrl%/assets/images/microfone-e-megafone.png",
+        "altTxt": "Microfone + Megafone",
+        "descricao": "Uma pessoa de Terno e Gravata com cabeça de Microfone à direita conversando com uma outra pessoa de terno e gravata com cabeça de megafone à esquerda. Com um fundo alaranjado, chão de taco, além das grandes quantidades de caixas, parecendo ser um galpão."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "nome": "Curso de informática básica para crianças",
+    "descricao": "Aprenda a usar um computador pela primeira vez na vida desde novo",
+    "preco": 168.23,
+    "descontinuado": false,
+    "imagensSlideCurso": [
+      {
+        "url": "@baseUrl%/assets/images/aderindo-a-tecnologia.png",
+        "altTxt": "Aderido a Tecnologia",
+        "descricao": "Um dedo apertando alguma tecla do teclado de computador e do lado esquerdo mostrando um mapa mundial, representando a comunicação e embaixo desse mapa, mostrando alguma codificação, representando que a pessoa está entrando no mundo da tecnologia."
+      },
+      {
+        "url": "@baseUrl%/assets/images/irmaos-usando-laptop.png",
+        "altTxt": "Menino e menina utilizando notebook",
+        "descricao": "Um casal de irmãos utilizando o notebook, um de costas para o outro."
+      },
+      {
+        "url": "@baseUrl%/assets/images/menina-usando-laptop-e-caderno.png",
+        "altTxt": "Menina estudante",
+        "descricao": "Uma menina de óculos utilizando o notebook e o caderno, enfatizando a importância do uso da tecnologia para ser utilizada nos estudos. "
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "nome": "Curso de informática básica para idosos",
+    "descricao": "Aprenda a usar um computador e se modernizar por completo ",
+    "preco": 165.23,
+    "descontinuado": false,
+    "imagensSlideCurso": [
+      {
+        "url": "@baseUrl%/assets/images/idoso-no-notebook-2.png",
+        "altTxt": "Casal de idoso no laptop",
+        "descricao": "Um casal de idosos utilizando o laptop"
+      },
+      {
+        "url": "@baseUrl%/assets/images/idoso-no-notebook.png",
+        "altTxt": "Idoso com laptop",
+        "descricao": "Um senhor idoso utilizando um laptop"
+      },
+      {
+        "url": "@baseUrl%/assets/images/aderindo-a-tecnologia.png",
+        "altTxt": "Aderindo a Tecnologia",
+        "descricao": "Um dedo apertando alguma tecla do teclado de computador e do lado esquerdo mostrando um mapa mundial, representando a comunicação e embaixo desse mapa, mostrando alguma codificação, representando que a pessoa está entrando no mundo da tecnologia."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "nome": "Curso de React Native",
+    "descricao": "Crie aplicativos, programando apenas uma vez, para rodar em qualquer smartphone (Android e iOS), apenas utilizando o JavaScript moderno, com esta ferramenta desenvolvida pelo Facebook e usada, inclusive, no Instagram/Facebook/Discord/Uber/Etc.",
+    "preco": 385.62,
+    "descontinuado": true,
+    "imagensSlideCurso": []
+  }
+]

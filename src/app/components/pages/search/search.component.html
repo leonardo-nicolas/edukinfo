@@ -1,0 +1,43 @@
+
+<div *ngIf="carregamento.concluido && !carregamento.comErro && buscaCursos.length > 0" class="container">
+  <h1 class="h1 text-start">Exibindo resultado de pesquisa para {{keywordSearch}}</h1>
+  <div  class="row flex-row text-center justify-content-lg-center">
+    <div *ngFor="let curso of buscaCursos" [ngClass]="{
+      'card margem-cartao text-start':true,
+      'fundo-dark-cartao':darkMode.isDarkMode
+    }" style="width:17.5rem;">
+      <carousel>
+        <slide *ngFor="let slide of curso.imagensSlideCurso">
+          <img [src]="atribuirUrl(slide.url)" [alt]="slide.altTxt" [title]="slide.descricao" width="100%">
+        </slide>
+      </carousel>
+      <div class="card-body">
+        <h5 class="card-title">{{curso.nome}}</h5>
+        <p class="card-text">{{curso.descricao}}</p>
+        <p class="card-text">Por apenas {{curso.preco.toLocaleString('pt-br',{style:'currency',currency:'BRL'})}}</p>
+        <a class="card-link" [routerLink]="['/curso',curso.id]">Detalhes completo</a>
+        <a class="card-link">Adicionar ao carrinho</a>
+      </div>
+    </div>
+  </div>
+  <h5 class="h5 text-center">Aproximadamente {{buscaCursos.length}} cursos encontrados.</h5>
+</div>
+
+<div *ngIf="carregamento.concluido && !carregamento.comErro && buscaCursos.length === 0"
+class="container container-xg">
+  <div class="centro text-center">
+      <h1 class="h1">Desculpe, mas não foi possível encontrar resultado de pesquisa para '{{keywordSearch}}'!</h1>
+  </div>
+</div>
+
+<div *ngIf="!carregamento.concluido" class="text-center container container-pq">
+  <div class="centro">
+    <div style="
+      width:100% !important; max-width: 400px !important;
+      height:100% !important; max-height: 400px !important;
+    "
+    class="spinner-border text-main" role="status">
+      <span class="visually-hidden">Carregando, por favor aguarde...</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="180" height="180" inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)" sodipodi:docname="logo.svg" version="1.1" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd">
+ <title>Logo</title>
+ <sodipodi:namedview bordercolor="#666666" borderopacity="1.0" inkscape:current-layer="layer1" inkscape:cx="57.714286" inkscape:cy="75.714286" inkscape:document-units="px" inkscape:guide-bbox="true" inkscape:pagecheckerboard="0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:window-height="985" inkscape:window-maximized="1" inkscape:window-width="1920" inkscape:window-x="0" inkscape:window-y="0" inkscape:zoom="3.5" pagecolor="#ffffff" showgrid="false" showguides="true"/>
+ <g inkscape:groupmode="layer" inkscape:label="Camada 1">
+  <path d="m25.428 25.905c-6.8063 0-12.285 5.4789-12.285 12.285v82c0 6.8063 5.4789 12.285 12.285 12.285h44.287v17.715h42v-17.715h42.857c6.8063 0 12.285-5.4789 12.285-12.285v-82c0-6.8063-5.4789-12.285-12.285-12.285z" fill="#1a1a1a" opacity=".24" stroke="#000"/>
+  <rect x="19.371" y="32.704" width="141.26" height="90.687" ry="10.455"/>
+  <ellipse cx="90.143" cy="149.05" rx="45" ry="4.8571" fill="#999"/>
+  <path d="m143.99 116.3c-1.5297-2.7521-1.802-2.9852-2.1613-1.8496-0.2261 0.7146-0.42828 1.9802-0.44927 2.8126-0.0352 1.3959-0.291 1.5133-3.2983 1.5133-2.2569 0-3.2537-0.25871-3.2394-0.84071 0.011-0.46239 0.81996-5.9859 1.7968-12.274l1.776-11.434-1.5251-1.7831c-2.2096-2.5834-2.0788-5.4824 0.37661-8.3489l1.9017-2.2201v-6.7708c0-4.4-0.20549-6.7708-0.58684-6.7708-0.84548 0-15.804 5.4479-16.936 6.168-0.85839 0.54614-0.95087 1.935-0.95087 14.281v13.676l-4.492-2.7906c-7.8253-4.8613-17.483-6.8508-30.282-6.2379-11.878 0.56882-18.977 2.9082-24.043 7.9236l-2.0376 2.0169v-28.932l-2.0376-0.6643c-1.1207-0.36536-8.7581-2.8192-16.972-5.453-13.009-4.1711-16.375-5.3682-15.098-5.3682 0.16783 0 14.627-4.9938 32.132-11.097s32.243-11.097 32.752-11.097c0.89086 0 58.018 20.971 60.235 22.112 0.88474 0.45531 0.48081 0.77137-2.1734 1.7006-1.7931 0.62775-4.2381 1.5289-5.4335 2.0025l-2.1734 0.86118-0.15442 7.1989-0.15441 7.1989 1.9203 2.2418c2.3896 2.7896 2.5883 5.6889 0.56192 8.1972-0.74709 0.92478-1.3584 1.9659-1.3584 2.3136s1.1003 5.5859 2.4451 11.64 2.4451 11.507 2.4451 12.116c0 1.9268-0.97751 1.2104-2.7847-2.041z" fill="#fff" stroke-width=".60452"/>
+  <rect x="135.71" y="127.29" width="17.5" height="2.7857" ry="1.3929" fill="#1a1a1a"/>
+  <rect x="144.8" y="125.93" width="7.4057" height="1.3661" ry=".68304" fill="#008000"/>
+ </g>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Leonardo; Gustavo; Flávio; Jhonata; Joubert; Emmanuel</dc:title>
+     </cc:Agent>
+    </dc:creator>
+    <dc:publisher>
+     <cc:Agent>
+      <dc:title>Leonardo</dc:title>
+     </cc:Agent>
+    </dc:publisher>
+    <dc:language>Português</dc:language>
+    <dc:title>Logo</dc:title>
+    <dc:date>04/04/2022</dc:date>
+    <dc:description>Logo do trabalho de faculdade que substitui a prova, de uma micro plataforma de cursos</dc:description>
+    <dc:subject>
+     <rdf:Bag>
+      <rdf:li>logo; Info Learn; Eduk Info</rdf:li>
+     </rdf:Bag>
+    </dc:subject>
+    <cc:license rdf:resource="http://creativecommons.org/licenses/by-nc-sa/4.0/"/>
+   </cc:Work>
+   <cc:License rdf:about="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+    <cc:permits rdf:resource="http://creativecommons.org/ns#Reproduction"/>
+    <cc:permits rdf:resource="http://creativecommons.org/ns#Distribution"/>
+    <cc:requires rdf:resource="http://creativecommons.org/ns#Notice"/>
+    <cc:requires rdf:resource="http://creativecommons.org/ns#Attribution"/>
+    <cc:prohibits rdf:resource="http://creativecommons.org/ns#CommercialUse"/>
+    <cc:permits rdf:resource="http://creativecommons.org/ns#DerivativeWorks"/>
+    <cc:requires rdf:resource="http://creativecommons.org/ns#ShareAlike"/>
+   </cc:License>
+  </rdf:RDF>
+ </metadata>
+</svg>

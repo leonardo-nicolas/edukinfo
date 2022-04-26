@@ -1,0 +1,13 @@
+$altura-minima-corpo-pagina: calc(100vh - 91px);
+.fundo {
+  background-size: 100% 140%;
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  height: $altura-minima-corpo-pagina;
+}
+@media (max-width: 425px) {
+  .fundo {
+    background-size: 145% 145%;
+  }
+}

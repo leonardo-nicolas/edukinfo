@@ -1,0 +1,154 @@
+$anm-bars-button-position: 2px;
+
+@import "function-boxShadowBtnHover";
+
+.animated-button {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  transition: 0.5s;
+
+  span {
+    &.line-animation {
+      position: absolute;
+      display: block;
+      &:nth-child(1) {
+        top: $anm-bars-button-position;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        animation: btn-animacao-1 1s linear infinite;
+      }
+      &:nth-child(2) {
+        top: -100%;
+        right: $anm-bars-button-position;
+        width: 2px;
+        height: 100%;
+        animation: btn-animacao-2 1s linear infinite;
+        animation-delay: 0.25s;
+      }
+      &:nth-child(3) {
+        bottom: $anm-bars-button-position;
+        right: -100%;
+        width: 100%;
+        height: 2px;
+        animation: btn-animacao-3 1s linear infinite;
+        animation-delay: 0.5s;
+      }
+      &:nth-child(4) {
+        bottom: -100%;
+        left: $anm-bars-button-position;
+        width: 2px;
+        height: 100%;
+        animation: btn-animacao-4 1s linear infinite;
+        animation-delay: 0.75s;
+      }
+      // Barrinhas da linha 1
+    }
+    &.line-animation-red:nth-child(1) {
+      background: linear-gradient(90deg, transparent, map-get($an-button-line-color,"red"));
+    }
+    &.line-animation-main:nth-child(1) {
+      background: linear-gradient(90deg, transparent, map-get($an-button-line-color,"main"));
+    }
+    &.line-animation-green:nth-child(1) {
+      background: linear-gradient(90deg, transparent, map-get($an-button-line-color,"green"));
+    }
+    &.line-animation-yellow:nth-child(1) {
+      background: linear-gradient(90deg, transparent, map-get($an-button-line-color,"yellow"));
+    }
+    // Barrinhas da linha 2
+    &.line-animation-red:nth-child(2) {
+      background: linear-gradient(180deg, transparent, map-get($an-button-line-color,"red"));
+    }
+    &.line-animation-main:nth-child(2) {
+      background: linear-gradient(180deg, transparent, map-get($an-button-line-color,"main"));
+    }
+    &.line-animation-green:nth-child(2) {
+      background: linear-gradient(180deg, transparent, map-get($an-button-line-color,"green"));
+    }
+    &.line-animation-yellow:nth-child(2) {
+      background: linear-gradient(180deg, transparent, map-get($an-button-line-color,"yellow"));
+    }
+    // Barrinhas da linha 3
+    &.line-animation-red:nth-child(3) {
+      background: linear-gradient(270deg, transparent, map-get($an-button-line-color,"red"));
+    }
+    &.line-animation-main:nth-child(3) {
+      background: linear-gradient(270deg, transparent, map-get($an-button-line-color,"main"));
+    }
+    &.line-animation-green:nth-child(3) {
+      background: linear-gradient(270deg, transparent, map-get($an-button-line-color,"green"));
+    }
+    &.line-animation-yellow:nth-child(3) {
+      background: linear-gradient(270deg, transparent, map-get($an-button-line-color,"yellow"));
+    }
+    // Barrinhas da linha 4
+    &.line-animation-red:nth-child(4) {
+      background: linear-gradient(360deg, transparent, map-get($an-button-line-color,"red"));
+    }
+    &.line-animation-main:nth-child(4) {
+      background: linear-gradient(360deg, transparent, map-get($an-button-line-color,"main"));
+    }
+    &.line-animation-green:nth-child(4) {
+      background: linear-gradient(360deg, transparent, map-get($an-button-line-color,"green"));
+    }
+    &.line-animation-yellow:nth-child(4) {
+      background: linear-gradient(360deg, transparent, map-get($an-button-line-color,"yellow"));
+    }
+  }
+  &:hover {
+    animation-delay: 0.05s;
+    &.hover-blue:hover {
+      box-shadow: map-get($fnBoxShadowBtnHover,"blue");
+    }
+    &.hover-red:hover {
+      box-shadow: map-get($fnBoxShadowBtnHover,"red");
+    }
+    &.hover-green:hover {
+      box-shadow: map-get($fnBoxShadowBtnHover,"green");
+    }
+    &.hover-yellow:hover {
+      box-shadow: map-get($fnBoxShadowBtnHover,"yellow");
+    }
+  }
+}
+@keyframes btn-animacao-1 {
+  0% {
+    left: -100%;
+  }
+  50%,
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes btn-animacao-2 {
+  0% {
+    top: -100%;
+  }
+  50%,
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes btn-animacao-3 {
+  0% {
+    right: -100%;
+  }
+  50%,
+  100% {
+    right: 100%;
+  }
+}
+
+@keyframes btn-animacao-4 {
+  0% {
+    bottom: -100%;
+  }
+  50%,
+  100% {
+    bottom: 100%;
+  }
+}

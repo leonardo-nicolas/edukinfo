@@ -1,0 +1,27 @@
+[
+  {
+    "pergunta": "Todos os cursos aqui são somente voltados à T.I?",
+    "resposta": "Não Temos cursos para os bem mais iniciantes, que nunca tiveram contato com um PC, Laptop ou até mesmo um celular na vida. Assim como para qualquer área também."
+  },
+  {
+    "pergunta": "Tem cursos voltados à administração?",
+    "resposta": "Ainda não temos, mas pretendemos lançar algum em breve!"
+  },
+  {
+    "pergunta": "Sobre o curso de informática básica, ensina Linux ou MacOS também?",
+    "resposta": "Ainda não, somente Windows 10 por enquanto. Se caso houver necessidade de mercado, pretendemos colocar esses cursos muito em breve. Sobre os pacotes office, ministramos aula do Office 365 (da Microsoft), Google Docs, OnlyOffice e LibreOffice (ambos são gratuitos, apesar do OnlyOffice existir uma versão paga)."
+  },
+  {
+    "pergunta": "Sobre o curso de designer, ensina todas as plataformas voltada ao designer?",
+    "resposta": "Sim, desde as plataformas gratuitas até as plataformas pagas. Ensinamos a fazer diagramação ou tratamento de imagens, pronta para impressão ou para ser divulgada na internet. Assim como ensinamos também a fazer prototipagens de sites/aplicativos/sistemas em plataformas gratuitas e pagas, pronto para ser apresentado ao cliente final."
+  },
+  {
+    "pergunta": "Sobre os cursos de programação, terei direito a licensa de alguma IDE paga?",
+    "resposta": "Dentro de alguma eventual campanha promocional e, dependendo dos termos no regulamento dessa eventual promoção, sim! Fora disso, somente o VSCode mesmo, para todas as linguagens nas quais ministramos aula."
+  },
+  {
+    "pergunta": "Sobre os cursos de dados, aprenderei matemática também?",
+    "resposta": "Poderá ser aplicado parte da matemática em algumas matérias nos cursos voltados à analise de dados, dependendo do cenário em que é apresentado na aula. Podendo tanto ser matemática de ensino fundamental ou matemática de ensino médio."
+  }
+
+]

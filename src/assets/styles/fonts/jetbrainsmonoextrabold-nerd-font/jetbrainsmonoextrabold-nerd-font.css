@@ -1,0 +1,17 @@
+/* jetbrains-mono-extrabold-extbd-nerd-font-complete */
+@font-face {
+	font-family: JetBrainsMonoExtraBold Nerd Font;
+	font-style: normal;
+	font-weight: 700;
+	src: local("JetBrains Mono ExtraBold ExtBd Nerd Font Complete"), local("JetBrainsMonoExtraBoldNerdFontComplete-ExtBd"), url(jetbrains-mono-extrabold-extbd-nerd-font-complete.woff2) format("woff2"), url(jetbrains-mono-extrabold-extbd-nerd-font-complete.woff) format("woff");
+	font-display: auto;
+}
+/* jetbrains-mono-extrabold-exbd-indice-nerd-font-complete */
+@font-face {
+	font-family: JetBrainsMonoExtraBold Nerd Font;
+	font-style: italic;
+	font-weight: 700;
+	src: local("JetBrains Mono ExtraBold ExBd I Nerd Font Complete"), local("JetBrainsMonoExtraBoldNerdFontComplete-Italic"), url(jetbrains-mono-extrabold-exbd-i-nerd-font-complete.woff2) format("woff2"), url(jetbrains-mono-extrabold-exbd-i-nerd-font-complete.woff) format("woff");
+	font-display: auto;
+}
+

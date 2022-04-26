@@ -1,0 +1,65 @@
+/* jetbrains-mono-regular-nerd-font-complete-mono */
+@font-face {
+	font-family: JetBrainsMono Nerd Font Mono;
+	font-style: normal;
+	font-weight: 400;
+	src: local("JetBrains Mono Regular Nerd Font Complete Mono"), local("JetBrainsMonoNerdFontCompleteM-Regular"), url(jetbrains-mono-regular-nerd-font-complete-mono.woff2) format("woff2"), url(jetbrains-mono-regular-nerd-font-complete-mono.woff) format("woff");
+	font-display: auto;
+}
+/* jetbrains-mono-medium-nerd-font-complete-mono */
+@font-face {
+	font-family: JetBrainsMono Nerd Font Mono;
+	font-style: normal;
+	font-weight: 500;
+	src: local("JetBrains Mono Medium Nerd Font Complete Mono"), local("JetBrainsMonoNerdFontCompleteM-Medium"), url(jetbrains-mono-medium-nerd-font-complete-mono.woff2) format("woff2"), url(jetbrains-mono-medium-nerd-font-complete-mono.woff) format("woff");
+	font-display: auto;
+}
+/* jetbrains-mono-medium-italic-nerd-font-complete-mono */
+@font-face {
+	font-family: JetBrainsMono Nerd Font Mono;
+	font-style: italic;
+	font-weight: 500;
+	src: local("JetBrains Mono Medium Italic Nerd Font Complete Mono"), local("JetBrainsMonoNerdFontCompleteM-Italic"), url(jetbrains-mono-medium-italic-nerd-font-complete-mono.woff2) format("woff2"), url(jetbrains-mono-medium-italic-nerd-font-complete-mono.woff) format("woff");
+	font-display: auto;
+}
+/* jetbrains-mono-italic-nerd-font-complete-mono */
+@font-face {
+	font-family: JetBrainsMono Nerd Font Mono;
+	font-style: italic;
+	font-weight: 400;
+	src: local("JetBrains Mono Italic Nerd Font Complete Mono"), local("JetBrainsMonoNerdFontCompleteM-Italic"), url(jetbrains-mono-italic-nerd-font-complete-mono.woff2) format("woff2"), url(jetbrains-mono-italic-nerd-font-complete-mono.woff) format("woff");
+	font-display: auto;
+}
+/* jetbrains-mono-extra-bold-nerd-font-complete-mono */
+@font-face {
+	font-family: JetBrainsMono Nerd Font Mono;
+	font-style: normal;
+	font-weight: 700;
+	src: local("JetBrains Mono Extra Bold Nerd Font Complete Mono"), local("JetBrainsMonoNerdFontCompleteM-ExtraBold"), url(jetbrains-mono-extra-bold-nerd-font-complete-mono.woff2) format("woff2"), url(jetbrains-mono-extra-bold-nerd-font-complete-mono.woff) format("woff");
+	font-display: auto;
+}
+/* jetbrains-mono-extbd-ita-nerd-font-complete-mono */
+@font-face {
+	font-family: JetBrainsMono Nerd Font Mono;
+	font-style: italic;
+	font-weight: 700;
+	src: local("JetBrains Mono ExtBd Ita Nerd Font Complete Mono"), local("JetBrainsMonoNerdFontCompleteM-Italic"), url(jetbrains-mono-extbd-ita-nerd-font-complete-mono.woff2) format("woff2"), url(jetbrains-mono-extbd-ita-nerd-font-complete-mono.woff) format("woff");
+	font-display: auto;
+}
+/* jetbrains-mono-bold-nerd-font-complete-mono */
+@font-face {
+	font-family: JetBrainsMono Nerd Font Mono;
+	font-style: normal;
+	font-weight: 700;
+	src: local("JetBrains Mono Bold Nerd Font Complete Mono"), local("JetBrainsMonoNerdFontCompleteM-Bold"), url(jetbrains-mono-bold-nerd-font-complete-mono.woff2) format("woff2"), url(jetbrains-mono-bold-nerd-font-complete-mono.woff) format("woff");
+	font-display: auto;
+}
+/* jetbrains-mono-bold-italic-nerd-font-complete-mono */
+@font-face {
+	font-family: JetBrainsMono Nerd Font Mono;
+	font-style: italic;
+	font-weight: 700;
+	src: local("JetBrains Mono Bold Italic Nerd Font Complete Mono"), local("JetBrainsMonoNerdFontCompleteM-Bold Italic"), url(jetbrains-mono-bold-italic-nerd-font-complete-mono.woff2) format("woff2"), url(jetbrains-mono-bold-italic-nerd-font-complete-mono.woff) format("woff");
+	font-display: auto;
+}
+

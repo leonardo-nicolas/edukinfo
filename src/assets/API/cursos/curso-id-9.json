@@ -1,0 +1,33 @@
+{
+  "id": 9,
+  "nome": "Curso de informática básica para idosos",
+  "descricao": "Aprenda a usar um computador e se modernizar por completo ",
+  "preco": 165.23,
+  "descontinuado": false,
+  "gradeMaterias": [
+    "História da Informática e Comparação do computador moderno com máquinas antigas",
+    "Digitação",
+    "Windows: Usando um PC popular e moderno",
+    "Word: Redigindo os diversos tipos de documentos importantes",
+    "Excel: Utilizando planilha eletrônica de uma forma muito básica e organizar melhor as tarefas e finanças",
+    "Internet e e-mail: Ampliando o vasto conhecimento, entretenimento, compras pela internet, além da comunicação com o mundo...",
+    "PowerPoint: Faça apresentações em slides, à um determinado público, podendo ser em palestras, reuniões, etc."
+  ],
+  "imagensSlideCurso": [
+    {
+      "url": "@baseUrl%/assets/images/idoso-no-notebook-2.png",
+      "altTxt": "Casal de idoso no laptop",
+      "descricao": "Um casal de idosos utilizando o laptop"
+    },
+    {
+      "url": "@baseUrl%/assets/images/idoso-no-notebook.png",
+      "altTxt": "Idoso com laptop",
+      "descricao": "Um senhor idoso utilizando um laptop"
+    },
+    {
+      "url": "@baseUrl%/assets/images/aderindo-a-tecnologia.png",
+      "altTxt": "Aderindo a Tecnologia",
+      "descricao": "Um dedo apertando alguma tecla do teclado de computador e do lado esquerdo mostrando um mapa mundial, representando a comunicação e embaixo desse mapa, mostrando alguma codificação, representando que a pessoa está entrando no mundo da tecnologia."
+    }
+  ]
+}

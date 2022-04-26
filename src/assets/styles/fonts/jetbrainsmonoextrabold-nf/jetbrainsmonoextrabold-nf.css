@@ -1,0 +1,33 @@
+/* jetbrains-mono-extrabold-extbd-nerd-font-complete-windows-compatible */
+@font-face {
+	font-family: JetBrainsMonoExtraBold NF;
+	font-style: normal;
+	font-weight: 700;
+	src: local("JetBrains Mono ExtraBold ExtBd Nerd Font Complete Windows Compatible"), local("JetBrainsMonoExtraBoldNer-ExtBd"), url(jetbrains-mono-extrabold-extbd-nerd-font-complete-windows-compatible.woff2) format("woff2"), url(jetbrains-mono-extrabold-extbd-nerd-font-complete-windows-compatible.woff) format("woff");
+	font-display: auto;
+}
+/* jetbrains-mono-extrabold-extbd-nerd-font-complete-mono-windows-compatible */
+@font-face {
+	font-family: JetBrainsMonoExtraBold NF;
+	font-style: normal;
+	font-weight: 700;
+	src: local("JetBrains Mono ExtraBold ExtBd Nerd Font Complete Mono Windows Compatible"), local("JetBrainsMonoExtraBoldNer-ExtBd"), url(jetbrains-mono-extrabold-extbd-nerd-font-complete-mono-windows-compatible.woff2) format("woff2"), url(jetbrains-mono-extrabold-extbd-nerd-font-complete-mono-windows-compatible.woff) format("woff");
+	font-display: auto;
+}
+/* jetbrains-mono-extrabold-exbd-indice-nerd-font-complete-windows-compatible */
+@font-face {
+	font-family: JetBrainsMonoExtraBold NF;
+	font-style: italic;
+	font-weight: 700;
+	src: local("JetBrains Mono ExtraBold ExBd I Nerd Font Complete Windows Compatible"), local("JetBrainsMonoExtraBoldNe-Italic"), url(jetbrains-mono-extrabold-exbd-i-nerd-font-complete-windows-compatible.woff2) format("woff2"), url(jetbrains-mono-extrabold-exbd-i-nerd-font-complete-windows-compatible.woff) format("woff");
+	font-display: auto;
+}
+/* jetbrains-mono-extrabold-exbd-indice-nerd-font-complete-mono-windows-compatible */
+@font-face {
+	font-family: JetBrainsMonoExtraBold NF;
+	font-style: italic;
+	font-weight: 700;
+	src: local("JetBrains Mono ExtraBold ExBd I Nerd Font Complete Mono Windows Compatible"), local("JetBrainsMonoExtraBoldNe-Italic"), url(jetbrains-mono-extrabold-exbd-i-nerd-font-complete-mono-windows-compatible.woff2) format("woff2"), url(jetbrains-mono-extrabold-exbd-i-nerd-font-complete-mono-windows-compatible.woff) format("woff");
+	font-display: auto;
+}
+

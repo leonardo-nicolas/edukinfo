@@ -1,0 +1,69 @@
+{
+  "id": 2,
+  "nome": "Curso de VueJS + Nuxt.JS",
+  "descricao": "Crie sites e aplicações WEB dinâmicos com muita robustez, apenas usando JavaScript  ",
+  "preco": 299.65,
+  "descontinuado": false,
+  "gradeMaterias": [
+    "Lógica de Programação",
+    "Introdução de Programação Orientada a Objetos",
+    "HTML e CSS completo",
+    "Conhecendo SASS e LESS (alternativas ao CSS)",
+    "Introdução e Fundamentos do JavaScript e EcmaScript",
+    "Introdução ao TypeScript",
+    "Fundamentos do NodeJS, gerenciamento de pacotes e linha de comando",
+    "Preparação completa do ambiente de desenvolvimento para VueJS, apresentando o Vue CLI e interface gráfica de gerenciamento de projetos do VueJS",
+    "Criando o primeiro projeto com um exemplo de \"Hello World\".",
+    "Introdução ao VueJS e realizando as configurações iniciais",
+    "Apresentando o Nuxt.JS e conceitos de Server Side Rendering",
+    "Adicionando pacotes/bibliotecas",
+    "Introdução a componentes e criação de páginas",
+    "Introdução a Injeção de Dependências para VueJS",
+    "Componentes Reativos",
+    "Diretivas em VueJS",
+    "Roteamento (Definindo Rotas, Link de Rotas, Proteção das mesmas, etc)",
+    "Formulários com VueJS",
+    "Comunicação com Back-End (Com ou sem formulários)",
+    "Reuso de Componentes",
+    "Apresentando e trabalhando com Vuetify (Framework CSS com Material Design para VueJS): criando um projeto de gerenciamento de estoque com Login e Senha ",
+    "Apresentando e trabalhando com Bootstrap (Framework CSS criado pelo Twitter) utilizando o VueJS: Criando um projeto de gestão de finanças.",
+    "Apresentando e trabalhando com Bulma CSS (framework 100% em CSS criado por um dos membros da comunidade) e implementando código nativo do VueJS...",
+    "Introdução e uso do GIT",
+    "Realização de Testes automatizados",
+    "Build para Produção",
+    "Deploy em Produção e Imagens Docker",
+    "Mudando a versão do projeto em angular para a versão mais recente e refazendo o Build + Deploy"
+  ],
+  "imagensSlideCurso": [
+    {
+      "url": "@baseUrl%/assets/images/vuejs-splash.svg",
+      "altTxt": "Vue.JS",
+      "descricao": "Vue.JS: Um framework de desenvolvimento web progressivo, desenvolvido pela comunidade para web, desenvolvido pela comunidade de projetos open-source e adotado, inclusive, pela Nintendo."
+    },
+    {
+      "url": "@baseUrl%/assets/images/vuejs-splash-2.svg",
+      "altTxt": "Vue.JS + NuxtJS + Vuetify",
+      "descricao": "Vue.JS em conjunto com NuxtJS (Um framework exclusivo para trabalhar em conjunto com Vue.JS e fazer o Server-Side Rendering) + Vuetify (Framework CSS do Material Design para Vue.JS)."
+    },
+    {
+      "url": "@baseUrl%/assets/images/html5-css3-spash.svg",
+      "altTxt": "HTML 5 + CSS 3",
+      "descricao": "HTML 5 e CSS 3: Desenvolvendo páginas da web"
+    },
+    {
+      "url": "@baseUrl%/assets/images/nodejs-splash.svg",
+      "altTxt": "Node.JS",
+      "descricao": "Node.JS: Uma ferramenta revolucionária que possibilitou rodar aplicações em JavaScript/TypeScript fora dos navegadores, tornando possível criar aplicações apenas usando JavaScript. O NodeJS, é um JavaScript \"compilado\" em modo grosseiro de se dizer."
+    },
+    {
+      "url": "@baseUrl%/assets/images/sass-splash.svg",
+      "altTxt": "SASS",
+      "descricao": "SASS: Um CSS convencional, porém com riquezas de recursos. É um CSS pré-processado e convertido para linguagem de CSS padrão de navegadores."
+    },
+    {
+      "url": "@baseUrl%/assets/images/less-splash.svg",
+      "altTxt": "LESS",
+      "descricao": "LESS: Significa Leaner Style Sheets, é uma extensão de linguagem compatível com versões anteriores para a linguagem CSS."
+    }
+  ]
+}

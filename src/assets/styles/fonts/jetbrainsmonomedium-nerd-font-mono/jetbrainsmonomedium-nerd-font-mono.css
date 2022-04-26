@@ -1,0 +1,17 @@
+/* jetbrains-mono-medium-medium-nerd-font-complete-mono */
+@font-face {
+	font-family: JetBrainsMonoMedium Nerd Font Mono;
+	font-style: normal;
+	font-weight: 500;
+	src: local("JetBrains Mono Medium Medium Nerd Font Complete Mono"), local("JetBrainsMonoMediumNerdFontCompleteM-Medium"), url(jetbrains-mono-medium-medium-nerd-font-complete-mono.woff2) format("woff2"), url(jetbrains-mono-medium-medium-nerd-font-complete-mono.woff) format("woff");
+	font-display: auto;
+}
+/* jetbrains-mono-medium-med-ita-nerd-font-complete-mono */
+@font-face {
+	font-family: JetBrainsMonoMedium Nerd Font Mono;
+	font-style: italic;
+	font-weight: 500;
+	src: local("JetBrains Mono Medium Med Ita Nerd Font Complete Mono"), local("JetBrainsMonoMediumNerdFontCompleteM-Italic"), url(jetbrains-mono-medium-med-ita-nerd-font-complete-mono.woff2) format("woff2"), url(jetbrains-mono-medium-med-ita-nerd-font-complete-mono.woff) format("woff");
+	font-display: auto;
+}
+

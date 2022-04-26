@@ -1,0 +1,76 @@
+[
+  {
+    "nome": "Emmanuel Machado de Oliveira",
+    "foto": "Emmanuel.jpg",
+    "matricula": 202102212685,
+    "contribuicao": "",
+    "cargos": [
+      "Desenvolvedor Fullstack",
+      "Engenheiro JavaScript Sênior",
+      "Professor de Front-End com React + NextJS"
+    ]
+  },
+  {
+    "nome": "Leonardo Nicolas Sales Dias",
+    "foto": "Leonardo.jpeg",
+    "matricula": 201903319153,
+    "contribuicao": "",
+    "cargos": [
+      "Desenvolvedor Fullstack",
+      "Gerente de Infraestrutura",
+      "Professor de Front-End com Angular",
+      "Professor de Back-End com C#/ASP.NET",
+      "Professor de Back-End com PHP/Laravel",
+      "Professor de Back-End com NodeJS/NestJS",
+      "Professor de Back-End com NodeJS/ExpressJS",
+      "Professor de Back-End com Java/SpringBoot"
+    ]
+  },
+  {
+    "nome": "Flávio Gomes de Almeida Filho",
+    "foto": "Flavio.jpg",
+    "matricula": 202002457392,
+    "contribuicao": "",
+    "cargos": [
+      "Desenvolvedor Fullstack",
+      "Analista de sistemas embarcados e de dados",
+      "Professor de Back-End com Python/Django",
+      "Professor de Back-End com Python/Flask"
+    ]
+  },
+  {
+    "nome": "Joubert Lima Correa de Oliveira",
+    "foto": "Joubert.jpg",
+    "matricula": 202102283388,
+    "contribuicao": "",
+    "cargos": [
+      "Desenvolvedor Fullstack",
+      "Cientista de Dados",
+      "Professor de Python Para Ciência de Dados",
+      "Professor de PowerBI",
+      "Professor de Pacote Office"
+    ]
+  },
+  {
+    "nome": "Gustavo Martins Barbosa",
+    "foto": "Gustavo.jpg",
+    "matricula": 202102283388,
+    "contribuicao": "",
+    "cargos": [
+      "Desenvolvedor Fullstack",
+      "Diretor Financeiro",
+      "Professor de App Mobile com React Native"
+    ]
+  },
+  {
+    "nome": "Jhonata Goncalves Antunes",
+    "foto": "Jhonata.jpg",
+    "matricula": 202102283388,
+    "contribuicao": "",
+    "cargos": [
+      "Desenvolvedor Fullstack",
+      "Gerente de Designer",
+      "Professor de Back-End"
+    ]
+  }
+]

@@ -1,0 +1,337 @@
+[
+  {
+    "prefixo": 11,
+    "estado": "SP",
+    "regiao": ["Região Metropolitana de São Paulo","Região Metropolitana de Jundiaí","Região Geográfica Imediata de Bragança Paulista"]
+  },
+  {
+    "prefixo": 12,
+    "estado": "SP",
+    "regiao": ["Região Metropolitana do Vale do Paraíba","Litoral Norte"]
+  },
+  {
+    "prefixo": 13,
+    "estado": "SP",
+    "regiao": ["Região Metropolitana da Baixada Santista","Vale do Ribeira"]
+  },
+  {
+    "prefixo": 14,
+    "estado": "SP",
+    "regiao": ["Avaré","Bauru","Botucatu","Jaú","Lins","Marília","Ourinhos"]
+  },
+  {
+    "prefixo": 15,
+    "estado": "SP",
+    "regiao": ["Itapetininga","Itapeva","Sorocaba","Tatuí"]
+  },
+  {
+    "prefixo": 16,
+    "estado": "SP",
+    "regiao": ["Araraquara","Franca","Jaboticabal","Ribeirão Preto","São Carlos","Sertãozinho"]
+  },
+  {
+    "prefixo": 17,
+    "estado": "SP",
+    "regiao": ["Barretos","Catanduva","Fernandópolis","Jales","São José do Rio Preto","Votuporanga"]
+  },
+  {
+    "prefixo": 18,
+    "estado": "SP",
+    "regiao": ["Andradina","Araçatuba","Assis","Birigui","Dracena","Presidente Prudente"]
+  },
+  {
+    "prefixo": 19,
+    "estado": "SP",
+    "regiao": ["Americana","Campinas","Limeira","Piracicaba","Rio Claro","São João da Boa Vista"]
+  },
+  {
+    "prefixo": 21,
+    "estado": "RJ",
+    "regiao": ["Rio de Janeiro","Região Metropolitana","Teresópolis"]
+  },
+  {
+    "prefixo": 22,
+    "estado": "RJ",
+    "regiao": ["Cabo Frio","Campos dos Goytacazes","Macaé","Nova Friburgo"]
+  },
+  {
+    "prefixo": 24,
+    "estado": "RJ",
+    "regiao": ["Angra dos Reis","Petrópolis","Volta Redonda"]
+  },
+  {
+    "prefixo": 27,
+    "estado": "ES",
+    "regiao": ["Vitória","Região Metropolitana","Colatina","Domingos Martins","Linhares"]
+  },
+  {
+    "prefixo": 28,
+    "estado": "ES",
+    "regiao": ["Cachoeiro de Itapemirim","Castelo","Marataízes"]
+  },
+  {
+    "prefixo": 31,
+    "estado": "MG",
+    "regiao": ["Belo Horizonte","Região Metropolitana","Conselheiro Lafaiete","Ipatinga"]
+  },
+  {
+    "prefixo": 32,
+    "estado": "MG",
+    "regiao": ["Barbacena","Juiz de Fora","Muriaé","São João del-Rei","Ubá"]
+  },
+  {
+    "prefixo": 33,
+    "estado": "MG",
+    "regiao": ["Almenara","Caratinga","Governador Valadares","Manhuaçu","Teófilo Otoni"]
+  },
+  {
+    "prefixo": 34,
+    "estado": "MG",
+    "regiao": ["Araguari","Araxá","Patos de Minas","Uberlândia","Uberaba"]
+  },
+  {
+    "prefixo": 35,
+    "estado": "MG",
+    "regiao": ["Alfenas","Guaxupé","Lavras","Poços de Caldas","Pouso Alegre","Varginha"]
+  },
+  {
+    "prefixo": 37,
+    "estado": "MG",
+    "regiao": ["Bom Despacho","Divinópolis","Formiga","Itaúna","Pará de Minas"]
+  },
+  {
+    "prefixo": 38,
+    "estado": "MG",
+    "regiao": ["Curvelo","Diamantina","Montes Claros","Pirapora","Unaí"]
+  },
+  {
+    "prefixo": 41,
+    "estado": "PR",
+    "regiao": ["Curitiba","Região Metropolitana"]
+  },
+  {
+    "prefixo": 42,
+    "estado": "PR",
+    "regiao": ["Ponta Grossa","Guarapuava"]
+  },
+  {
+    "prefixo": 43,
+    "estado": "PR",
+    "regiao": ["Apucarana","Londrina"]
+  },
+  {
+    "prefixo": 44,
+    "estado": "PR",
+    "regiao": ["Maringá","Campo Mourão","Umuarama"]
+  },
+  {
+    "prefixo": 45,
+    "estado": "PR",
+    "regiao": ["Cascavel","Foz do Iguaçu"]
+  },
+  {
+    "prefixo": 46,
+    "estado": "PR",
+    "regiao": ["Francisco Beltrão","Pato Branco"]
+  },
+  {
+    "prefixo": 47,
+    "estado": "SC",
+    "regiao": ["Balneário Camboriú","Blumenau","Itajaí","Joinville"]
+  },
+  {
+    "prefixo": 48,
+    "estado": "SC",
+    "regiao": ["Florianópolis","Região Metropolitana","Criciúma"]
+  },
+  {
+    "prefixo": 49,
+    "estado": "SC",
+    "regiao": ["Caçador","Chapecó","Lages"]
+  },
+  {
+    "prefixo": 51,
+    "estado": "RS",
+    "regiao": ["Porto Alegre","Região Metropolitana","Santa Cruz do Sul","Litoral Norte"]
+  },
+  {
+    "prefixo": 53,
+    "estado": "RS",
+    "regiao": ["Pelotas","Rio Grande"]
+  },
+  {
+    "prefixo": 54,
+    "estado": "RS",
+    "regiao": ["Caxias do Sul","Passo Fundo"]
+  },
+  {
+    "prefixo": 55,
+    "estado": "RS",
+    "regiao": ["Santa Maria","Santana do Livramento","Santo Ângelo","Uruguaiana"]
+  },
+  {
+    "prefixo": 61,
+    "estado": "DF",
+    "regiao": ["Abrangência em todo o Distrito Federal","Região Integrada de Desenvolvimento do Destrito Federal","Entorno"]
+  },
+  {
+    "prefixo": 62,
+    "estado": "GO",
+    "regiao": ["Goiânia","Região Metropolitana","Anápolis","Niquelândia","Porangatu"]
+  },
+  {
+    "prefixo": 63,
+    "estado": "TO",
+    "regiao": ["Abrangência em todo o estado"]
+  },
+  {
+    "prefixo": 64,
+    "estado": "GO",
+    "regiao": ["Caldas Novas","Catalão","Itumbiara","Rio Verde"]
+  },
+  {
+    "prefixo": 65,
+    "estado": "MT",
+    "regiao": ["Cuiabá","Região Metropolitana"]
+  },
+  {
+    "prefixo": 66,
+    "estado": "MT",
+    "regiao": ["Rondonópolis","Sinop"]
+  },
+  {
+    "prefixo": 67,
+    "estado": "MS",
+    "regiao": ["Abrangência em todo o estado"]
+  },
+  {
+    "prefixo": 68,
+    "estado": "AC",
+    "regiao": ["Abrangência em todo o estado"]
+  },
+  {
+    "prefixo": 69,
+    "estado": "RO",
+    "regiao": ["Abrangência em todo o estado"]
+  },
+  {
+    "prefixo": 71,
+    "estado": "BA",
+    "regiao": ["Salvador","Região Metropolitana"]
+  },
+  {
+    "prefixo": 73,
+    "estado": "BA",
+    "regiao": ["Eunápolis","Ilhéus","Porto Seguro","Teixeira de Freitas"]
+  },
+  {
+    "prefixo": 74,
+    "estado": "BA",
+    "regiao": ["Irecê","Jacobina","Juazeiro","Xique-Xique"]
+  },
+  {
+    "prefixo": 75,
+    "estado": "BA",
+    "regiao": ["Alagoinhas","Feira de Santana","Paulo Afonso","Valença"]
+  },
+  {
+    "prefixo": 77,
+    "estado": "BA",
+    "regiao": ["Barreiras","Bom Jesus da Lapa","Guanambi","Vitória da Conquista"]
+  },
+  {
+    "prefixo": 79,
+    "estado": "SE",
+    "regiao": ["Abrangência em todo o estado"]
+  },
+  {
+    "prefixo": 81,
+    "estado": "PE",
+    "regiao": ["Recife","Região Metropolitana","Caruaru"]
+  },
+  {
+    "prefixo": 82,
+    "estado": "AL",
+    "regiao": ["Abrangência em todo o estado"]
+  },
+  {
+    "prefixo": 83,
+    "estado": "PB",
+    "regiao": ["Abrangência em todo o estado"]
+  },
+  {
+    "prefixo": 84,
+    "estado": "RN",
+    "regiao": ["Abrangência em todo o estado"]
+  },
+  {
+    "prefixo": 85,
+    "estado": "CE",
+    "regiao": ["Fortaleza","Região Metropolitana"]
+  },
+  {
+    "prefixo": 86,
+    "estado": "PI",
+    "regiao": ["Teresina","Região Metropolitana","Parnaíba"]
+  },
+  {
+    "prefixo": 87,
+    "estado": "PE",
+    "regiao": ["Garanhuns","Petrolina","Salgueiro","Serra Talhada"]
+  },
+  {
+    "prefixo": 88,
+    "estado": "CE",
+    "regiao": ["Juazeiro do Norte","Sobral"]
+  },
+  {
+    "prefixo": 89,
+    "estado": "PI",
+    "regiao": ["Picos","Floriano"]
+  },
+  {
+    "prefixo": 91,
+    "estado": "PA",
+    "regiao": ["Belém","Região Metropolitana"]
+  },
+  {
+    "prefixo": 92,
+    "estado": "AM",
+    "regiao": ["Manaus","Região Metropolitana","Parintins"]
+  },
+  {
+    "prefixo": 93,
+    "estado": "PA",
+    "regiao": ["Santarém","Altamira"]
+  },
+  {
+    "prefixo": 94,
+    "estado": "PA",
+    "regiao": ["Marabá"]
+  },
+  {
+    "prefixo": 95,
+    "estado": "RR",
+    "regiao": ["Abrangência em todo o estado"]
+  },
+  {
+    "prefixo": 96,
+    "estado": "AP",
+    "regiao": ["Abrangência em todo o estado"]
+  },
+  {
+    "prefixo": 97,
+    "estado": "AM",
+    "regiao": ["Abrangência no interior do estado"]
+  },
+  {
+    "prefixo": 98,
+    "estado": "MA",
+    "regiao": ["São Luís","Região Metropolitana"]
+  },
+  {
+    "prefixo": 99,
+    "estado": "MA",
+    "regiao": ["Caxias","Codó","Imperatriz"]
+  }
+]

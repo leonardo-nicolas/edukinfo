@@ -1,0 +1,63 @@
+{
+  "id": 3,
+  "nome": "Curso de React + Next.JS",
+  "descricao": "Crie sites e aplicações Web dinâmicas e muito robusta, com uma ferramenta bem poderosa criada pelo Facebook, em conjunto com um poderoso framework para esta ferramenta, criado pela comunide.",
+  "preco": 328.58,
+  "descontinuado": false,
+  "gradeMaterias": [
+    "Lógica de Programação",
+    "HTML e CSS completo",
+    "Conhecendo SASS e LESS (alternativas ao CSS)",
+    "Introdução e Fundamentos do JavaScript e EcmaScript",
+    "Introdução ao TypeScript",
+    "Fundamentos do NodeJS, gerenciamento de pacotes e linha de comando",
+    "Preparação completa do ambiente de desenvolvimento para React + Linha de comando",
+    "Criando o primeiro projeto com um exemplo de \"Hello World\".",
+    "Introdução à biblioteca React e o framework Next.JS, juntamente com o JSX (para JavaScript) ou TSX (para TypeScript).",
+    "Adicionando pacotes e bibliotecas",
+    "Introdução a Componentes, Styled Components e Criação de páginas",
+    "Introdução ao React Hooks",
+    "Roteamento com ReactRouterDom",
+    "Reuso de componentes",
+    "Comunicação com BackEnd utilizando Axios",
+    "Apresentando e trabalhando com o Materialize (Framework CSS com Material Design para ReactJS e React Native): Criando um sistema de gerenciamento de estoque com login e senha",
+    "Apresentando e trabalhando com React-Bootstrap (Framework CSS criado pelo Twitter para ReactJS e React Native): Criando um projeto de Gestão de Finanças",
+    "Apresentando e trabalhando com Bulma CSS (framework 100% em CSS criado por um dos membros da comunidade) e implementando código nativo do React...",
+    "Introdução e uso do GIT",
+    "Realização de Testes automatizados",
+    "Build para produção",
+    "Deploy em Produção e Imagens Docker"
+  ],
+  "imagensSlideCurso": [
+    {
+      "url": "@baseUrl%/assets/images/react-splash.svg",
+      "altTxt": "React",
+      "descricao": "React: Uma biblioteca JavaScript para aplicações WEB desenvolvida pelo Facebook"
+    },
+    {
+      "url": "@baseUrl%/assets/images/react-splash-2.svg",
+      "altTxt": "React + Next.JS + MUI",
+      "descricao": "React em conjunto com Next.JS (Um framework exclusivo para trabalhar em conjunto con React e fazer o Server-Side Rendering) + MUI (Framework CSS do Material Design para React JS)."
+    },
+    {
+      "url": "@baseUrl%/assets/images/html5-css3-spash.svg",
+      "altTxt": "HTML 5 + CSS 3",
+      "descricao": "HTML 5 e CSS 3: Desenvolvendo páginas da web"
+    },
+    {
+      "url": "@baseUrl%/assets/images/nodejs-splash.svg",
+      "altTxt": "Node.JS",
+      "descricao": "Node.JS: Uma ferramenta revolucionária que possibilitou rodar aplicações em JavaScript/TypeScript fora dos navegadores, tornando possível criar aplicações apenas usando JavaScript. O NodeJS, é um JavaScript \"compilado\" em modo grosseiro de se dizer."
+    },
+    {
+      "url": "@baseUrl%/assets/images/sass-splash.svg",
+      "altTxt": "SASS",
+      "descricao": "SASS: Um CSS convencional, porém com riquezas de recursos. É um CSS pré-processado e convertido para linguagem de CSS padrão de navegadores."
+    },
+    {
+      "url": "@baseUrl%/assets/images/less-splash.svg",
+      "altTxt": "LESS",
+      "descricao": "LESS: Significa Leaner Style Sheets, é uma extensão de linguagem compatível com versões anteriores para a linguagem CSS."
+    }
+  ]
+}

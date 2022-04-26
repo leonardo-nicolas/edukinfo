@@ -1,0 +1,60 @@
+<div *ngIf="carregamento.concluido && !carregamento.comErro" class="container text-center">
+  <h1 class="h1">{{dadosCurso.nome}}</h1>
+  <carousel>
+    <slide *ngFor="let slide of dadosCurso.imagensSlideCurso">
+      <img [src]="atribuirUrl(slide.url)" [alt]="slide.altTxt" [title]="slide.descricao" width="100%">
+    </slide>
+  </carousel>
+  <div class="row">
+    <div class="col-2">
+      <div class="padding-zero margem-zero">Valor promocional:</div>
+        <div [ngClass]="['font-bolder preco-destaque bg-primary borda-mais-arredondada text-light']">
+          {{dadosCurso.preco.toLocaleString('pt-br',{style:'currency',currency:'BRL'})}}
+        </div>
+      <button id="addNoCarrinho" class="btn btn-primary" type="button">
+        <span class="nf nf-mdi-cart"></span>
+        Compar este curso
+      </button>
+    </div>
+    <div class="col">
+      <div class="container borda-mais-arredondada">
+        <div [ngClass]="{
+          'row text-center': true
+        }">
+          <h2 class="h2">Matérias neste curso:</h2>
+        </div>
+      </div>
+      <div class="container borda-mais-arredondada">
+        <div *ngFor="let materia of dadosCurso.gradeMaterias ?? []; let indice = index" [ngClass]="{
+          'row text-start': true,
+          'bg-primary text-light':indice % 2 === 0,
+          'bg-light':indice % 2 !== 0 && !darkMode.isDarkMode,
+          'bg-dark':indice % 2 !== 0 && darkMode.isDarkMode
+        }">
+          <h4 class="h4"><span class="nf nf-fa-arrow_right"></span> {{materia}}</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!carregamento.concluido" class="text-center container container-pq">
+  <div class="centro">
+    <div style="
+      width:100% !important; max-width: 400px !important;
+      height:100% !important; max-height: 400px !important;
+    "
+         class="spinner-border text-main" role="status">
+      <span class="visually-hidden">Carregando, por favor aguarde...</span>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="carregamento.concluido && carregamento.comErro" class="text-center container container-pq">
+  <div class="centro">
+    <alert [isOpen]="true" type="danger">
+      <h1 class="h1">Desculpe, mas houve algum erro desconhecido!</h1>
+      <h3 class="h3">Por favor, tente novamente!</h3>
+    </alert>
+  </div>
+</div>

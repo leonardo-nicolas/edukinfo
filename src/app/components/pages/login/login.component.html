@@ -1,0 +1,85 @@
+<div class="text-center container container-pq">
+  <!-- TODO: Implementar os eventos ngSubmit e o Reset -->
+  <form ngForm #formLogin="ngForm" method="post" class="centro" method="post" action="javascript:void(this);" >
+    <div [ngClass]="{
+      'form-login-escondido':secRecuperarSenha,
+      'form-login-exibido':!secRecuperarSenha
+     }">
+      <h1 class="h1 mb-3 fw-normal">Faça seu login</h1>
+      <h4 class="h4 mb-3 fw-normal">Entre com seu nome de usuário e sua senha</h4>
+      <div class="form-floating">
+        <input type="email" width="30" id="fieldUsuario" name="usuario" class="form-control borda-mais-arredondada" placeholder="fulanodetal@email.com.br">
+        <label for="fieldUsuario">Usuário</label>
+      </div>
+      <div class="form-floating">
+        <input class="form-control borda-mais-arredondada" type="password" width="30" id="fieldSenha" name="usuario" placeholder="Sua senha">
+        <label for="fieldSenha">Senha</label>
+      </div>
+    </div>
+    <div [ngClass]="{
+      'form-rec-senha-escondido':!secRecuperarSenha,
+      'form-rec-senha-exibido':secRecuperarSenha
+    }">
+      <h1 class="h1 mb-3 fw-normal">Esqueceu sua senha?</h1>
+      <h4 class="h4 mb-3 fw-normal">Calma, vamos recuperar!</h4>
+      <div class="form-floating">
+        <input type="email" width="30" id="fieldEmail" name="usuario" class="form-control borda-mais-arredondada" placeholder="fulanodetal@email.com.br">
+        <label for="fieldUsuario">Digite aqui seu e-mail</label>
+      </div>
+      <div style="width:100%; height:58px;"></div>
+    </div>
+    <div>
+      <button [ngClass]="[
+          'animated-button hover-blue borda-mais-arredondada btn me-2',
+          darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
+      ]">
+        <span class="line-animation line-animation-main"></span>
+        <span class="line-animation line-animation-main"></span>
+        <span class="line-animation line-animation-main"></span>
+        <span class="line-animation line-animation-main"></span>
+        <span *ngIf="!secRecuperarSenha" class="nf nf-oct-sign_in"></span>
+        <span *ngIf="secRecuperarSenha" class="nf nf-mdi-lock_reset"></span>
+        {{secRecuperarSenha ? 'Recuperar minha senha' : 'Login'}}
+      </button>
+      <button type="reset" [ngClass]="[
+          'animated-button hover-red borda-mais-arredondada btn me-2',
+          darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
+      ]">
+        <span class="line-animation line-animation-red"></span>
+        <span class="line-animation line-animation-red"></span>
+        <span class="line-animation line-animation-red"></span>
+        <span class="line-animation line-animation-red"></span>
+        <span class="nf nf-mdi-eraser"></span>
+        Limpar tudo
+      </button>
+    </div>
+    <div>
+      <button  [routerLink]="['/login', secRecuperarSenha ? '':'recuperarSenha']"
+      (click)="secRecuperarSenha=!secRecuperarSenha" [ngClass]="[
+          'btn-large-diskak me-2 borda-mais-arredondada animated-button hover-yellow',
+          darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
+      ]">
+        <span class="line-animation line-animation-yellow"></span>
+        <span class="line-animation line-animation-yellow"></span>
+        <span class="line-animation line-animation-yellow"></span>
+        <span class="line-animation line-animation-yellow"></span>
+        <span *ngIf="!secRecuperarSenha" class="nf nf-mdi-lock_reset"></span>
+        <span *ngIf="secRecuperarSenha" class="nf nf-oct-sign_in"></span>
+        {{secRecuperarSenha ? 'Voltar para login' : 'Esqueci minha senha'}}
+      </button>
+    </div>
+    <div>
+      <button routerLink="/cadastro" [ngClass]="[
+          'btn-large-diskak me-2 borda-mais-arredondada animated-button hover-green',
+          darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
+      ]">
+        <span class="line-animation line-animation-green"></span>
+        <span class="line-animation line-animation-green"></span>
+        <span class="line-animation line-animation-green"></span>
+        <span class="line-animation line-animation-green"></span>
+        <span class="nf nf-mdi-wallet_membership"></span>
+        Quero me cadastrar
+      </button>
+    </div>
+  </form>
+</div>

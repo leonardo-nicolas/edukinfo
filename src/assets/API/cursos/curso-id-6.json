@@ -1,0 +1,42 @@
+{
+  "id": 6,
+  "nome": "Curso de Design Gráfico",
+  "descricao": "Crie artes e diagramações para divulgações diversas",
+  "preco": 524.97,
+  "descontinuado": false,
+  "gradeMaterias": [
+    "Noções Básicas da Língua Portuguesa",
+    "Edição e Tratamento de Imagens com Photoshop",
+    "Desenho Vetorial com Illustrator",
+    "Editoração de Jornais e Revistas com InDesign",
+    "Edição e Tratamento de Imagens com Corel PhotoPaint",
+    "Desenho Vetorial com CorelDRAW",
+    "Editoração de Jornais e Revistas com CorelDraw",
+    "Edição e Tratamento de Imagens com GIMP",
+    "Desenho Vetorial com Inkscape",
+    "Editoração de Jornais e Revistas com Scribus",
+    "Criação de artes rápidas e minimalistas com Adobe CC Express"
+  ],
+  "imagensSlideCurso": [
+    {
+      "url": "@baseUrl%/assets/images/prancheta-banner-designer-grafico.png",
+      "altTxt": "Softwares profissionais para o designer",
+      "descricao": "Apresentação rápida do Curso de Designer gráfico: Softwares da Adobe e CorelDRAW."
+    },
+    {
+      "url": "@baseUrl%/assets/images/mulher-designer.jpg",
+      "altTxt": "Profissional designer mulher em agência",
+      "descricao": "Profissional de Designer mulher modelando protótipo de um projeto."
+    },
+    {
+      "url": "@baseUrl%/assets/images/Ilustracao-agencia-publicidade-notebook-tablet.png",
+      "altTxt": "Notebook e tablet para desenho",
+      "descricao": "Ilustracao de uma agencia de publicidade, modelando desenho em algum software em um notebook e utilizando um tablet, para desenhar as linhas e traços."
+    },
+    {
+      "url": "@baseUrl%/assets/images/mulher-designer-grafico.png",
+      "altTxt": "Profissional designer mulher modelando um cartão de visita",
+      "descricao": "Profissional de Designer gráfico mulher modelando um cartão de visita no Adobe Illustrator."
+    }
+  ]
+}

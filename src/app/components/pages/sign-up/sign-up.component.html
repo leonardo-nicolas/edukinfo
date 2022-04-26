@@ -1,0 +1,782 @@
+<form method="post" #formCadastro="ngForm" class="container-xg container" (reset)="resetForm()" (ngSubmit)="enviarDados()" ngForm>
+  <!-- Apresentação -->
+  <div *ngIf="currentAccordion == 0" class="text-center centro borda-mais-arredondada">
+    <h1 class="h1">Que bom termos você como nosso cliente!</h1>
+    <h4 class="h4">Vamos te auxiliar com seu cadastro neste assistente!</h4>
+    <div [ngClass]="['borda-mais-arredondada',darkMode.isDarkMode ? 'bg-dark bg-opacity-50' : 'bg-light text-dark']">
+      <p>Para prosseguir com o cadastro, basta apenas seguir o passo a passo...</p>
+      <p>Os passos são constituídos com as seguintes coletas:</p>
+      <ul class="nf-ul">
+        <li class="nf-fa-arrow_right">&nbsp;Dados de acesso</li>
+        <li class="nf-fa-arrow_right">&nbsp;Dados pessoais</li>
+        <li class="nf-fa-arrow_right">&nbsp;Dados de endereço</li>
+        <li class="nf-fa-arrow_right">&nbsp;Termos de uso e política de privacidade</li>
+        <li class="nf-fa-arrow_right">&nbsp;E, por fim, confirmação de dados</li>
+      </ul>
+
+    </div>
+    <div class="text-end">
+      <button (click)="currentAccordion=currentAccordion+1;" class="btn btn-primary borda-mais-arredondada">
+        Próximo passo <span class="nf nf-fa-arrow_right"></span>
+      </button>
+    </div>
+  </div>
+  <!-- Dados de Acesso -->
+  <div *ngIf="currentAccordion === 1" class="centro borda-mais-arredondada">
+    <h1 class="h1">Dados de acesso</h1>
+    <div [ngClass]="{
+      'bg-dark bg-opacity-75 text-light': darkMode.isDarkMode,
+      'bg-light text-dark' : !darkMode.isDarkMode,
+      'borda-mais-arredondada':true
+    }">
+      <div class="form-floating text-dark">
+        <input type="email" id="fieldUsuario" name="usuario" placeholder="fulanodetal@email.com.br"
+               [ngClass]="[
+            'form-control bg-white opacity-100 borda-mais-arredondada',
+            !existenciaDeInfoValida.userExistente && existenciaDeInfoValida.email && modelData.usuario.email !== '' ? 'is-valid' : 'is-invalid'
+          ]" (blur)="checkUserExists()" (change)="validarCampos()" [(ngModel)]="modelData.usuario.email">
+        <label for="fieldUsuario">Informe seu e-mail*</label>
+      </div>
+      <alert type="warning">
+        <span *ngIf="modelData.usuario.email === ''" class="text-danger">
+          Por favor, informe um endereço de e-mail, para servir de nome de usuário.
+        </span>
+        <span *ngIf="existenciaDeInfoValida.userExistente" class="text-danger">
+            <span class="nf nf-oct-stop"></span>
+            Desculpe, mas verificamos que este usuário com este e-mail já existe!<br>
+            Se caso desejar, <a [routerLink]="['/login','recuperarSenha']" class="btn-link">clique aqui</a> para recuperar sua senha!
+        </span>
+        <span *ngIf="!existenciaDeInfoValida.userExistente && existenciaDeInfoValida.email && modelData.usuario.email !== ''">
+          <span class="nf nf-fa-check text-success"></span> E-mail preenchido corretamente! 🙂👏
+        </span>
+        <p *ngIf="!existenciaDeInfoValida.email" class="text-danger">Por favor, digite um e-mail válido!</p>
+        <p>
+          Este e-mail será utilizado para acessar a sua
+          área de usuário,
+          recuperar sua senha,
+          receber informações sobre seus cursos (como os diplomas de conclusão),
+          informações financeiras e fiscais,
+          etc.
+        </p>
+        <p>
+          <strong>NÃO SE PREOCUPE</strong>!
+          Pois <strong>NÃO</strong> enviaremos promoções, publicidades ou spam!
+          Não é esta a finalidade!
+          Até porque para isto, temos uma seção exclusiva para newsletter.
+          E, lá você pode colocar o e-mail que desejar!
+        </p>
+      </alert>
+      <div class="form-floating text-dark">
+        <input #senha type="password" id="fieldSenha" placeholder="Sμ@-$€nh4"
+               [ngClass]="[
+            'form-control bg-white opacity-100 borda-mais-arredondada',
+            senha.validity.valid ? 'is-valid' : 'is-invalid'
+          ]" (change)="validatePwd()" (keyup)="validatePwd()" [(ngModel)]="modelData.senha"
+               required minlength="7" maxlength="15" [pattern]="regexTestSenha.source" name="senha">
+        <label for="fieldSenha">Informe uma senha*</label>
+      </div>
+      <div class="form-floating text-dark">
+        <input type="password" id="fieldConfirmarSenha" name="confirmaSenha" [(ngModel)]="confirmacaoSenha"
+               [ngClass]="{
+              'form-control bg-white opacity-100 borda-mais-arredondada':true,
+              'is-invalid':modelData.senha === '' || modelData.senha !== confirmacaoSenha,
+              'is-valid':modelData.senha !== '' && modelData.senha === confirmacaoSenha
+            }" (change)="validatePwd()" (keyup)="validatePwd()"
+               placeholder="Sμ@-$€nh4" required minlength="7" maxlength="15" [pattern]="regexTestSenha.source">
+        <label for="fieldConfirmarSenha">Confirme sua senha*</label>
+      </div>
+      <alert type="warning">
+        <p><strong>Observação IMPORTANTE:</strong></p>
+        <p>A senha deve ao mínimo:</p>
+        <ul class="nf-ul">
+          <li [ngClass]="{
+            'nf-fa-warning text-danger': !validacaoSenha.lwr,
+            'nf-fa-check text-success': validacaoSenha.lwr
+          }">&nbsp;&nbsp;Possuir alguma letra <strong>em minúsculo</strong>.</li>
+          <li [ngClass]="{
+            'nf-fa-warning text-danger': !validacaoSenha.uppr,
+            'nf-fa-check text-success': validacaoSenha.uppr
+          }">&nbsp;&nbsp;Possuir alguma letra <strong>EM MAIÚSCULO</strong>.</li>
+          <li [ngClass]="{
+            'nf-fa-warning text-danger': !validacaoSenha.num,
+            'nf-fa-check text-success': validacaoSenha.num
+          }">&nbsp;&nbsp;Possuir <strong>algum número</strong>.</li>
+          <li [ngClass]="{
+            'nf-fa-warning text-danger': !validacaoSenha.spec,
+            'nf-fa-check text-success': validacaoSenha.spec
+          }">&nbsp;&nbsp;Possuir alguma <strong>"letra" (na verdade caractéres) especiais</strong>.</li>
+          <li [ngClass]="{
+            'nf-fa-warning text-danger': !validacaoSenha.entre7e15,
+            'nf-fa-check text-success': validacaoSenha.entre7e15
+          }">&nbsp;&nbsp;A senha deve possuir entre <strong>7 caractéres</strong> e <strong>15 caractéres</strong>.</li>
+          <li [ngClass]="{
+            'nf-fa-warning text-danger': !validacaoSenha.iguais,
+            'nf-fa-check text-success': validacaoSenha.iguais
+          }">&nbsp;&nbsp;A senha e a confirmação de senha <strong>têm que serem iguais</strong>.</li>
+        </ul>
+        <h5 class="h5">Recomenda-se <span class="fst-italic font-bold">NÃO UTILIZAR</span> a mesma senha que você utiliza em outros serviços, porém isto fica à seu critério!</h5>
+      </alert>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col text-start">
+          <button (click)="currentAccordion=currentAccordion-1;" class="btn btn-primary borda-mais-arredondada ">
+            <span class="nf nf-fa-arrow_left"></span> Passo anterior
+          </button>
+        </div>
+        <div class="col text-end">
+          <button (click)="currentAccordion=currentAccordion+1;" class="btn btn-primary borda-mais-arredondada ">
+            Próximo passo <span class="nf nf-fa-arrow_right"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Dados Pessoais -->
+  <div *ngIf="currentAccordion === 2" class="centro borda-mais-arredondada">
+    <h1 class="h1">Dados Pessoais</h1>
+    <div [ngClass]="{
+          'bg-opacity-75 bg-dark text-light': darkMode.isDarkMode,
+          'bg-light text-dark' : !darkMode.isDarkMode,
+          'borda-mais-arredondada espacamento-padding':true
+      }">
+      <div>
+        <div class="form-check form-check-inline">
+          <input type="radio" name="tipo_documento" value="PF" [(ngModel)]="modelData.usuario.documento.tipo"
+          id="typeDocumentPF" class="form-check-input" (change)="validarCampos()"
+                 [checked]="modelData.usuario.documento.tipo === 'PF'">
+          <label for="typeDocumentPF" class="form-check-label">Pessoa Física (CPF)</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="radio" name="tipo_documento" value="PJ" [(ngModel)]="modelData.usuario.documento.tipo"
+          id="typeDocumentPJ" class="form-check-input" (change)="validarCampos()"
+                 [checked]="modelData.usuario.documento.tipo === 'PJ'">
+          <label for="typeDocumentPJ" class="form-check-label">Pessoa Jurídica (CNPJ)</label>
+        </div>
+      </div>
+      <div class="form-floating text-dark">
+        <input type="text" id="fieldPrimeiroNome" name="primeiro_nome" [placeholder]="'Fulano'"
+        required (change)="validarCampos()" (keyup)="validarCampos()" [ngClass]="[
+            'form-control bg-white opacity-100 borda-mais-arredondada',
+            modelData.usuario.nome !== '' ? 'is-valid' : 'is-invalid'
+          ]" [(ngModel)]="modelData.usuario.nome">
+        <label for="fieldPrimeiroNome">Informe {{modelData.usuario.documento.tipo === 'PJ' ? 'a Razão Social' : 'seu nome'}} *</label>
+      </div>
+      <div class="form-floating text-dark">
+        <input type="text" id="fieldSobrenome" name="sobrenome" placeholder="de Tal"
+               [required]="modelData.usuario.documento.tipo === 'PF'" [(ngModel)]="modelData.usuario.sobrenome" [ngClass]="{
+          'form-control bg-white opacity-100 borda-mais-arredondada':true,
+          'is-valid': modelData.usuario.sobrenome !== '',
+          'is-invalid':modelData.usuario.documento.tipo === 'PF' && modelData.usuario.sobrenome === ''
+        }" (change)="validarCampos()" (keyup)="validarCampos()">
+        <label for="fieldSobrenome">Informe {{modelData.usuario.documento.tipo === 'PJ' ?'o nome fantasia (opc)':'seu Sobrenome *'}}</label>
+      </div>
+      <div *ngIf="modelData.usuario.documento.tipo === 'PF'">
+        <div class="form-check form-check-inline">
+          <input type="radio" name="genero" value="M" [(ngModel)]="modelData.usuario.genero" (change)="validarCampos()"
+                 id="genreMale" class="form-check-input" [checked]="modelData.usuario.genero === 'M'">
+          <label for="genreMale" class="form-check-label">Masculino</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="radio" name="genero" value="F" [(ngModel)]="modelData.usuario.genero" (change)="validarCampos()"
+                 id="genreFemale" class="form-check-input" [checked]="modelData.usuario.genero === 'F'">
+          <label for="genreFemale" class="form-check-label">Feminino</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="radio" name="genero" value="O" [(ngModel)]="modelData.usuario.genero" (change)="validarCampos()"
+                 id="genreOthers" class="form-check-input" [checked]="modelData.usuario.genero === 'O'">
+          <label for="genreOthers" class="form-check-label">Outros</label>
+        </div>
+      </div>
+      <div class="form-floating text-dark">
+        <input type="text" id="fieldDocument" name="documento" placeholder="de Tal"
+          [autocomplete]="false" (keyup)="validarCampos()" (blur)="validarCampos()" [ngClass]="[
+          'form-control bg-white opacity-100 borda-mais-arredondada',
+          existenciaDeInfoValida.documento ? 'is-valid' : 'is-invalid'
+        ]" [(ngModel)]="modelData.usuario.documento.numero">
+        <label for="fieldDocument">
+          Informe seu {{modelData.usuario.documento.tipo === 'PJ' ? 'CNPJ' : 'CPF'}}*</label>
+      </div>
+      <div class="padding-zero">
+        <div class="row">
+          <div class="col-10">
+            <div class="form-floating text-dark">
+              <input bsDatepicker #dtBday="bsDatepicker" type="text" id="fieldDtNasc" name="documento"
+              placeholder="Ex.: 01/01/2001" [(bsValue)]="modelData.usuario.aniversario"
+              [bsConfig]="{dateInputFormat:'DD/MM/YYYY', adaptivePosition:true,clearButtonLabel:'Redefinir',
+              clearPosition:'center',isAnimated:true}" [ngClass]="[
+                'form-control bg-white opacity-100 borda-mais-arredondada'
+              ]" (bsValueChange)="validarCampos()" (change)="validarCampos()" (keyup)="validarCampos()">
+              <label for="fieldDtNasc">
+                Data de {{modelData.usuario.documento.tipo === 'PJ' ? 'Início das Atividades' : 'Nascimento'}}
+              </label>
+            </div>
+          </div>
+          <div class="col-2">
+            <button [ngClass]="[
+              'animated-button btn-largo borda-mais-arredondada btn me-2',
+              darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
+            ]" (click)="dtBday.toggle()" [attr.aria-expanded]="dtBday.isOpen">
+              <span class="line-animation line-animation-main"></span>
+              <span class="line-animation line-animation-main"></span>
+              <span class="line-animation line-animation-main"></span>
+              <span class="line-animation line-animation-main"></span>
+              <span class="nf nf-fa-calendar padding-zero margem-zero"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <alert type="warning">
+        <p>ATENÇÃO!!!</p>
+        <p>
+          Estamos solicitando seu {{modelData.usuario.documento.tipo === 'PJ' ? 'CNPJ' : "CPF"}},
+          para ser informado EXCLUSIVAMENTE nas notas fiscais, emissão de boletos e para processamento
+          de pagamento com o cartão de crédido próprio.
+        </p>
+        <p>Nos comprometemos seriamente com o armazenamento deste dado sensível!</p>
+      </alert>
+      <!-- Telefones -->
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h5 class="h5">Telefones:</h5>
+            <h6 class="h6">Informe no mínimo um!</h6>
+          </div>
+        </div>
+        <div class="row flex-row justify-content-center">
+          <div *ngFor="let telefone of modelData.telefones; let indice = index" [ngClass]="{
+            'card margem-cartao':true,
+            'fundo-modal-dark-mode':darkMode.isDarkMode
+          }" style="width:17.5rem;">
+            <div class="card-body">
+              <h5 class="card-title">#{{indice + 1}} - {{telefone.descricao}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">({{telefone.codigoArea}}) {{formatarTelefone(indice)}}</h6>
+              <p class="card-text">
+                <span class="nf nf-mdi-phone"></span>
+                Ligações:
+                <span [ngClass]="['nf',telefone.chamadas ?'nf-fa-check color-success' : 'nf-fa-remove color-danger']"></span>
+              </p>
+              <p class="card-text">
+                <span class="nf nf-mdi-message"></span>
+                Mensagens SMS:
+                <span [ngClass]="['nf',telefone.appsMensageiros.mensagemTexto ?'nf-fa-check color-success' : 'nf-fa-remove color-danger']"></span>
+              </p>
+              <p class="card-text font-bolder">Aplicativos de mensagem:</p>
+              <p class="card-text">
+                <span class="nf nf-mdi-whatsapp"></span>
+                WhatsApp:
+                <span [ngClass]="['nf',telefone.appsMensageiros.whatsApp ?'nf-fa-check color-success' : 'nf-fa-remove color-danger']"></span>
+              </p>
+              <p class="card-text">
+                <span class="nf nf-mdi-telegram"></span>
+                Telegram:
+                <span [ngClass]="['nf',telefone.appsMensageiros.telegram ?'nf-fa-check color-success' : 'nf-fa-remove color-danger']"></span>
+              </p>
+              <p class="card-text">
+                <span class="nf nf-mdi-wechat"></span>
+                WeChat:
+                <span [ngClass]="['nf',telefone.appsMensageiros.weChat ?'nf-fa-check color-success' : 'nf-fa-remove color-danger']"></span>
+              </p>
+              <button class="btn btn-danger borda-mais-arredondada padding-zero" (click)="removerDados(indice,'phone')">
+                <span class="nf nf-fa-trash"></span> Remover
+              </button>
+              <button class="btn btn-primary borda-mais-arredondada padding-zero" (click)="abrirCaixaModal(modalAddPhone,'U','phone',indice)">
+                <span class="nf nf-fa-pencil"></span> Editar
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button (click)="abrirCaixaModal(modalAddPhone,'C','phone')" [ngClass]="[
+                'animated-button hover-blue borda-mais-arredondada btn me-2',
+                darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
+            ]">
+              <span class="line-animation line-animation-main"></span>
+              <span class="line-animation line-animation-main"></span>
+              <span class="line-animation line-animation-main"></span>
+              <span class="line-animation line-animation-main"></span>
+              <span class="nf nf-mdi-phone_plus"></span>
+              Adicionar um telefone
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Endereços -->
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <h5 class="h5">Endereços:</h5>
+            <h6 class="h6">Informe no mínimo um!</h6>
+          </div>
+        </div>
+        <div class="row flex-row justify-content-center">
+          <div *ngFor="let endereco of modelData.enderecos; let indice = index" [ngClass]="{
+            'card margem-cartao':true,
+            'fundo-modal-dark-mode':darkMode.isDarkMode
+          }" style="width:17.5rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{endereco.descricao}}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">{{endereco.finalidade}}</h6>
+              <p class="card-text"><strong>Endereço:</strong> {{endereco.endereco}}</p>
+              <p class="card-text">
+                <strong>Número e Complemento:</strong>
+                {{endereco.numero}} {{endereco.complemento}}
+              </p>
+              <p class="card-text"><strong>Bairro:</strong> {{endereco.bairro}}</p>
+              <p class="card-text"><strong>Cidade:</strong> {{endereco.municipio}}</p>
+              <p class="card-text"><strong>Estado:</strong> {{endereco.estado}}</p>
+              <p class="card-text"><strong>CEP:</strong> {{endereco.cep}}</p>
+              <button class="btn btn-danger borda-mais-arredondada padding-zero" (click)="removerDados(indice,'address')">
+                <span class="nf nf-fa-trash"></span> Remover
+              </button>
+              <button class="btn btn-primary borda-mais-arredondada padding-zero" (click)="abrirCaixaModal(modalAddAddress,'U','address',indice)">
+                <span class="nf nf-fa-pencil"></span> Editar
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button (click)="abrirCaixaModal(modalAddAddress,'C','address')" [ngClass]="[
+                'animated-button hover-blue borda-mais-arredondada btn me-2',
+                darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
+            ]">
+              <span class="line-animation line-animation-main"></span>
+              <span class="line-animation line-animation-main"></span>
+              <span class="line-animation line-animation-main"></span>
+              <span class="line-animation line-animation-main"></span>
+              <span class="nf nf-mdi-google_maps"></span>
+              Adicionar um Endereço
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col text-start">
+          <button (click)="currentAccordion=currentAccordion-1;" class="btn btn-primary borda-mais-arredondada">
+            <span class="nf nf-fa-arrow_left"></span> Passo anterior
+          </button>
+        </div>
+        <div class="col text-end">
+          <button (click)="currentAccordion=currentAccordion+1;" class="btn btn-primary borda-mais-arredondada ">
+            Próximo passo <span class="nf nf-fa-arrow_right"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Contrato e Termos e Uso -->
+  <div id="termos-de-uso" *ngIf="currentAccordion === 3" class="centro borda-mais-arredondada">
+    <h1 class="h1">Termos de uso e política de privacidade</h1>
+    <div [ngClass]="{
+        'bg-opacity-75 bg-dark text-light': darkMode.isDarkMode,
+        'bg-light text-dark' : !darkMode.isDarkMode,
+        'borda-mais-arredondada espacamento-padding text-justified':true
+    }">
+      <app-termos-uso></app-termos-uso>
+    </div>
+    <div class="container">
+      <div class="row form-check form-switch">
+        <input  class="form-check-input" type="checkbox" role="switch" id="termos-confirmacao"
+            [checked]="leituraConfirmada" (change)="leituraConfirmada=!leituraConfirmada;validarCampos();">
+        <label class="form-check-label" for="termos-confirmacao">
+          Li <span class="font-bolder">DEVIDAMENTE</span> os termos de uso e concordo com cada parágrado e cláusulas *
+        </label>
+      </div>
+      <alert type="warning">
+        <strong>ATENÇÃO</strong>
+        <p>
+          Se você <strong>não leu</strong> os termos,
+          <strong>TALVEZ</strong> você <strong>PODERÁ</strong> estar sujeito
+          a estar enquadrado dentro dos termos da lei!!!
+        </p>
+        <p>
+          Confirme que leu os termos, <strong>apenas</strong> se você de fato <strong>leu os termos de uso</strong>!
+        </p>
+      </alert>
+      <div class="row">
+        <div class="col text-start">
+          <button (click)="currentAccordion=currentAccordion-1;" class="btn btn-primary borda-mais-arredondada ">
+            <span class="nf nf-fa-arrow_left"></span> Passo anterior
+          </button>
+        </div>
+        <div class="col text-end">
+          <button (click)="currentAccordion=currentAccordion+1;" class="btn btn-primary borda-mais-arredondada ">
+            Próximo passo <span class="nf nf-fa-arrow_right"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Confirmação de dados -->
+  <div *ngIf="currentAccordion === 4" class="centro borda-mais-arredondada">
+    <h1 class="h1">Finalização</h1>
+    <h4 class="h4">Confira seus dados!</h4>
+    <div [ngClass]="{
+          'bg-opacity-75 bg-dark text-light': darkMode.isDarkMode,
+          'bg-light text-dark' : !darkMode.isDarkMode,
+          'borda-mais-arredondada espacamento-padding':true
+      }">
+      <p><strong>E-mail:</strong> {{modelData.usuario.email}}</p>
+      <ng-container [ngSwitch]="modelData.usuario.documento.tipo">
+        <ng-container *ngSwitchCase="'PF'">
+          <ng-container *ngTemplateOutlet="confirmarPF"></ng-container>
+        </ng-container>
+        <ng-container *ngSwitchCase="'PJ'">
+          <ng-container *ngTemplateOutlet="confirmarPJ"></ng-container>
+        </ng-container>
+        <ng-container *ngSwitchCase="'Pf'">
+          <ng-container *ngTemplateOutlet="confirmarPF"></ng-container>
+        </ng-container>
+        <ng-container *ngSwitchCase="'Pj'">
+          <ng-container *ngTemplateOutlet="confirmarPJ"></ng-container>
+        </ng-container>
+        <ng-container *ngSwitchCase="'pF'">
+          <ng-container *ngTemplateOutlet="confirmarPF"></ng-container>
+        </ng-container>
+        <ng-container *ngSwitchCase="'pJ'">
+          <ng-container *ngTemplateOutlet="confirmarPJ"></ng-container>
+        </ng-container>
+
+        <ng-template #confirmarPF>
+          <p><strong>Nome Completo: </strong>{{modelData.usuario.nome}} {{modelData.usuario.sobrenome}}</p>
+          <p><strong>Gênero em que se identifica: </strong>
+            <ng-container [ngSwitch]="modelData.usuario.genero">
+              <span *ngSwitchCase="'M'">Masculino</span>
+              <span *ngSwitchCase="'m'">Masculino</span>
+              <span *ngSwitchCase="'F'">Feminino</span>
+              <span *ngSwitchCase="'f'">Feminino</span>
+              <span *ngSwitchCase="'O'">Outros</span>
+              <span *ngSwitchCase="'o'">Outros</span>
+            </ng-container>
+          </p>
+          <p><strong>CPF: </strong>{{documentoModelado}}</p>
+        </ng-template>
+        <ng-template #confirmarPJ>
+          <p><strong>Razão Social: </strong>{{modelData.usuario.nome}}</p>
+          <p><strong>Nome Fantasia: </strong>{{modelData.usuario.sobrenome}}</p>
+          <p><strong>CNPJ: </strong>{{documentoModelado}}</p>
+        </ng-template>
+        <ng-container *ngSwitchDefault></ng-container>
+      </ng-container>
+      <h4 *ngIf="modelData.telefones.length === 0" class="h4">Nenhum telefone informado</h4>
+      <h4 *ngIf="modelData.telefones.length > 0" class="h4">{{modelData.telefones.length}} {{modelData.telefones.length > 1 ? 'Telefones' : 'Telefone'}} no total:</h4>
+      <div *ngIf="modelData.telefones.length > 0" class="row flex-row justify-content-center">
+        <div *ngFor="let telefone of modelData.telefones; let indice = index" [ngClass]="{
+            'card margem-cartao':true,
+            'fundo-modal-dark-mode':darkMode.isDarkMode
+          }" style="width:17.5rem;">
+          <div class="card-body">
+            <h5 class="card-title">#{{indice + 1}} - {{telefone.descricao}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">({{telefone.codigoArea}}) {{formatarTelefone(indice)}}</h6>
+            <p class="card-text">
+              <span class="nf nf-mdi-phone"></span>
+              Ligações:
+              <span [ngClass]="['nf',telefone.chamadas ?'nf-fa-check color-success' : 'nf-fa-remove color-danger']"></span>
+            </p>
+            <p class="card-text">
+              <span class="nf nf-mdi-message"></span>
+              Mensagens SMS:
+              <span [ngClass]="['nf',telefone.appsMensageiros.mensagemTexto ?'nf-fa-check color-success' : 'nf-fa-remove color-danger']"></span>
+            </p>
+            <p class="card-text font-bolder">Aplicativos de mensagem:</p>
+            <p class="card-text">
+              <span class="nf nf-mdi-whatsapp"></span>
+              WhatsApp:
+              <span [ngClass]="['nf',telefone.appsMensageiros.whatsApp ?'nf-fa-check color-success' : 'nf-fa-remove color-danger']"></span>
+            </p>
+            <p class="card-text">
+              <span class="nf nf-mdi-telegram"></span>
+              Telegram:
+              <span [ngClass]="['nf',telefone.appsMensageiros.telegram ?'nf-fa-check color-success' : 'nf-fa-remove color-danger']"></span>
+            </p>
+            <p class="card-text">
+              <span class="nf nf-mdi-wechat"></span>
+              WeChat:
+              <span [ngClass]="['nf',telefone.appsMensageiros.weChat ?'nf-fa-check color-success' : 'nf-fa-remove color-danger']"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <h4 *ngIf="modelData.enderecos.length === 0" class="h4">Nenhum endereço informado</h4>
+      <h4 *ngIf="modelData.enderecos.length > 0" class="h4">{{modelData.enderecos.length}} {{modelData.enderecos.length > 1 ? 'Endereços' : 'Endereço'}} no total:</h4>
+      <div *ngIf="modelData.enderecos.length > 0" class="row flex-row justify-content-center">
+        <div *ngFor="let endereco of modelData.enderecos; let indice = index" [ngClass]="{
+            'card margem-cartao':true,
+            'fundo-modal-dark-mode':darkMode.isDarkMode
+          }" style="width:17.5rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{endereco.descricao}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{endereco.finalidade}}</h6>
+            <p class="card-text"><strong>Endereço:</strong> {{endereco.endereco}}</p>
+            <p class="card-text">
+              <strong>Número e Complemento:</strong>
+              {{endereco.numero}} {{endereco.complemento}}
+            </p>
+            <p class="card-text"><strong>Bairro:</strong> {{endereco.bairro}}</p>
+            <p class="card-text"><strong>Cidade:</strong> {{endereco.municipio}}</p>
+            <p class="card-text"><strong>Estado:</strong> {{endereco.estado}}</p>
+            <p class="card-text"><strong>CEP:</strong> {{endereco.cep}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col text-start">
+          <button (click)="currentAccordion=currentAccordion-1;" class="btn btn-primary borda-mais-arredondada ">
+            <span class="nf nf-fa-arrow_left"></span> Passo anterior
+          </button>
+        </div>
+        <div class="col text-center">
+          <button type="submit" [disabled]="botaoCadastroDesativado" [ngClass]="[
+                'animated-button hover-blue borda-mais-arredondada btn me-2',
+                darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
+            ]">
+            <span class="line-animation line-animation-main"></span>
+            <span class="line-animation line-animation-main"></span>
+            <span class="line-animation line-animation-main"></span>
+            <span class="line-animation line-animation-main"></span>
+            <span class="nf nf-mdi-account_plus"></span>
+            Registrar-se agora mesmo
+          </button>
+        </div>
+        <div class="col text-end">
+          <button type="reset" [ngClass]="[
+                'animated-button hover-red borda-mais-arredondada btn me-2',
+                darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
+            ]">
+            <span class="line-animation line-animation-red"></span>
+            <span class="line-animation line-animation-red"></span>
+            <span class="line-animation line-animation-red"></span>
+            <span class="line-animation line-animation-red"></span>
+            <span class="nf nf-mdi-eraser"></span>
+            Limpar tudo e recomeçar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!-- Término e boas-vindas ao usuário (além de registrar sessão) -->
+<div *ngIf="currentAccordion === 5" class="centro borda-mais-arredondada">
+  <div [ngClass]="{
+          'bg-opacity-75 bg-dark text-light': darkMode.isDarkMode,
+          'bg-light text-dark' : !darkMode.isDarkMode,
+          'borda-mais-arredondada espacamento-padding':true
+      }">
+    <h1 class="h1">Cadastro Concluído!</h1>
+    <h3 class="h3">Seja muito bem-vindo {{modelData.usuario.nome}}!!!</h3>
+    <h6 class="h6">Voltando para a página inicial em {{contadorRegressivoPosCadastro}}</h6>
+  </div>
+</div>
+
+<!-- Caixa modal para adicionar telefone -->
+<div bsModal #modalAddPhone="bs-modal" class="modal fade" tabindex="-1"
+     role="dialog" aria-labelledby="dialogo-telefones">
+  <div class="modal-dialog modal-md">
+    <div [ngClass]="{'modal-content':true,'fundo-modal-dark-mode':darkMode.isDarkMode}">
+      <div class="modal-header">
+        <h4 id="dialogo-telefones" class="modal-title pull-left">
+          {{operation === 'C' ? 'Adicionar um novo telefones' : 'Editar telefone existente'}}
+        </h4>
+        <button type="button" [class]="['close pull-right btn-close', darkMode.isDarkMode ? 'font-light' : 'font-dark']"
+                (click)="fecharModal(modalAddPhone)" aria-label="Close">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row padding-zero">
+          <div class="col form-floating text-dark padding-zero">
+            <input type="text" class="form-control" [(ngModel)]="dadosModalTelefone.descricao" required maxlength="50"
+                   id="field-descricao-telefone" placeholder="descricao" (change)="aoAlterarDadosDoModal('phone')"
+                   (keyup)="aoAlterarDadosDoModal('phone')" (blur)="aoAlterarDadosDoModal('phone')">
+            <label for="field-descricao-telefone">Descrição *</label>
+          </div>
+        </div>
+        <div class="row padding-zero">
+          <div class="col-3 form-floating text-dark padding-zero">
+            <select (change)="onChangeSelectDDD()" [(ngModel)]="dadosModalTelefone.codigoArea" required
+                    id="field-ddd" class="form-select ">
+              <option value=""></option>
+            </select>
+            <label for="field-DDD">DDD *</label>
+          </div>
+          <div class="col-9 form-floating text-dark padding-zero">
+            <input type="tel" class="form-control" [pattern]="regexValidaNumTel.source"
+                   id="field-numero-telefone" (change)="aoAlterarDadosDoModal('phone')" maxlength="10"
+                   (keyup)="aoAlterarDadosDoModal('phone')" (blur)="aoAlterarDadosDoModal('phone')"
+                   required placeholder="descricao" [(ngModel)]="dadosModalTelefone.numero">
+            <label for="field-numero-telefone">Número *</label>
+          </div>
+        </div>
+        <div class="row padding-zero">
+          <div id="detailsOfDDDs" [ngClass]="['col padding-zero',darkMode.isDarkMode ? 'text-light' : 'text-dark']">
+          </div>
+          <div [ngClass]="['col padding-zero', darkMode.isDarkMode ? 'text-light' : 'text-dark']">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="isWhatsApp" name="isWhatsApp"
+                     (change)="dadosModalTelefone.appsMensageiros.whatsApp=!dadosModalTelefone.appsMensageiros.whatsApp; aoAlterarDadosDoModal('phone')"
+                     (keyup)="aoAlterarDadosDoModal('phone')" (blur)="aoAlterarDadosDoModal('phone')"
+                     [checked]="dadosModalTelefone.appsMensageiros.whatsApp">
+              <label class="form-check-label" for="isWhatsApp"><span class="nf nf-mdi-whatsapp"></span>WhatsApp</label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="isTelegram" name="isTelegram"
+                     (change)="dadosModalTelefone.appsMensageiros.telegram=!dadosModalTelefone.appsMensageiros.telegram; aoAlterarDadosDoModal('phone')"
+                     (keyup)="aoAlterarDadosDoModal('phone')" (blur)="aoAlterarDadosDoModal('phone')"
+                     [checked]="dadosModalTelefone.appsMensageiros.telegram">
+              <label class="form-check-label" for="isTelegram"><span class="nf nf-mdi-telegram"></span>Telegram</label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="isWeChat" name="isWeChat"
+                     (change)="dadosModalTelefone.appsMensageiros.weChat=!dadosModalTelefone.appsMensageiros.weChat; aoAlterarDadosDoModal('phone')"
+                     (keyup)="aoAlterarDadosDoModal('phone')" (blur)="aoAlterarDadosDoModal('phone')"
+                     [checked]="dadosModalTelefone.appsMensageiros.weChat">
+              <label class="form-check-label" for="isWeChat"><span class="nf nf-mdi-wechat"></span>WeChat</label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="isSMS" name="isSMS"
+                     (change)="dadosModalTelefone.appsMensageiros.mensagemTexto=!dadosModalTelefone.appsMensageiros.mensagemTexto; aoAlterarDadosDoModal('phone')"
+                     (keyup)="aoAlterarDadosDoModal('phone')" (blur)="aoAlterarDadosDoModal('phone')"
+                     [checked]="dadosModalTelefone.appsMensageiros.mensagemTexto">
+              <label class="form-check-label" for="isSMS"><span class="nf nf-mdi-message"></span>SMS</label>
+            </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="canCall" name="canCall"
+                     (change)="dadosModalTelefone.chamadas=!dadosModalTelefone.chamadas; aoAlterarDadosDoModal('phone')"
+                     (keyup)="aoAlterarDadosDoModal('phone')" (blur)="aoAlterarDadosDoModal('phone')"
+                     [checked]="dadosModalTelefone.chamadas">
+              <label class="form-check-label" for="canCall"><span class="nf nf-mdi-phone"></span>Pode realizar chamadas</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer text-end">
+        <button class="btn btn-danger borda-mais-arredondada" (click)="cancelarOperacao(modalAddPhone,'phone')">
+          <span class="nf nf-mdi-cancel"></span> Cancelar
+        </button>
+        <button class="btn btn-success borda-mais-arredondada" [disabled]="isButtonDisabledModal"
+                (click)="fecharModalComOK(modalAddPhone,'phone')">
+          <span [ngClass]="{
+            'nf':true,
+            'nf-mdi-phone_plus': operation === 'C',
+            'nf-fa-pencil':operation === 'U'
+          }"></span>
+          {{operation === 'C' ? 'Adicionar' : 'Editar'}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Caixa Modal para adicionar Endereço -->
+<div bsModal #modalAddAddress="bs-modal" class="modal fade" tabindex="-1"
+     role="dialog" aria-labelledby="dialogo-endereco">
+  <div class="modal-dialog modal-md">
+    <div [ngClass]="{'modal-content':true,'fundo-modal-dark-mode':darkMode.isDarkMode}">
+      <div class="modal-header">
+        <h4 id="dialogo-endereco" class="modal-title pull-left">
+          {{operation === 'C' ? 'Adicionar novo endereço' : 'Editar endereço'}}
+        </h4>
+        <button type="button" [class]="['close pull-right btn-close', darkMode.isDarkMode ? 'text-light' : 'text-dark']"
+                aria-label="Close" (click)="fecharModal(modalAddAddress)">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col form-floating text-dark padding-zero">
+            <input type="text" class="form-control" id="field-descricao-endereco"
+                   placeholder="descricao" maxlength="50" required
+                   [(ngModel)]="dadosModalEndereco.descricao" (change)="aoAlterarDadosDoModal('address')"
+                   (keyup)="aoAlterarDadosDoModal('address')" (blur)="aoAlterarDadosDoModal('address')">
+            <label for="field-descricao-endereco">Descrição *</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col form-floating text-dark padding-zero">
+            <input type="text" [ngClass]="{'form-control':true, 'is-invalid':cepInvalido}" maxlength="9"
+                   (blur)="this.aoAlterarDadosDoModal('address');" [pattern]="regexTestaCep.source"
+                   [(ngModel)]="dadosModalEndereco.cep" id="field-cep" required placeholder="24130-223"
+                   (change)="aoAlterarDadosDoModal('address')" (keyup)="aoAlterarDadosDoModal('address')">
+            <label for="field-cep">CEP *</label>
+          </div>
+          <div class="col-2">
+            <button class="btn btn-primary btn-largo borda-mais-arredondada" (click)="buscarCep()">
+              <span class="nf nf-fa-search"></span>
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col form-floating text-dark padding-zero">
+            <input type="text" class="form-control" required placeholder="Ex.: Alameda São Boaventura"
+                   id="field-endereco" (change)="aoAlterarDadosDoModal('address')" maxlength="255"
+                   (keyup)="aoAlterarDadosDoModal('address')" (blur)="aoAlterarDadosDoModal('address')"
+                    [(ngModel)]="dadosModalEndereco.endereco">
+            <label for="field-endereco">Endereço *</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col form-floating text-dark padding-zero">
+            <input type="text" class="form-control" pattern="^\d$" id="field-numero-endereco"
+                   placeholder="Ex.: 859" maxlength="6"
+                   (change)="aoAlterarDadosDoModal('address')" (keyup)="aoAlterarDadosDoModal('address')"
+                   (blur)="aoAlterarDadosDoModal('address')" [(ngModel)]="dadosModalEndereco.numero">
+            <label for="field-numero-endereco">Número</label>
+          </div>
+          <div class="col form-floating text-dark padding-zero">
+            <input type="text" class="form-control" id="field-complemento-endereco"
+                   placeholder="Ex.: Lt 15 Qd C, Apt 2022" maxlength="150"
+                   (change)="aoAlterarDadosDoModal('address')" (keyup)="aoAlterarDadosDoModal('address')"
+                   (blur)="aoAlterarDadosDoModal('address')" [(ngModel)]="dadosModalEndereco.complemento">
+            <label for="field-complemento-endereco">Complemento</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col form-floating text-dark padding-zero">
+            <input type="text" class="form-control" required placeholder="Ex.: Centro"
+                   id="field-bairro" (change)="aoAlterarDadosDoModal('address')" maxlength="70"
+                   (keyup)="aoAlterarDadosDoModal('address')" (blur)="aoAlterarDadosDoModal('address')"
+                   [(ngModel)]="dadosModalEndereco.bairro">
+            <label for="field-bairro">Bairro *</label>
+          </div>
+        </div>
+        <alert type="warning">
+          Informe, ou a numeração ou o complemento (Em caso de Lote/Quadra e número inexistente).
+        </alert>
+        <div class="row">
+          <div class="col-6 form-floating text-dark padding-zero">
+            <select id="field-estados" [(ngModel)]="dadosModalEndereco.estado" class="form-select"
+                    (change)="onChangeSelectProvince()">
+            </select>
+            <label for="field-estados">UF *</label>
+          </div>
+          <div class="col-6 form-floating text-dark padding-zero">
+            <input type="text" class="form-control" id="field-municipio" required maxlength="70"
+                   (change)="aoAlterarDadosDoModal('address')" (keyup)="aoAlterarDadosDoModal('address')"
+                   [typeahead]="municipios" (blur)="aoAlterarDadosDoModal('address')"
+                   placeholder="descricao" [(ngModel)]="dadosModalEndereco.municipio">
+            <label for="field-municipio">Cidade *</label>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer text-end">
+        <button class="btn btn-danger borda-mais-arredondada" (click)="cancelarOperacao(modalAddAddress,'address')">
+          <span class="nf nf-mdi-cancel"></span> Cancelar
+        </button>
+        <button class="btn btn-success borda-mais-arredondada" [disabled]="isButtonDisabledModal"
+                (click)="fecharModalComOK(modalAddAddress,'address')">
+          <span [ngClass]="{
+            'nf':true,
+            'nf-oct-location': operation === 'C',
+            'nf-fa-pencil':operation === 'U'
+          }"></span>
+          {{operation === 'C' ? 'Adicionar' : 'Editar'}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

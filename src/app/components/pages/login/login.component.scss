@@ -1,0 +1,31 @@
+.form-login-escondido {
+  display: none;
+  animation: fade-out; //(#5f942d,30);
+}
+.form-login-exibido {
+  animation: fade-in; //(#5f942d,30);
+}
+.form-rec-senha-escondido {
+  display: none;
+  animation: fade-out; //(#5f942d,30);
+}
+.form-rec-senha-exibido {
+  animation: fade-in; //(#5f942d,30);
+}
+.bg-with-dark-mode-on {
+  background: #313131;
+  color: #FFFFFF;
+}
+#fieldSenha {
+  -webkit-text-security: disc;
+}
+label {
+  color: #000;
+}
+button {
+  margin-top: 40px;
+}
+.btn-large-diskak {
+  width: 100%;
+  height: 50px;
+}

@@ -1,0 +1,32 @@
+{
+  "id": 8,
+  "nome": "Curso de informática básica para crianças",
+  "descricao": "Aprenda a usar um computador pela primeira vez na vida desde novo",
+  "preco": 168.23,
+  "descontinuado": false,
+  "gradeMaterias": [
+    "Digitação",
+    "Windows: Aprendendo a usar o PC",
+    "Word: Aprendendo a fazer um trabalho escolar e muito mais",
+    "Excel: Utilizando planilha eletrônica de uma forma muito básica e organizar melhor as tarefas e finanças",
+    "Internet e e-mail: Ampliando o vasto conhecimento, entretenimento, compras pela internet, além da comunicação com o mundo...",
+    "PowerPoint: Faça apresentações em slides, à um determinado público, podendo ser em palestras, reuniões, etc."
+  ],
+  "imagensSlideCurso": [
+    {
+      "url": "@baseUrl%/assets/images/aderindo-a-tecnologia.png",
+      "altTxt": "Aderido a Tecnologia",
+      "descricao": "Um dedo apertando alguma tecla do teclado de computador e do lado esquerdo mostrando um mapa mundial, representando a comunicação e embaixo desse mapa, mostrando alguma codificação, representando que a pessoa está entrando no mundo da tecnologia."
+    },
+    {
+      "url": "@baseUrl%/assets/images/irmaos-usando-laptop.png",
+      "altTxt": "Menino e menina utilizando notebook",
+      "descricao": "Um casal de irmãos utilizando o notebook, um de costas para o outro."
+    },
+    {
+      "url": "@baseUrl%/assets/images/menina-usando-laptop-e-caderno.png",
+      "altTxt": "Menina estudante",
+      "descricao": "Uma menina de óculos utilizando o notebook e o caderno, enfatizando a importância do uso da tecnologia para ser utilizada nos estudos. "
+    }
+  ]
+}

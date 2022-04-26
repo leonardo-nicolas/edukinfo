@@ -1,0 +1,48 @@
+<div [ngClass]="{
+  'bg-dark text-light':darkMode.isDarkMode,
+  'bg-light text-dark':!darkMode.isDarkMode,
+  'container-fluid border-top':true
+}">
+<footer [ngClass]="{
+  'row flex-row justify-content-lg-around py-5':true
+}">
+  <div class="card bg-transparent border-0 mx-1" style="width:auto;">
+    <p class="text-muted padding-zero margem-zero">
+      <a routerLink="/" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
+        <img [src]="baseUrl + 'assets/images/logo.svg'" alt="logo" width="48" height="48">
+      </a>
+      <span class="text-muted d-flex fonte-projeto">Eduk&nbsp;Info</span>
+    </p>
+    <p class="text-muted">&copy; {{anoCorrente}}</p>
+    <p class="p-0 text-muted margem-zero p-0">12.345.678/0001-23</p>
+  </div>
+  <div class="card bg-transparent border-0 mx-1" style="width:auto;">
+    <h5>Nossa Sede</h5>
+    <p class="p-0 text-muted margem-zero">Rua da Educação de Qualidade</p>
+    <p class="p-0 text-muted margem-zero">nº 1597 - 18&ordm; andar.</p>
+    <p class="p-0 text-muted margem-zero">Centro - Cidade Grande - UF</p>
+    <p class="p-0 text-muted margem-zero">CEP: 12345-678</p>
+  </div>
+  <div class="card bg-transparent border-0 mx-1" style="width:auto;">
+    <h5>Institucional</h5>
+    <ul class="nav flex-column">
+      <li class="nav-item mb-2"><a [routerLink]="['/sobre','nos']" (click)="scrollParaTopo()" class="nav-link p-0 text-muted">Sobre a Eduk Info</a></li>
+      <li class="nav-item mb-2"><a [routerLink]="['/sobre','quem-somos']" (click)="scrollParaTopo()" class="nav-link p-0 text-muted">Quem Somos</a></li>
+      <li class="nav-item mb-2"><a href="https://www.vagas.com.br/" target="_tab" class="nav-link p-0 text-muted">Trabalhe Conosco</a></li>
+      <li class="nav-item mb-2"><a [routerLink]="['/sobre','missao-visao-valores']" (click)="scrollParaTopo()" class="nav-link p-0 text-muted">Missão, Visão e Valores</a></li>
+      <li class="nav-item mb-2"><a [routerLink]="['/sobre','unidades']" (click)="scrollParaTopo()" class="nav-link p-0 text-muted">Nossas redes e unidades</a></li>
+      <li class="nav-item mb-2"><a [routerLink]="['/sobre','faq']" (click)="scrollParaTopo()" class="nav-link p-0 text-muted">Perguntas Frequentes</a></li>
+    </ul>
+  </div>
+  <div class="card bg-transparent border-0 mx-1" style="width:auto;">
+    <h5>Nossas Redes Sociais</h5>
+    <ul class="nav flex-column">
+      <li class="nav-item mb-2"><a href="https://facebook.com/" target="_tab" class="nav-link p-0 text-muted"><span class="nf nf-mdi-facebook"></span>Facebook</a></li>
+      <li class="nav-item mb-2"><a href="https://twitter.com/" target="_tab" class="nav-link p-0 text-muted"><span class="nf nf-mdi-twitter"></span>Twitter</a></li>
+      <li class="nav-item mb-2"><a href="https://instagram.com/" target="_tab" class="nav-link p-0 text-muted"><span class="nf nf-mdi-instagram"></span>Instagram</a></li>
+      <li class="nav-item mb-2"><a href="https://youtube.com.br/" target="_tab" class="nav-link p-0 text-muted"><span class="nf nf-mdi-youtube_play"></span>YouTube</a></li>
+      <li class="nav-item mb-2"><a href="https://twitch.tv/" target="_tab" class="nav-link p-0 text-muted"><span class="nf nf-mdi-twitch"></span>Twitch</a></li>
+    </ul>
+  </div>
+</footer>
+</div>

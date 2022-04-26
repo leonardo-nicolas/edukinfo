@@ -1,1 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
+// styles.sass
+// Option A: Include all of Bootstrap
+// Include any default variable overrides here (though functions won't be available)
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";
+
+/* Importing Datepicker SCSS file. */
+@import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
+$altura-minima-corpo-pagina: calc(100vh - 91px);
+
+@import "assets/styles/animated-button";
+@import "./assets/styles/fonts/jetbrainsmono-nerd-font/jetbrainsmono-nerd-font";
+@import "./assets/styles/fonts/jetbrainsmono-nf/jetbrainsmono-nf";
+@import "./assets/styles/fonts/jetbrainsmono-nerd-font-mono/jetbrainsmono-nerd-font-mono";
+@import "./assets/styles/fonts/jetbrainsmonomedium-nerd-font/jetbrainsmonomedium-nerd-font";
+@import "./assets/styles/fonts/jetbrainsmonomedium-nf/jetbrainsmonomedium-nf";
+@import "./assets/styles/fonts/jetbrainsmonomedium-nerd-font-mono/jetbrainsmonomedium-nerd-font-mono";
+@import "./assets/styles/fonts/jetbrainsmonoextrabold-nerd-font/jetbrainsmonoextrabold-nerd-font";
+@import "./assets/styles/fonts/jetbrainsmonoextrabold-nf/jetbrainsmonoextrabold-nf";
+@import "./assets/styles/fonts/jetbrainsmonoextrabold-nerd-font-mono/jetbrainsmonoextrabold-nerd-font-mono";
+@import "./assets/styles/fonts/nerd-fonts-icons";
+@import "./assets/styles/fonts/permanent-marker/permanent-marker";
+@import "assets/styles/texts-and-fonts";
+// Then add additional custom code here
+
+.borda-mais-arredondada {
+  border-radius: 15px;
+}
+.borda-mais-arredondada-topo {
+  border-radius: 15px 15px 0 0;
+}
+.margem-zero {
+  margin: 0 !important;
+}
+.padding-zero {
+  padding: 0 !important;
+}
+
+.container-pq {
+  width: 100%;
+  max-width: 500px;
+  height: calc(100vh - 91px);
+  display: table;
+  flex-direction: column;
+  flex-flow: column;
+}
+.container-xg {
+  width: 100%;
+  max-width: 900px;
+  height: calc(100vh - 91px);
+  display: table;
+  flex-direction: column;
+  flex-flow: column;
+}
+.centro {
+  display: table-cell;
+  justify-content: center;
+  vertical-align: middle;
+}
+html {
+  scroll-behavior: smooth;
+}
+

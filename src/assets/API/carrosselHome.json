@@ -1,0 +1,27 @@
+[
+  {
+    "image": {
+      "src": "@baseUrl%/assets/images/ukraine.png",
+      "alt": "Nossa solidariedade à Ucrânia"
+    },
+    "info": {
+      "caption": "Desejamos PAZ ao mundo todo!!!",
+      "htmlContent": "Declare AMOR, declare documentos importantes, declare variáveis!<br>Mas, <span class=\"font-bolder text-decoration-underline\">JAMAIS</span> declare guerra! <br> Nossas forças e fé à Ucrânia!!!",
+      "textContent": ""
+    }
+  },
+  {
+    "image": {
+      "src": "@baseUrl%/assets/images/dev.jpg",
+      "alt": "Seja um desenvoldedor mais requisitado e disputado pelo mercado!"
+    },
+    "info": null
+  },
+  {
+    "image": {
+      "src": "@baseUrl%/assets/images/dados.jpg",
+      "alt": "Seja um analista de dados mais requisitado do mercado e impressione seu chefe!"
+    },
+    "info": null
+  }
+]

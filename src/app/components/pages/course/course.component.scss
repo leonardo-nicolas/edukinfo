@@ -1,0 +1,13 @@
+#addNoCarrinho {
+  margin-top: 7px;
+}
+.preco-destaque {
+  font-size: 10pt;
+  width: 100% !important;
+}
+@media (min-width: 800px) {
+  .preco-destaque {
+    font-size: 15pt;
+    width: 100% !important;
+  }
+}

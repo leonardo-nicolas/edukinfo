@@ -1,0 +1,9 @@
+{
+  "id": 10,
+  "nome": "Curso de React Native",
+  "descricao": "Crie aplicativos, programando apenas uma vez, para rodar em qualquer smartphone (Android e iOS), apenas utilizando o JavaScript moderno, com esta ferramenta desenvolvida pelo Facebook e usada, inclusive, no Instagram/Facebook/Discord/Uber/Etc.",
+  "preco": 385.62,
+  "descontinuado": true,
+  "gradeMaterias": [],
+  "imagensSlideCurso": []
+}

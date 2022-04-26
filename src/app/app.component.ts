@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, Inject } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { DarkModeService } from './services/dark-mode.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'prova-ecommerce-faculdade-av1';
+  title = 'projeto-loja-virtual';
+  private baseUrl:string
+  constructor(
+    public darkMode:DarkModeService
+  ) { this.baseUrl = environment.baseUrl; }
+
 }

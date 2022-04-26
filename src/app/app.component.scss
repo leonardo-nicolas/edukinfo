@@ -1,0 +1,12 @@
+$altura-minima-corpo-pagina: calc(100vh - 91px);
+.container-principal {
+  min-height: $altura-minima-corpo-pagina;
+}
+.topo-no-fixo {
+  margin-top: 0;
+}
+@media (min-width: 1200px) {
+  .topo-no-fixo {
+    margin-top: 91px !important;
+  }
+}

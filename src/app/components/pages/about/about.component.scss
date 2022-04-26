@@ -1,0 +1,54 @@
+@import "../../../../assets/styles/linha-do-tempo";
+
+.foto-socio {
+  border: transparent 1px;
+  border-radius: 100%;
+  filter: drop-shadow(0 0 5rem #336684);
+  width: auto;
+  max-width: 200px;
+  height: auto;
+  max-height: 200px;
+  object-fit: contain;
+  resize: both;
+}
+.container-socios {
+  display: flex;
+}
+.container-socios-grupo {
+  min-height: calc(100vh - 90.98px + 40px);
+  display: table;
+}
+.container-socios-foto {
+  width: auto;
+  max-width: 200px;
+  margin-right: 2rem;
+}
+.alinhar-ao-meio {
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.margem-totalmente-zero {
+  margin: 0 !important;
+}
+.alinhar-no-inicio {
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
+.alinhar-no-meio-da-vertical {
+  vertical-align: middle;
+  horiz-align: center;
+}
+.fundo-dark-cartao {
+  background-color: #323232;
+  color: #fff;
+}
+.cartao-unidade {
+  p,
+  h5 {
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+}

@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+}
+.linha-do-tempo{
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: black;
+
+  &::after{
+    content:'';
+    position: relative;
+    width: 6px;
+    top:0;
+    bottom:0;
+    left: 50%;
+    margin-left: -3px;
+  }
+}
+
+.linha-do-tempo-direita{
+  left: 50%;
+  &::before {
+    content: "";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+  }
+  &::after{
+    left:-10px;
+  }
+}
+.linha-do-tempo-esquerda{
+  left: 0;
+  &::before {
+    content: "";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: 28px;
+  }
+}
+.container-linha-do-tempo{
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+  &::after{
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -15px;
+    border: 4px solid #FF9F25;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+}
+.conteudo-linha-do-tempo{
+  padding: 20px 30px;
+  position: relative;
+  border-radius: 10px;
+}
+@media screen and (max-width: 768px) {
+  .linha-do-tempo::after{
+    left: 31px;
+  }
+  .linha-do-tempo-direita{
+    left: 10px;
+  }
+  .container-linha-do-tempo{
+    width: 98%;
+    padding-left: 70px;
+    padding-right: 25px;
+    &::before{
+      left:60px;
+    }
+  }
+}

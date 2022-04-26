@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="820" height="462" inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)" sodipodi:docname="Angular-splash.svg" version="1.1" viewBox="0 0 820 462" xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <sodipodi:namedview bordercolor="#666666" borderopacity="1.0" inkscape:current-layer="layer1" inkscape:cx="405.9" inkscape:cy="195.06667" inkscape:document-units="px" inkscape:guide-bbox="true" inkscape:pagecheckerboard="0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:window-height="985" inkscape:window-maximized="1" inkscape:window-width="1920" inkscape:window-x="0" inkscape:window-y="0" inkscape:zoom="1.3636364" pagecolor="#ffffff" showgrid="false" showguides="true"/>
+ <defs>
+  <linearGradient id="linearGradient221" x1="669.67" x2="200.33" y1="610.87" y2="-124.67" gradientUnits="userSpaceOnUse" inkscape:collect="always">
+   <stop stop-color="#a00" offset="0"/>
+   <stop stop-color="#faa" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g inkscape:groupmode="layer" inkscape:label="Camada 1">
+  <rect width="820" height="462" ry=".64904" fill="url(#linearGradient221)" stroke-width="1.0044" sodipodi:insensitive="true"/>
+  <g transform="matrix(1.3872 0 0 1.3887 237.17 49.473)">
+   <polygon class="st0" points="203.9 186.3 218.1 63.2 125 30 31.9 63.2 46.1 186.3 125 230"/>
+   <polygon class="st1" points="203.9 186.3 218.1 63.2 125 30 125 52.2 125 52.1 125 153.4 125 230"/>
+   <path class="st2" d="m125 52.1-58.2 130.5h21.7l11.7-29.2h49.4l11.7 29.2h21.7zm17 83.3h-34l17-40.9z"/>
+  </g>
+ </g>
+ <style type="text/css">.st0{fill:#DD0031;}
+	.st1{fill:#C3002F;}
+	.st2{fill:#FFFFFF;}</style>
+</svg>

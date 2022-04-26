@@ -1,0 +1,69 @@
+{
+  "id": 1,
+  "nome": "Curso de Angular",
+  "descricao": "Crie sites e aplicações Web dinâmicas e muito robusta, com uma ferramenta bem poderosa criada pelo Google.",
+  "preco": 349.98,
+  "descontinuado": false,
+  "gradeMaterias": [
+    "Lógica de Programação",
+    "Introdução de Programação Orientada a Objetos",
+    "HTML e CSS completo",
+    "Conhecendo o SASS e LESS (alternativas ao CSS)",
+    "Intrudução e Fundamentos do JavaScript e EcmaScript",
+    "Introdução ao TypeScript",
+    "Fundamentos do NodeJS, gerenciamento de pacotes e linha de comando.",
+    "Preparação completa do ambiente para desenvolvimento para Angular e apresentação do Angular CLI",
+    "Criando o primeiro projeto com um exemplo de \"Hello World\".",
+    "Introdução ao Angular e realizando as configurações iniciais",
+    "Apresentando o Angular Universal e Conceitos de Server Side Rendering",
+    "Adicionando pacotes/bibliotecas",
+    "Introdução a Componentes e Criação de Páginas",
+    "Introdução a Injeção de Dependências, Criando Serviços e Guards para as Rotas",
+    "Componentes reativos",
+    "Diretivas em Angular",
+    "Roteamento (Definindo Rotas, Link de Rotas, Proteção das mesmas, etc)",
+    "Formulários com Angular (com Introdução ao \"Two Way Data Binding\", validação dos campos, upload de arquivos, pesquisa, etc)",
+    "Comunicação com o Back-End (Com ou sem formulários)",
+    "Reuso de Componentes",
+    "Apresentando e trabalhando com Angular Material (Framework CSS com Material Design para Angular): Criando um projeto de gerenciamento de estoque com login e senha  ",
+    "Apresentando e trabalhando com NGX-Bootstrap (Framework CSS criado pelo Twitter para Angular): Criando um projeto de gestão de finanças",
+    "Apresentando e trabalhando com Bulma CSS (framework 100% em CSS criado por um dos membros da comunidade) e implementando código nativo do angular...  ",
+    "Introdução e uso do GIT",
+    "Realização de Testes automatizados",
+    "Build para produção",
+    "Deploy em Produção e Imagens Docker ",
+    "Mudando a versão do projeto em angular para a versão mais recente e refazendo o Build + Deploy"
+  ],
+  "imagensSlideCurso": [
+    {
+      "url": "@baseUrl%/assets/images/Angular-splash.svg",
+      "altTxt": "Angular",
+      "descricao": "Angular, um framework de desenvolvimento de aplicações para web, desenvolvido pelo Google."
+    },
+    {
+      "url": "@baseUrl%/assets/images/Angular-splash-2.svg",
+      "altTxt": "Angular + Angular Universal + Angular Material",
+      "descricao": "Angular em conjunto com Angular Universal e Angular Material"
+    },
+    {
+      "url": "@baseUrl%/assets/images/html5-css3-spash.svg",
+      "altTxt": "HTML 5 + CSS 3",
+      "descricao": "HTML 5 e CSS 3: Desenvolvendo páginas da web"
+    },
+    {
+      "url": "@baseUrl%/assets/images/nodejs-splash.svg",
+      "altTxt": "Node.JS",
+      "descricao": "Node.JS: Uma ferramenta revolucionária que possibilitou rodar aplicações em JavaScript/TypeScript fora dos navegadores, tornando possível criar aplicações apenas usando JavaScript. O NodeJS, é um JavaScript \"compilado\" em modo grosseiro de se dizer."
+    },
+    {
+      "url": "@baseUrl%/assets/images/sass-splash.svg",
+      "altTxt": "SASS",
+      "descricao": "SASS: Um CSS convencional, porém com riquezas de recursos. É um CSS pré-processado e convertido para linguagem de CSS padrão de navegadores."
+    },
+    {
+      "url": "@baseUrl%/assets/images/less-splash.svg",
+      "altTxt": "LESS",
+      "descricao": "LESS: Significa Leaner Style Sheets, é uma extensão de linguagem compatível com versões anteriores para a linguagem CSS."
+    }
+  ]
+}

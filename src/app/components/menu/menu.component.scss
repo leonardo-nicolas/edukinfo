@@ -1,0 +1,56 @@
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  padding: 0;
+  tr,
+  td {
+    padding: 0;
+  }
+}
+ul li a:hover {
+  cursor: pointer;
+}
+form {
+  padding: 0 10px;
+  display: flex;
+  input,
+  button {
+    align-self: stretch;
+  }
+}
+.texto-claro {
+  color: var(bs-light);
+}
+.texto-claro:hover {
+  color: var(bs-dark);
+}
+.texto-escuro {
+  color: var(bs-dark);
+}
+.texto-escuro:hover {
+  color: var(bs-light);
+}
+.btn-dark-mode-1 {
+  visibility: visible;
+}
+.btn-dark-mode-2 {
+  visibility: hidden;
+}
+@media (min-width: 1200px) {
+  .topo-fixado {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+  }
+  form input {
+    width: 200px;
+  }
+  .btn-dark-mode-1 {
+    display: none;
+  }
+  .btn-dark-mode-2 {
+    visibility: visible !important;
+  }
+}

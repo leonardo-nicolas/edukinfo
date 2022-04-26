@@ -1,0 +1,33 @@
+/* jetbrains-mono-medium-medium-nerd-font-complete-windows-compatible */
+@font-face {
+	font-family: JetBrainsMonoMedium NF;
+	font-style: normal;
+	font-weight: 500;
+	src: local("JetBrains Mono Medium Medium Nerd Font Complete Windows Compatible"), local("JetBrainsMonoMediumNerdF-Medium"), url(jetbrains-mono-medium-medium-nerd-font-complete-windows-compatible.woff2) format("woff2"), url(jetbrains-mono-medium-medium-nerd-font-complete-windows-compatible.woff) format("woff");
+	font-display: auto;
+}
+/* jetbrains-mono-medium-medium-nerd-font-complete-mono-windows-compatible */
+@font-face {
+	font-family: JetBrainsMonoMedium NF;
+	font-style: normal;
+	font-weight: 500;
+	src: local("JetBrains Mono Medium Medium Nerd Font Complete Mono Windows Compatible"), local("JetBrainsMonoMediumNerdF-Medium"), url(jetbrains-mono-medium-medium-nerd-font-complete-mono-windows-compatible.woff2) format("woff2"), url(jetbrains-mono-medium-medium-nerd-font-complete-mono-windows-compatible.woff) format("woff");
+	font-display: auto;
+}
+/* jetbrains-mono-medium-med-ita-nerd-font-complete-windows-compatible */
+@font-face {
+	font-family: JetBrainsMonoMedium NF;
+	font-style: italic;
+	font-weight: 500;
+	src: local("JetBrains Mono Medium Med Ita Nerd Font Complete Windows Compatible"), local("JetBrainsMonoMediumNerdF-Italic"), url(jetbrains-mono-medium-med-ita-nerd-font-complete-windows-compatible.woff2) format("woff2"), url(jetbrains-mono-medium-med-ita-nerd-font-complete-windows-compatible.woff) format("woff");
+	font-display: auto;
+}
+/* jetbrains-mono-medium-med-ita-nerd-font-complete-mono-windows-compatible */
+@font-face {
+	font-family: JetBrainsMonoMedium NF;
+	font-style: italic;
+	font-weight: 500;
+	src: local("JetBrains Mono Medium Med Ita Nerd Font Complete Mono Windows Compatible"), local("JetBrainsMonoMediumNerdF-Italic"), url(jetbrains-mono-medium-med-ita-nerd-font-complete-mono-windows-compatible.woff2) format("woff2"), url(jetbrains-mono-medium-med-ita-nerd-font-complete-mono-windows-compatible.woff) format("woff");
+	font-display: auto;
+}
+

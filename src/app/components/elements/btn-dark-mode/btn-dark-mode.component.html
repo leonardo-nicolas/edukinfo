@@ -1,0 +1,9 @@
+<button #BtnToDarkMode (click)="darkMode.mudarEstado()"
+        [tooltip]="'Você está no modo ' + (darkMode.isDarkMode ? 'escuro':'claro')"
+        [ngClass]="['btn me-2 margin-zero borda-mais-arredondada border-1',
+          (this.darkMode.isDarkMode ? 'text-light bg-dark border-light':'text-dark bg-light border-dark'),
+          className
+        ]" >
+  <span style="font-size:16px;" *ngIf="!darkMode.isDarkMode" class="nf nf-no-margin nf-mdi-lightbulb_on"></span>
+  <span style="font-size:16px;" *ngIf="darkMode.isDarkMode" class="nf nf-no-margin nf-mdi-lightbulb_outline"></span>
+</button>

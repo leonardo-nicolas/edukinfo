@@ -1,0 +1,37 @@
+[
+  {
+    "imagem": "@baseUrl%/assets/images/estudantes.jpg",
+    "altImg": "estudantes",
+    "tituloImg": "Grupo de estudantes que criou a Eduk Info",
+    "titulo": "Em Janeiro de 2022",
+    "texto": "Nascemos através de um grupo de alunos que fez um trabalho sobre desenvolvimento web com todas as tecnologias, ferramentas e linguagens usadas na web. Trabalho esse que na verdade que foi a primeira avaliação para compor uma parte da nota final dos componentes (alunos) desse grupo de estudantes."
+  },
+  {
+    "imagem": "@baseUrl%/assets/images/capa-linguagens-em-alta.jpg",
+    "altImg": "linguagens em alta",
+    "tituloImg": "Tendências da tecnologia para a web",
+    "titulo": "Em Fevereiro de 2022",
+    "texto": "Lançamos os principais cursos de programação mais focado para a WEB e para dispositivos móveis, além de também para os designers."
+  },
+  {
+    "imagem": "@baseUrl%/assets/images/idoso-no-notebook-2.png",
+    "altImg": "Idoso em laptop",
+    "tituloImg": "Um senhor idoso utilizando um laptop",
+    "titulo": "Em Março de 2022",
+    "texto": "Lançamos o curso de informática básica para idosos que nunca tiveram contato com alguma tecnologia. Inclusive, esse(a) idoso(a) até aprende a usar redes sociais."
+  },
+  {
+    "imagem": "@baseUrl%/assets/images/capa-linguagens-em-alta.jpg",
+    "altImg": "Linguagens em alta",
+    "tituloImg": "Tendências da tecnologia para a web",
+    "titulo": "Em Fevereiro de 2022",
+    "texto": "Lançamos os principais cursos de programação mais focado para a WEB e para dispositivos móveis, além de também para os designers."
+  },
+  {
+    "imagem": "",
+    "altImg": "",
+    "tituloImg": "",
+    "titulo": "",
+    "texto": ""
+  }
+]

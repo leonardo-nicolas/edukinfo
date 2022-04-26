@@ -1,0 +1,84 @@
+<div class="container-1">
+  <div class="centro">
+    <div class="container">
+      <div class="row">
+        <div class="col-2 centro">
+          <img [src]="baseUrl + 'assets/images/logo.svg'" width="100%" height="100%" alt="Logo">
+        </div>
+        <div class="col centro" style="padding-top:12.5px;">
+          <h1 class="h1 text-center">Seja muito Bem-vindo à <span class="fonte-projeto">Eduk&nbsp;Info</span>!!!</h1>
+          <h3 class="h3 text-center">Aprendizagem e informação acessível à você!</h3>
+          <h5 class="h5 text-center">Se especialize nas profissões mais requisitadas do mercado!</h5>
+        </div>
+      </div>
+    </div>
+    <carousel *ngIf="!data.fotos.getting && data.fotos.success && !!gotDataSuccessFotos"
+    [isAnimated]="true" [interval]="5000" >
+      <slide *ngFor="let foto of gotDataSuccessFotos; index as posicao;">
+        <!-- Imagem com altura e com largura -->
+        <img *ngIf="!!(foto?.image) && !!(foto?.image?.width) && !!(foto?.image?.height)" [src]="atribuirUrl(foto?.image?.src ?? '')"
+             class="image-slide altura-minima-slider" [height]="foto?.image?.height"
+             [alt]="foto?.image?.alt" [width]="foto?.image?.width">
+        <!-- Imagem somente com largura -->
+        <img *ngIf="!!(foto?.image) && !!(foto?.image?.width)" [src]="atribuirUrl(foto?.image?.src ?? '')"
+             class="image-slide altura-minima-slider"
+             [alt]="foto?.image?.alt" [width]="foto?.image?.width">
+        <!-- Imagem somente com altura -->
+        <img *ngIf="!!(foto?.image) && !!(foto?.image?.height)" [src]="atribuirUrl(foto?.image?.src ?? '')"
+             class="image-slide altura-minima-slider" [height]="foto?.image?.height"
+             [alt]="foto?.image?.alt">
+        <!-- Imagem sem altura e sem largura -->
+        <img *ngIf="!!(foto?.image)" [src]="atribuirUrl(foto?.image?.src ?? '')"
+             class="image-slide altura-minima-slider" [alt]="foto?.image?.alt">
+        <div *ngIf="(!!foto?.image) && (!!foto?.info)" class="carousel-caption d-none d-md-block bg-dark opacity-75">
+          <h3>{{foto?.info?.caption}}</h3>
+          <!-- Conteúdo de texto, sem HTML. -->
+          <p *ngIf="!!foto?.info?.textContent">{{foto?.info?.textContent}}</p>
+          <!-- Conteúdo de texto, com HTML. -->
+          <p *ngIf="!!foto?.info?.htmlContent" [innerHTML]="foto?.info?.htmlContent"></p>
+        </div>
+        <div *ngIf="!(!!foto?.image) && (!!foto?.info)" class="text-center py-5 bg-dark text-white">
+          <h2 class="h2">{{foto?.info?.caption}}</h2>
+          <div class="lead">
+            <h3 class="h3">{{foto?.info?.subcaption}}</h3>
+            <p *ngIf="!!foto?.info?.textContent">{{foto?.info?.textContent}}</p>
+            <p *ngIf="!!foto?.info?.htmlContent" [innerHTML]="foto?.info?.htmlContent"></p>
+          </div>
+        </div>
+      </slide>
+    </carousel>
+    <div *ngIf="!data.cursos.getting && data.cursos.success && !!gotCursos" class="container my-2">
+      <h3 class="h3 text-center">Conheça alguns dos nossos cursos...</h3>
+      <div class=" row flex-row text-center justify-content-lg-center">
+        <div *ngFor="let curso of gotCursos" style="width: 15rem;" [ngClass]="{
+          'card':true,
+          'fundo-dark-cartao':darkMode.isDarkMode
+        }">
+          <carousel [interval]="5000" [isAnimated]="true">
+            <slide *ngFor="let slide of curso.imagensSlideCurso">
+              <img [src]="atribuirUrl(slide.url)" [alt]="slide.altTxt" style="display: block; width: 100%;">
+            </slide>
+          </carousel>
+          <div class="card-body">
+            <h5 class="card-title">{{curso.nome}}</h5>
+            <p class="card-text">{{curso.descricao}}</p>
+            <a [routerLink]="['curso',curso.id]" class="btn btn-primary">Visualizar Detalhes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="data.fotos.getting || data.cursos.getting" class="text-center container container-pq">
+      <div class="centro">
+        <div style="width:300px !important; height:300px !important;"
+             [ngClass]="['spinner-border', darkMode.isDarkMode ? 'text-light' : 'text-dark']"
+             role="status">
+          <span class="visually-hidden">Carregando, por favor aguarde...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- TODO: Criar um overlay de empregabilidade. -->
+<div class="container-2">
+
+</div>

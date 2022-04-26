@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'prova-ecommerce-faculdade-av1'`, () => {
+  it(`should have as title 'projeto-loja-virtual'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('prova-ecommerce-faculdade-av1');
+    expect(app.title).toEqual('projeto-loja-virtual');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('prova-ecommerce-faculdade-av1 app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('projeto-loja-virtual app is running!');
   });
 });

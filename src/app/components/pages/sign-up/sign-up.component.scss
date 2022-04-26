@@ -1,0 +1,77 @@
+.espacamento-padding{
+  padding: 5px;
+}
+.valida-senha:valid{
+  border: #5f942d solid 2px;
+}
+.valida-senha:invalid{
+  border: #ef0707 solid 2px;
+}
+.valida-senha:focus{
+  border: none;
+}
+.bg-with-dark-mode-on{
+  background: #000000;
+  color: #FFFFFF;
+}
+.btn-largo{
+  height: 100%;
+  width: 100%;
+  font-size: 1.5em !important;
+}
+.nf-ul{
+  list-style-type: none;
+}
+.nf-ul li::before{
+  display: inline-block;
+  font-family: 'JetBrainsMono Nerd Font', 'JetBrainsMono NF', 'JetBrainsMono Nerd Font Mono', 'JetBrainsMonoMedium Nerd Font', 'JetBrainsMonoMedium NF', 'JetBrainsMonoMedium Nerd Font Mono', 'JetBrainsMonoExtraBold Nerd Font', 'JetBrainsMonoExtraBold NF', 'JetBrainsMonoExtraBold Nerd Font Mono';
+  speak: none;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  margin: 0 0.125em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fundo-modal-dark-mode{
+  background-color: #323232;
+  color: #fff;
+}
+.margem-cartao{
+  margin: 1px 2px;
+}
+
+
+
+form div p {
+  padding: 0;
+  margin: 0;
+}
+table {
+  border-collapse: collapse;
+  border: none;
+  width: 100%;
+
+  tr, th, td {
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 2px solid black;
+  }
+  td,th {
+    text-align: center;
+    border-right: 2px solid black;
+  }
+  td:last-child,th:last-child {
+    border-right: 0 !important;
+    border-left: 2px solid black;
+  }
+  tr:last-child{
+    border-bottom: 0;
+    td{
+      border-bottom: 0;
+    }
+  }
+}

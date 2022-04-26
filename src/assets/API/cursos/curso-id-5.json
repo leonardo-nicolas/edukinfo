@@ -1,0 +1,46 @@
+{
+  "id": 5,
+  "nome": "Curso de Web Design completo",
+  "descricao": "Crie Sites completos e páginas da web, desde a prototipagem até os designs e codificações.",
+  "preco": 629.89,
+  "descontinuado": false,
+  "gradeMaterias": [
+    "Edição e Tratamento de Imagens com Photoshop",
+    "Edição e Tratamento de Imagens com Corel PhotoPaint",
+    "Edição e Tratamento de Imagens com GIMP",
+    "Desenho Vetorial com Illustrator",
+    "Desenho Vetorial com CorelDraw",
+    "Desenho Vetorial com Inkscape",
+    "Modelando Protótipo com Adobe XD",
+    "Modelando Protótipo com Figma",
+    "Lógica de Programação",
+    "HTML e CSS completo",
+    "Introdução e Básico de JavaScript",
+    "Introdução e Básico de PHP",
+    "WordPress",
+    "Dreamweaver",
+    "Introdução e uso do GIT"
+  ],
+  "imagensSlideCurso": [
+    {
+      "url": "@baseUrl%/assets/images/capa-como-ser-um-web-designer.jpg",
+      "altTxt": "Agencia de Web Designer",
+      "descricao": "Uma mesa de escritório com um computador mostrando os detalhes sobre ser Web Designer"
+    },
+    {
+      "url": "@baseUrl%/assets/images/capa-mulher-web-designer.png",
+      "altTxt": "Mulher Web Designer",
+      "descricao": "Uma mulher representando ser uma profissional de web designer."
+    },
+    {
+      "url": "@baseUrl%/assets/images/capa-linguagens-em-alta.jpg",
+      "altTxt": "Ilustração de linguagens em alta",
+      "descricao": "Ilustração de linguagens e softwares de designers em alta"
+    },
+    {
+      "url": "@baseUrl%/assets/images/mulher-designer.jpg",
+      "altTxt": "Profissional designer mulher em agência",
+      "descricao": "Profissional de Designer mulher modelando protótipo de um projeto."
+    }
+  ]
+}

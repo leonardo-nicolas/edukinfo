@@ -1,0 +1,202 @@
+[
+  {
+    "cep": "24230093",
+    "endereco": "Rua Gavião Peixoto",
+    "numero": 343,
+    "bairro": "Icaraí",
+    "municipio": "Niterói",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade Niterói"
+  },
+  {
+    "cep": "26554160",
+    "endereco": "Avenida Manoel Duarte",
+    "numero": 853,
+    "bairro": "Santa Terezinha",
+    "municipio": "Mesquita",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade Mesquita"
+  },
+  {
+    "cep": "25260069",
+    "endereco": "Rua Um",
+    "numero": 940,
+    "bairro": "Vila Santa Cruz",
+    "municipio": "Duque de Caxias",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade Caxias 2 - Interior"
+  },
+  {
+    "cep": "28621150",
+    "endereco": "Rua Clóvis Bevilacqua",
+    "numero": 999,
+    "bairro": "Cônego",
+    "municipio": "Nova Friburgo",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade Nova Friburgo"
+  },
+  {
+    "cep": "26530210",
+    "endereco": "Estrada Rúbens dos Reis Sales",
+    "numero": 971,
+    "bairro": "Nova Cidade",
+    "municipio": "Nilópolis",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade Nilópolis"
+  },
+  {
+    "cep": "24812272",
+    "endereco": "Rua Adelina Leal",
+    "numero": 619,
+    "bairro": "Outeiro das Pedras",
+    "municipio": "Itaboraí",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade Itaboraí"
+  },
+  {
+    "cep": "26083580",
+    "endereco": "Rua Helena",
+    "numero": 403,
+    "bairro": "Rodilândia",
+    "municipio": "Nova Iguaçu",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade Nova Iguaçu"
+  },
+  {
+    "cep": "23015180",
+    "endereco": "Rua União dos Palmares",
+    "numero": 422,
+    "bairro": "Campo Grande",
+    "municipio": "Rio de Janeiro",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade Z.O 2 - Campo Grande"
+  },
+  {
+    "cep": "21862775",
+    "endereco": "Rua Zagreb",
+    "numero": 234,
+    "bairro": "Bangu",
+    "municipio": "Rio de Janeiro",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade Z.O 1 - Bangu"
+  },
+  {
+    "cep": "22750390",
+    "endereco": "Avenida São Guilherme de Norwich",
+    "numero": 123,
+    "bairro": "Anil",
+    "municipio": "Rio de Janeiro",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade Taquara"
+  },
+  {
+    "cep": "20250260",
+    "endereco": "Rua São Frederico",
+    "numero": 161,
+    "bairro": "Estácio",
+    "municipio": "Rio de Janeiro",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade Estácio"
+  },
+  {
+    "cep": "25020210",
+    "endereco": "Rua Manuel Vieira",
+    "numero": 74,
+    "bairro": "Centro",
+    "municipio": "Duque de Caxias",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade Caxias 1 - Centro"
+  },
+  {
+    "cep": "20031000",
+    "endereco": "Avenida Almirante Barroso",
+    "numero": 52,
+    "bairro": "Centro",
+    "municipio": "Rio de Janeiro",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade Centro RJ"
+  },
+  {
+    "cep": "27522090",
+    "endereco": "Rua José de Alencar",
+    "numero": 739,
+    "bairro": "Vila Hulda Rocha",
+    "municipio": "Resende",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade Resende"
+  },
+  {
+    "cep": "27263530",
+    "endereco": "Rua Duzentos e Trinta e Dois",
+    "numero": 502,
+    "bairro": "Conforto",
+    "municipio": "Volta Redonda",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade Volta Redonda"
+  },
+  {
+    "cep": "25906014",
+    "endereco": "Rua F",
+    "numero": 839,
+    "bairro": "Parque Santa Rita",
+    "municipio": "Magé",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade Magé"
+  },
+  {
+    "cep": "27937600",
+    "endereco": "Rua Dolores Carvalho Vasconcelos",
+    "numero": 332,
+    "bairro": "Glória",
+    "municipio": "Macaé",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade Macaé"
+  },
+  {
+    "cep": "26130091",
+    "endereco": "Avenida Prefeito Jorge Júlio Costa dos Santos",
+    "numero": 200,
+    "bairro": "Centro",
+    "municipio": "Belford Roxo",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade Belford Roxo"
+  },
+  {
+    "cep": "21931935",
+    "endereco": "Estrada do Galeão",
+    "numero": 2436,
+    "bairro": "Portuguesa",
+    "municipio": "Rio de Janeiro",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade Ilha do Governador"
+  },
+  {
+    "cep": "24711080",
+    "endereco": "Rua Manoel João Gonlçalves",
+    "numero": 316,
+    "bairro": "Alcântara",
+    "municipio": "São Gonçalo",
+    "estado": "RJ",
+    "complement": "",
+    "descricao": "Unidade São Gonçalo"
+  }
+]

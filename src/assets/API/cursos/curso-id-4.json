@@ -1,0 +1,44 @@
+{
+  "id": 4,
+  "nome": "Curso de Flutter",
+  "descricao": "Crie aplicações para Celular, PC (ou Mac) e WEB, apenas utilizando esta ferramenta desenvolvida pelo Google. Codifique uma vez e rode em qualquer sistema, navegador ou celular. Aplicativos como o NuBank® utilizam esta tecnologia.",
+  "preco": 381.97,
+  "descontinuado": false,
+  "gradeMaterias": [
+    "Lógica de Programação",
+    "Introdução de Programação Orientada a Objetos",
+    "Introdução a linguagem Java",
+    "Introdução a linguagem Kotlin",
+    "Introdução a linguagem Objective-C",
+    "Introdução a linguagem Swift",
+    "Introdução a linguagem C++",
+    "Introdução a linguagem de programação DART",
+    "Preparação completa do ambiente de desenvolvimento",
+    "Introdução a Widgets",
+    "Criando telas, componente e modelando-as",
+    "Menus, Botões, e Listagens",
+    "Formulários",
+    "Chamadas HTTP e comunicação com BackEnd de uma aplicação WEB",
+    "Autenticação",
+    "Desenvolvendo códigos nativos do(s) sistema(s) de destino e utilizando-os no DART",
+    "Realizando testes automatizados",
+    "Introdução e uso do GIT"
+  ],
+  "imagensSlideCurso": [
+    {
+      "url": "@baseUrl%/assets/images/flutter-logo-4k-qn.jpg",
+      "altTxt": "Flutter",
+      "descricao": "Flutter: um framework desenvolvido pelo Google, que utiliza a linguagem de programação DART (também criada pelo Google), para desenvolvimento de aplicativos que rode em qualquer dispositivo (PC e celudar) e em qualuer sistema (Seja em Android, em Windows, em Linux, como uma aplicação WEB também ou até mesmo em qualquer sistema da Apple), de forma muito elegante (quando se trata de design), segurança também e muito mais. O aplicativo do NuBank é um exemplo perfeito de uma aplicativo feito com Flutter."
+    },
+    {
+      "url": "@baseUrl%/assets/images/dart-wallpaper.jpg",
+      "altTxt": "Dart",
+      "descricao": "Dart: Uma linguagem de programação desenvolvido pelo Google, para competir com o JavaScript na época, mas a idéia não vingou com os demais navegadores e, hoje é a linguagem importante para desenvolvimento de aplicativos multiplataforma utilizando o framework Flutter. Dart é uma linguagem extremamente similar ao Java. Aliás, quem vem do Java para o Flutter, se sentirá em casa ao codificar e se sentirá mais confortável ainda (vai sentir uma diferença como nunca tinha sentido antes), na hora de executar a aplicação feita com DART, de tão rápida que é a linguagem."
+    },
+    {
+      "url": "@baseUrl%/assets/images/multiplataforma-flutter-dart.png",
+      "altTxt": "Multiplataforma Dart+Flutter",
+      "descricao": "Aplicações multiplataforma de verdade utilizando a linguagem DART e o framework FLUTTER, ambos desenvolvidos pelo Google. "
+    }
+  ]
+}

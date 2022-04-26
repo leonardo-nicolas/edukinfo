@@ -1,0 +1,20 @@
+.fonte-projeto {
+  font-family: 'Permanent Marker', serif !important;
+}
+.jetbrains-font {
+  font-family: 'JetBrainsMono Nerd Font', sans-serif !important;
+}
+.font-bold {
+  font-weight: bold !important;
+}
+.font-bolder {
+  font-weight: bolder !important;
+}
+.capitular::first-letter {
+  font-size: 4rem;
+  font-weight: bolder;
+  float: left;
+}
+.text-justified, p.text-justified, .text-justified p {
+  text-align: justify !important;
+}

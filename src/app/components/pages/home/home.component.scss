@@ -1,0 +1,33 @@
+.image-slide {
+  display: block;
+  width: 100%;
+}
+.altura-minima-slider {
+  min-height: 200px;
+}
+
+.container-1 {
+  width: 100%;
+  height: calc(100vh - 91px);
+  max-height: calc(100vh - 91px);
+  display: table;
+  flex-direction: column;
+  flex-flow: column;
+}
+.container-2 {
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  display: table;
+  flex-direction: column;
+  flex-flow: column;
+  background-image: url("../../../../assets/images/fechamento-negocio-transp.png");
+  background-size: 110%;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: center;
+}
+.fundo-dark-cartao {
+  background-color: #323232;
+  color: #fff;
+}

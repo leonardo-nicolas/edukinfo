@@ -1,0 +1,45 @@
+{
+  "id": 7,
+  "nome": "Curso de Publicidade e Propaganda",
+  "descricao": "Aprenda a como usar corretamente as redes sociais e fazer divulgações",
+  "preco": 825.43,
+  "descontinuado": false,
+  "gradeMaterias": [
+    "Edição e Tratamento de Imagens com Photoshop",
+    "Edição e Tratamento de Imagens com Corel PhotoPaint",
+    "Edição e Tratamento de Imagens com GIMP",
+    "Desenho Vetorial com Illustrator",
+    "Desenho Vetorial com CorelDraw",
+    "Desenho Vetorial com Inkscape",
+    "Edição de videos com Premiere Pro",
+    "Edição de videos com DaVinci Resolve",
+    "Pós Produção com After Effects",
+    "Pós Produção com Natron",
+    "Modelagem 3D com Blender",
+    "Anúncios nas Redes Sociais ",
+    "Anúncios na maioria dos sites",
+    "Anúncios em algumas Plataformas Digitais"
+  ],
+  "imagensSlideCurso": [
+    {
+      "url": "@baseUrl%/assets/images/publicidade.png",
+      "altTxt": "Publicitario com megafone",
+      "descricao": "Um rapaz publicitário segurando um megafone e com um tablet na mão."
+    },
+    {
+      "url": "@baseUrl%/assets/images/publicidade-e1513761867172-720.jpg",
+      "altTxt": "Idéias de Publicidade",
+      "descricao": "Um megafone apontando para vários tipos de meio de comunicações diferentes."
+    },
+    {
+      "url": "@baseUrl%/assets/images/publicidade-em-londres.png",
+      "altTxt": "Publicidade em telão de Londres",
+      "descricao": "Um conjunto de telão com propaganda de várias empresas e marcas de vários ramos e empresas diferentes, mas empresas essas, multinacionais. Telão esse em um dos prédios em Londres."
+    },
+    {
+      "url": "@baseUrl%/assets/images/microfone-e-megafone.png",
+      "altTxt": "Microfone + Megafone",
+      "descricao": "Uma pessoa de Terno e Gravata com cabeça de Microfone à direita conversando com uma outra pessoa de terno e gravata com cabeça de megafone à esquerda. Com um fundo alaranjado, chão de taco, além das grandes quantidades de caixas, parecendo ser um galpão."
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+@for $paragrafo from 2 to 50 {
+  #termos-de-uso p:nth-child(#{$paragrafo}):before {
+    content: "__";
+    color: transparent;
+  }
+}
