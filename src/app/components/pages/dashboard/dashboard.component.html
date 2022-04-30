@@ -1,1 +1,13 @@
-<p>dashboard works!</p>
+<div *ngIf="!carregamento.carregando && carregamento.sucesso" class="container">
+  <p>dashboard works!</p>
+  <h1 class="h1">Olá {{nome}}, {{saudacao}}!</h1>
+</div>
+<div *ngIf="carregamento.carregando" class="text-center container container-pq">
+  <div class="centro">
+    <div style="width:300px !important; height:300px !important;"
+         [ngClass]="['spinner-border', darkMode.isDarkMode ? 'text-light' : 'text-dark']"
+         role="status">
+      <span class="visually-hidden">Carregando, por favor aguarde...</span>
+    </div>
+  </div>
+</div>

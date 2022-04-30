@@ -14,35 +14,37 @@
     </div>
     <carousel *ngIf="!data.fotos.getting && data.fotos.success && !!gotDataSuccessFotos"
     [isAnimated]="true" [interval]="5000" >
-      <slide *ngFor="let foto of gotDataSuccessFotos; index as posicao;">
+      <slide *ngFor="let slide of gotDataSuccessFotos; index as posicao;">
         <!-- Imagem com altura e com largura -->
-        <img *ngIf="!!(foto?.image) && !!(foto?.image?.width) && !!(foto?.image?.height)" [src]="atribuirUrl(foto?.image?.src ?? '')"
-             class="image-slide altura-minima-slider" [height]="foto?.image?.height"
-             [alt]="foto?.image?.alt" [width]="foto?.image?.width">
+        <img *ngIf="!!(slide?.image) && !!(slide?.image?.width) && !!(slide?.image?.height)" [src]="atribuirUrl(slide?.image?.src ?? '')"
+             class="image-slide altura-minima-slider" [height]="slide?.image?.height"
+             [alt]="slide?.image?.alt" [width]="slide?.image?.width">
         <!-- Imagem somente com largura -->
-        <img *ngIf="!!(foto?.image) && !!(foto?.image?.width)" [src]="atribuirUrl(foto?.image?.src ?? '')"
+        <img *ngIf="!!(slide?.image) && !!(slide?.image?.width)" [src]="atribuirUrl(slide?.image?.src ?? '')"
              class="image-slide altura-minima-slider"
-             [alt]="foto?.image?.alt" [width]="foto?.image?.width">
+             [alt]="slide?.image?.alt" [width]="slide?.image?.width">
         <!-- Imagem somente com altura -->
-        <img *ngIf="!!(foto?.image) && !!(foto?.image?.height)" [src]="atribuirUrl(foto?.image?.src ?? '')"
-             class="image-slide altura-minima-slider" [height]="foto?.image?.height"
-             [alt]="foto?.image?.alt">
+        <img *ngIf="!!(slide?.image) && !!(slide?.image?.height)" [src]="atribuirUrl(slide?.image?.src ?? '')"
+             class="image-slide altura-minima-slider" [height]="slide?.image?.height"
+             [alt]="slide?.image?.alt">
         <!-- Imagem sem altura e sem largura -->
-        <img *ngIf="!!(foto?.image)" [src]="atribuirUrl(foto?.image?.src ?? '')"
-             class="image-slide altura-minima-slider" [alt]="foto?.image?.alt">
-        <div *ngIf="(!!foto?.image) && (!!foto?.info)" class="carousel-caption d-none d-md-block bg-dark opacity-75">
-          <h3>{{foto?.info?.caption}}</h3>
+        <img *ngIf="!!(slide?.image)" [src]="atribuirUrl(slide?.image?.src ?? '')"
+             class="image-slide altura-minima-slider" [alt]="slide?.image?.alt">
+        <!-- Descrição da imagem -->
+        <div *ngIf="(!!slide?.image) && (!!slide?.info)" class="carousel-caption d-none d-md-block bg-dark opacity-75">
+          <h3>{{slide?.info?.caption}}</h3>
           <!-- Conteúdo de texto, sem HTML. -->
-          <p *ngIf="!!foto?.info?.textContent">{{foto?.info?.textContent}}</p>
+          <p *ngIf="!!slide?.info?.textContent">{{slide?.info?.textContent}}</p>
           <!-- Conteúdo de texto, com HTML. -->
-          <p *ngIf="!!foto?.info?.htmlContent" [innerHTML]="foto?.info?.htmlContent"></p>
+          <p *ngIf="!!slide?.info?.htmlContent" [innerHTML]="slide?.info?.htmlContent"></p>
         </div>
-        <div *ngIf="!(!!foto?.image) && (!!foto?.info)" class="text-center py-5 bg-dark text-white">
-          <h2 class="h2">{{foto?.info?.caption}}</h2>
+        <!-- Conteúdo sem foto, apenas texto... -->
+        <div *ngIf="!(!!slide?.image) && (!!slide?.info)" class="text-center py-5 bg-dark text-white">
+          <h2 class="h2">{{slide?.info?.caption}}</h2>
           <div class="lead">
-            <h3 class="h3">{{foto?.info?.subcaption}}</h3>
-            <p *ngIf="!!foto?.info?.textContent">{{foto?.info?.textContent}}</p>
-            <p *ngIf="!!foto?.info?.htmlContent" [innerHTML]="foto?.info?.htmlContent"></p>
+            <h3 class="h3">{{slide?.info?.subcaption}}</h3>
+            <p *ngIf="!!slide?.info?.textContent">{{slide?.info?.textContent}}</p>
+            <p *ngIf="!!slide?.info?.htmlContent" [innerHTML]="slide?.info?.htmlContent"></p>
           </div>
         </div>
       </slide>

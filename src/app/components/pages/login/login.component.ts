@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DarkModeService } from 'src/app/services/dark-mode.service';
 import {ActivatedRoute, Router} from "@angular/router";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-login',
@@ -9,10 +10,12 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   //TODO:Implementar chamada de API para Login e para Recuperar Senha, além de Reset de form...
-  secRecuperarSenha:boolean = false;
+  secRecuperarSenha = false;
+  loginComErro = false;
   constructor(
     private activatedRoute:ActivatedRoute,
     private router:Router,
+    private http:HttpClient,
     public darkMode: DarkModeService
   ) { }
   ngOnInit(): void {

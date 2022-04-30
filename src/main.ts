@@ -10,31 +10,10 @@ export function getBaseUrl() {
     .href;
 }
 
-let backendUrl: string | undefined | null;
-
-export function getBackendUrl(){
-  if(!environment.production) {
-    if(typeof(backendUrl) === 'undefined' || backendUrl === null)
-      backendUrl = window.prompt(
-        "Esta caixa é hipotética, pois ainda estamos em ambiente de desenvolvimento."+
-        "\nInforme o URL do Back-End desta aplicação!"+
-        "\n\nAtenção: Coloque a '/' (barra) obrigatóriamente no final! "+
-        "Senão as chamadasde API do Front-End retornarão com erro 404!",
-        "http://localhost/"
-      );
-  }
-  return backendUrl ?? "";
-}
-
 export const injecoesDeDependencias:StaticProvider[] = [
   {
     provide:'BASE_URL',
     useFactory: getBaseUrl,
-    deps: new Array<any>()
-  },
-  {
-    provide: 'BACKEND_URL',
-    useFactory: getBackendUrl,
     deps: new Array<any>()
   }
 ];

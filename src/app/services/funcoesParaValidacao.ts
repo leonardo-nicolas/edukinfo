@@ -1,7 +1,7 @@
 import { formatarDocumento } from './funcoesDiversas';
 
 export function validarCpf(cpf:string|number):boolean{
-  cpf = typeof(cpf) === 'string' ? cpf.replace(/\D/g,'') : formatarDocumento(cpf,'pf');
+  cpf = typeof(cpf) === 'string' ? cpf.replace(/[^0-9]+/g,'') : formatarDocumento(cpf,'pf');
   if(cpf === '')
     return false;
   let invalidos = [
@@ -37,9 +37,9 @@ export function validarCpf(cpf:string|number):boolean{
 }
 
 export function validarCnpj(cnpj:string|number):boolean {
-  cnpj = typeof(cnpj) === 'string' ? cnpj.replace(/\D/g,'') : formatarDocumento(cnpj,'pj');
+  cnpj = typeof(cnpj) === 'string' ? cnpj.replace(/[^0-9]+/g,'') : formatarDocumento(cnpj,'pj');
 
-  if(cnpj == '') return false;
+  if(cnpj === '') return false;
 
   if (cnpj.length != 14)
     return false;
@@ -61,8 +61,8 @@ export function validarCnpj(cnpj:string|number):boolean {
 
   // Valida DVs
   let tamanho = cnpj.length - 2
-  let numeros = cnpj.substring(0,tamanho);
-  let digitos = cnpj.substring(tamanho);
+  const numeros = cnpj.substring(0,tamanho);
+  const digitos = cnpj.substring(tamanho);
   let soma = 0;
   let pos = tamanho - 7;
   for (let indice = tamanho; indice >= 1; indice--) {
@@ -74,8 +74,7 @@ export function validarCnpj(cnpj:string|number):boolean {
   if (resultado !== parseInt(digitos.charAt(0)))
     return false;
 
-  tamanho = tamanho + 1;
-  numeros = cnpj.substring(0,tamanho);
+  tamanho += 1;
   soma = 0;
   pos = tamanho - 7;
   for (let indice = tamanho; indice >= 1; indice--) {
@@ -88,5 +87,5 @@ export function validarCnpj(cnpj:string|number):boolean {
 }
 
 export function validarEmail(email:string):boolean {
-  return /^[a-z\d\-._+&#]+@[a-z]+(.[a-z]{2,8})+$/di.test(email);
+  return /^[a-z0-9\-._+&#]+@[a-z0-9]+(.[a-z]{2,8})+$/i.test(email);
 }

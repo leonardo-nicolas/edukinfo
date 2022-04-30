@@ -28,6 +28,9 @@
       </div>
       <div style="width:100%; height:58px;"></div>
     </div>
+    <alert *ngIf="!secRecuperarSenha && loginComErro" type="danger" [dismissOnTimeout]="10000" [dismissible]="true">
+
+    </alert>
     <div>
       <button [ngClass]="[
           'animated-button hover-blue borda-mais-arredondada btn me-2',
@@ -54,7 +57,7 @@
       </button>
     </div>
     <div>
-      <button  [routerLink]="['/login', secRecuperarSenha ? '':'recuperarSenha']"
+      <button [routerLink]="['/login', secRecuperarSenha ? '':'recuperarSenha']"
       (click)="secRecuperarSenha=!secRecuperarSenha" [ngClass]="[
           'btn-large-diskak me-2 borda-mais-arredondada animated-button hover-yellow',
           darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'

@@ -9,7 +9,7 @@ export function embaralharMatriz<T>(array: T[]) {
 }
 
 export function pontuarDocumento(doc:number|string, tipo:TypeOfPerson):string {
-  doc = typeof(doc) === 'string' ? doc.replace(/\D/g,'') : formatarDocumento(doc,tipo);
+  doc = typeof(doc) === 'string' ? doc.replace(/^[0-9]+$/g,'') : formatarDocumento(doc,tipo);
   let documentoComMascara="";
   let pf = ['pf','PF','pF','Pf'], pj = ['pj','PJ','Pj','pJ'];
   if(pf.some(val=>val===tipo)){
