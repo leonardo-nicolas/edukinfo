@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/prova-ecommerce-faculdade-av1",
+            "outputPath": "dist/prova-ecommerce-faculdade-av1/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -103,6 +103,28 @@
             ],
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/prova-ecommerce-faculdade-av1/server",
+            "main": "src/server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "bundleDependencies": false,
+            "optimization": false
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:static-generator",
+          "configurations": {
+            "production": {
+              "browserTarget": "prova-ecommerce-faculdade-av1:build:production"
+            },
+            "development": {
+              "browserTarget": "prova-ecommerce-faculdade-av1:build:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

@@ -32,6 +32,7 @@ import { SearchComponent } from './components/pages/search/search.component';
 import { BtnDarkModeComponent } from './components/elements/btn-dark-mode/btn-dark-mode.component';
 import { TermosUsoComponent } from './components/pages/sign-up/termos-uso/termos-uso.component';
 import { AboutCollectiveComponent } from './components/pages/about/about-collective/about-collective.component';
+import { RendererModule, TransferHttpCacheModule } from '@nguniversal/common/clover';
 // #endregion componentes
 
 @NgModule({
@@ -43,14 +44,14 @@ import { AboutCollectiveComponent } from './components/pages/about/about-collect
     CoursesComponent, CourseComponent, BtnDarkModeComponent, TermosUsoComponent, AboutCollectiveComponent,
   ],
   imports: [
-    BrowserModule, BrowserAnimationsModule,
+    BrowserModule.withServerTransition({ appId: 'appId' }), BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule, ReactiveFormsModule,
     HttpClientModule, HttpClientJsonpModule,
     AccordionModule.forRoot(), CollapseModule.forRoot(), TabsModule.forRoot(), BsDropdownModule.forRoot(),
     AlertModule.forRoot(), TypeaheadModule.forRoot(),
     ButtonsModule.forRoot(), BsDatepickerModule.forRoot(), ProgressbarModule.forRoot(),
-    CarouselModule.forRoot(), ModalModule.forRoot(), TooltipModule.forRoot(),
+    CarouselModule.forRoot(), ModalModule.forRoot(), TooltipModule.forRoot(), RendererModule.forRoot(), TransferHttpCacheModule,
   ],
   providers: [
   ],
