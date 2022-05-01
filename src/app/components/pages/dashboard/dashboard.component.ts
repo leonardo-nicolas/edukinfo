@@ -15,10 +15,10 @@ export class DashboardComponent implements OnInit {
     carregando:true,
     sucesso:true
   }
+  private readonly backendUrl:string;
   constructor(
     public darkMode:DarkModeService,
-    private http:HttpClient,
-    private readonly backendUrl:string
+    private http:HttpClient
   ) {
     this.backendUrl = environment.backendUrl;
   }
