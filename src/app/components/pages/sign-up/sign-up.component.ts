@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { DarkModeService } from "../../../services/dark-mode.service";
 import { BsLocaleService } from "ngx-bootstrap/datepicker";
 import { ModalDirective } from "ngx-bootstrap/modal";
@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 import { pontuarDocumento } from 'src/app/services/funcoesDiversas';
 import { DetailsDDDModel, estados } from "../../../Models/DetailsDDD.Model";
 import {environment} from "../../../../environments/environment";
+import { StatusCodes } from 'src/app/Models/StatusCodes';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -24,11 +25,12 @@ export class SignUpComponent implements OnInit {
     "dadosAcesso":1,
     "dadosPessoais":2,
   }
-  leituraConfirmada: boolean = false;
+  leituraConfirmada = false;
   existenciaDeInfoValida = {
     "email":false,
     "documento":false,
-    "userExistente":false,
+    "userExistente": false,
+    "userExistenteDocumento": false,
     "dataNasc":false
   }
   validacaoSenha = {
@@ -40,8 +42,8 @@ export class SignUpComponent implements OnInit {
     "entre7e15":false
   }
   regexTestSenha = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\[\]\-\/\\$*=_{}'%`´^~:;.,?!¡¿<>ªº°®ŧ←↓→øþĸŋđðßæ«»©“”nµ─·|+&@#ƒ„…†‡ˆ‰Š‹ŒŽ•–—š›œžŸ¢£¤¥¦§¨¬¹²³€]).{7,15}/;
-  private baseUrl:string;
-  // private backendUrl:string;
+  private baseUrl;
+  private backendUrl;
 
   constructor(
     public darkMode:DarkModeService,
@@ -50,15 +52,22 @@ export class SignUpComponent implements OnInit {
     private http:HttpClient
   ) {
     this.baseUrl = environment.baseUrl;
+    this.backendUrl = environment.backendUrl;
   }
-  currentAccordion:number = 0;
-  ngOnInit(): void {
+  /**
+   * Indica o menu de assistente...
+   * O valor 999 sigifica carregamento com AJAX....
+   */
+  currentAccordion = 0;
+  ngOnInit() {
     this.resetForm();
     this.carregarTodosOsDDDs();
     this.carregarEstados();
     this.localeService.use('pt-br');
   }
-
+  /**
+   * clique no botão 'Limpar form'
+   */
   resetForm(){
     this.modelData.usuario.nome = '';
     this.modelData.usuario.sobrenome = '';
@@ -77,7 +86,7 @@ export class SignUpComponent implements OnInit {
     this.validarCampos();
   }
 
-  confirmacaoSenha:string="";
+  confirmacaoSenha="";
 
   validatePwd(){
     let rxPwdParts = {
@@ -97,21 +106,42 @@ export class SignUpComponent implements OnInit {
     this.validarCampos()
   }
 
-  //TODO:Implementar a correta validação de usuário existente.
   readonly checkUserExists = () =>
-    this.http.get<{userName:string,exists:boolean}>("https://www.validacao.com/api/v1/user",{
+    this.http.get<{userName:string,exists:boolean}>(this.backendUrl + "usuarios/checagem-usuario",{
       params: {
-        "usuario": this.modelData.usuario.email
+        "email": this.modelData.usuario.email
       }
     }).subscribe({
       next: resultado => {
-        this.existenciaDeInfoValida.userExistente = resultado.exists
+        this.existenciaDeInfoValida.userExistente = resultado.exists;
+        this.validarCampos();
       },
       error: e => console.log(e),
       complete: () => this.validarCampos()
     });
-
-  botaoCadastroDesativado:boolean = true;
+  readonly validarExistenciaDocumento = () =>
+    this.http.get<{userName:string,exists:boolean}>(this.backendUrl + "usuarios/checagem-usuario",{
+      params: {
+        "documento": this.modelData.usuario.documento.tipo + this.modelData.usuario.documento.numero.replace(/\D/i, '')
+      }
+    }).subscribe({
+      next: resultado => {
+        this.existenciaDeInfoValida.userExistenteDocumento = resultado.exists;
+        this.emailUsuarioAjaxDocumento = resultado.userName;
+        this.validarCampos();
+      },
+      error: e => console.log(e),
+      complete: () => this.validarCampos()
+    });
+  /**
+   * Quando o usuário digita o CPF, é feita uma validação imediata,
+   * se não existe algum usuário com o mesmo CPF cadastrado no banco de dados...
+   */
+  emailUsuarioAjaxDocumento = "";
+  /**
+   * Enquanto os dados estiverem INVÁLIDOS, o botão de cadastro de usuários fica desativado.
+   */
+  botaoCadastroDesativado = true;
   validarCampos(){
     this.modelarDocumento();
     let isPF = (['pf','PF','pF','Pf']).some(val=>val===this.modelData.usuario.documento.tipo);
@@ -129,12 +159,13 @@ export class SignUpComponent implements OnInit {
       isPF ? this.modelData.usuario.sobrenome !== '' : true,
       this.modelData.telefones.length > 0,
       this.modelData.enderecos.length > 0,
+      !this.existenciaDeInfoValida.userExistenteDocumento,
       this.leituraConfirmada
     ];
     this.botaoCadastroDesativado = testesDeValidos.some(val=>!val);
   }
 
-  documentoModelado:string="";
+  documentoModelado ="";
 
   private modelarDocumento() {
     if(this.modelData.usuario.documento.numero === '') {
@@ -157,26 +188,45 @@ export class SignUpComponent implements OnInit {
   }
   contadorRegressivoPosCadastro = 7;
 
-  //TODO: Trocar o endereço de Back-End "LocalHost" e colocar um correto, para cadastro de usuários.
+  /**
+   * Apenas para exibição do modal, após a requisição Ajax...
+   */
+  @ViewChild('modalDeAlerta', { static: false })
+  modalDeAlerta?: ModalDirective;
+
+  detalhesErros: { erro: number | null, mensagem: string | null } = { erro: 0, mensagem: '' };
+
   enviarDados(){
     let json = JSON.stringify(this.modelData);
     let headerToPost = new HttpHeaders();
-    headerToPost.set('content-type','application/json');
-    this.http.post<{jwt:string,validade:Date}>("https://localhost/usuario/cadastro",json,
+    headerToPost.set('content-type','application/json;charset=utf-8');
+    ++this.currentAccordion;
+    this.http.post<{
+      jwt: string | null | undefined,
+      validade: Date | null | undefined,
+      erro: number | string | null | undefined,
+      mensagen: string | null | undefined
+    }>(this.backendUrl + "usuario/cadastrar", json,
       {headers:headerToPost}
     ).subscribe({
-      next: retorno =>{
-        ++this.currentAccordion;
-        localStorage.setItem('token',retorno.jwt);
-        localStorage.setItem('vencimento',retorno.validade.toISOString());
+      next: retorno => {
+        this.currentAccordion = 999; //Mostra a "bolinha" de "carregando"...
+        if (!!retorno.erro) {
+          this.detalhesErros.erro = parseInt(retorno.erro?.toString() ?? "0");
+          this.modalDeAlerta?.show();
+          return;
+        }
+        this.currentAccordion = 5; //Dá as boas vindas, mostrando um contador para redirecionamento.
+        localStorage.setItem('token',retorno.jwt ?? '');
+        localStorage.setItem('vencimento',retorno.validade?.toISOString() ?? (new Date()).toISOString());
         do {
           setTimeout(()=>{
             --this.contadorRegressivoPosCadastro;
           },1000);
         } while (this.contadorRegressivoPosCadastro > 0);
-        this.route.navigate(['/']);
+        this.route.navigate(['/dashboard']);
       },
-      error:err=>console.log(err)
+      error: err => console.log(err)
     })
   }
 
@@ -203,6 +253,10 @@ export class SignUpComponent implements OnInit {
     modal.show();
   }
 
+  obterErroEmString() {
+    let msg = StatusCodes[(this.detalhesErros.erro ?? 0)];
+    return msg;
+  }
 
   //#region "Métodos das janelas de modal
 

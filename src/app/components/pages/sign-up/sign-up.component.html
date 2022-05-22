@@ -1,6 +1,6 @@
-<form method="post" #formCadastro="ngForm" class="container-xg container" (reset)="resetForm()" (ngSubmit)="enviarDados()" ngForm>
+<form method="post" #formCadastro="ngForm" action="javascript:void(this);" class="container-xg container" (reset)="resetForm()" (ngSubmit)="enviarDados()" ngForm>
   <!-- Apresentação -->
-  <div *ngIf="currentAccordion == 0" class="text-center centro borda-mais-arredondada">
+  <div *ngIf="currentAccordion === 0" class="text-center centro borda-mais-arredondada">
     <h1 class="h1">Que bom termos você como nosso cliente!</h1>
     <h4 class="h4">Vamos te auxiliar com seu cadastro neste assistente!</h4>
     <div [ngClass]="['borda-mais-arredondada',darkMode.isDarkMode ? 'bg-dark bg-opacity-50' : 'bg-light text-dark']">
@@ -190,13 +190,20 @@
       </div>
       <div class="form-floating text-dark">
         <input type="text" id="fieldDocument" name="documento" placeholder="de Tal"
-          [autocomplete]="false" (keyup)="validarCampos()" (blur)="validarCampos()" [ngClass]="[
+          [autocomplete]="false" (keyup)="validarCampos()" (blur)="validarExistenciaDocumento()" [ngClass]="[
           'form-control bg-white opacity-100 borda-mais-arredondada',
           existenciaDeInfoValida.documento ? 'is-valid' : 'is-invalid'
         ]" [(ngModel)]="modelData.usuario.documento.numero">
         <label for="fieldDocument">
           Informe seu {{modelData.usuario.documento.tipo === 'PJ' ? 'CNPJ' : 'CPF'}}*</label>
       </div>
+      <alert [isOpen]="existenciaDeInfoValida.userExistenteDocumento" type="danger">
+        <h3 class="h3">
+          Desculpe, mas já exise um usuário com este {{modelData.usuario.documento.tipo === 'PJ' ? 'CNPJ' : 'CPF'}} cadastrado...
+        </h3>
+        <h5 class="h5">Email cadastrado com este {{(modelData.usuario.documento.tipo === 'PJ' ? 'CNPJ' : 'CPF') + ': ' + emailUsuarioAjaxDocumento}}</h5>
+        <h5 class="h5">Por favor, tente fazer o login ou recuperar sua senha!</h5>
+      </alert>
       <div class="padding-zero">
         <div class="row">
           <div class="col-10">
@@ -235,7 +242,7 @@
         </p>
         <p>Nos comprometemos seriamente com o armazenamento deste dado sensível!</p>
       </alert>
-      <!-- Telefones -->
+      <!-- Lista de Telefones -->
       <div class="container">
         <div class="row">
           <div class="col">
@@ -302,7 +309,7 @@
           </div>
         </div>
       </div>
-      <!-- Endereços -->
+      <!-- Lista de Endereços -->
       <div class="container">
         <div class="row">
           <div class="col">
@@ -369,7 +376,7 @@
     </div>
   </div>
   <!-- Contrato e Termos e Uso -->
-  <div id="termos-de-uso" *ngIf="currentAccordion === 3" class="centro borda-mais-arredondada">
+  <div *ngIf="currentAccordion === 3" id="termos-de-uso" class="centro borda-mais-arredondada">
     <h1 class="h1">Termos de uso e política de privacidade</h1>
     <div [ngClass]="{
         'bg-opacity-75 bg-dark text-light': darkMode.isDarkMode,
@@ -561,6 +568,16 @@
     </div>
   </div>
 </form>
+<!-- "bolinha" de carregando... -->
+<div *ngIf="currentAccordion === 999" class="text-center container container-pq">
+  <div class="centro">
+    <div style="width:300px !important; height:300px !important;"
+         [ngClass]="['spinner-border', darkMode.isDarkMode ? 'text-light' : 'text-dark']"
+         role="status">
+      <span class="visually-hidden">Carregando, por favor aguarde...</span>
+    </div>
+  </div>
+</div>
 <!-- Término e boas-vindas ao usuário (além de registrar sessão) -->
 <div *ngIf="currentAccordion === 5" class="centro borda-mais-arredondada">
   <div [ngClass]="{
@@ -569,7 +586,11 @@
           'borda-mais-arredondada espacamento-padding':true
       }">
     <h1 class="h1">Cadastro Concluído!</h1>
-    <h3 class="h3">Seja muito bem-vindo {{modelData.usuario.nome}}!!!</h3>
+    <h3 class="h3">
+      Seja muito
+      {{(modelData.usuario.genero === 'M' || modelData.usuario.genero === 'm') ? 'bem-vindo' : 'bem-vinda'}}
+      {{modelData.usuario.nome}}!!!
+    </h3>
     <h6 class="h6">Voltando para a página inicial em {{contadorRegressivoPosCadastro}}</h6>
   </div>
 </div>
@@ -775,6 +796,37 @@
             'nf-fa-pencil':operation === 'U'
           }"></span>
           {{operation === 'C' ? 'Adicionar' : 'Editar'}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Caixa Modal para adicionar Endereço -->
+<div bsModal #modalDeAlerta="bs-modal" class="modal fade" tabindex="-1"
+     role="dialog" aria-labelledby="dialogo-endereco">
+  <div class="modal-dialog modal-md">
+    <div [ngClass]="{'modal-content':true,'fundo-modal-dark-mode':darkMode.isDarkMode}">
+      <div class="modal-header">
+        <h4 id="dialogo-endereco" class="modal-title pull-left">
+          {{operation === 'C' ? 'Adicionar novo endereço' : 'Editar endereço'}}
+        </h4>
+        <button type="button" [class]="['close pull-right btn-close', darkMode.isDarkMode ? 'text-light' : 'text-dark']"
+                aria-label="Close" (click)="currentAccordion=5;fecharModal(modalDeAlerta)">
+          <span aria-hidden="true" class="visually-hidden">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <alert type="danger">
+          <h3 class="h3">Desculpe {{modelData.usuario.nome}}!</h3>
+          <h5 class="h5">Mas, infelizmente houve um erro, no qual impediu de fazer o cadastro. Por favor, tente novamente!</h5>
+          <p class="margem-zero padding-zero">Erro: {{obterErroEmString()}} </p>
+          <p class="margem-zero padding-zero">Mensagem: {{detalhesErros.mensagem ?? ""}} </p>
+        </alert>
+      </div>
+      <div class="modal-footer text-end">
+        <!-- Quando clica no botão 'fechar' dentro do modal, automaticamente volta para a confirmação de dados-->
+        <button class="btn btn-danger borda-mais-arredondada" (click)="currentAccordion = 5;fecharModal(modalDeAlerta)">
+          <span class="nf nf-fa-close"></span> Fechar
         </button>
       </div>
     </div>

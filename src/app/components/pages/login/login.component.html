@@ -1,6 +1,6 @@
 <div class="text-center container container-pq">
   <!-- TODO: Implementar os eventos ngSubmit e o Reset -->
-  <form ngForm #formLogin="ngForm" method="post" class="centro" method="post" action="javascript:void(this);" >
+  <form ngForm #formLogin="ngForm" method="post" class="centro" method="post" action="javascript:void(this);" (ngSubmit)="enviarForm();">
     <div [ngClass]="{
       'form-login-escondido':secRecuperarSenha,
       'form-login-exibido':!secRecuperarSenha

@@ -87,5 +87,5 @@ export function validarCnpj(cnpj:string|number):boolean {
 }
 
 export function validarEmail(email:string):boolean {
-  return /^[a-z0-9\-._+&#]+@[a-z0-9]+(.[a-z]{2,8})+$/i.test(email);
+  return /^[a-z0-9._\-]+@[a-z0-9_\-]+\.[a-z]+\.([a-z]+)?$/i.test(email);
 }
