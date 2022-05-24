@@ -18,12 +18,16 @@ export class HomeComponent implements OnInit {
   };
   gotDataSuccessFotos:CarrosselHome[] = [];
   gotCursos:CursoModel[] = [];
-  public baseUrl:string;
+  public baseUrl: string;
+  public backendUrl: string;
 
   constructor(
     private httpClient:HttpClient,
     public darkMode:DarkModeService
-  ) { this.baseUrl = environment.baseUrl; }
+  ) {
+    this.baseUrl = environment.baseUrl;
+    this.backendUrl = environment.backendUrl;
+  }
 
   ngOnInit(): void {
     this.obterTodasFotosCarrossel();
@@ -51,19 +55,20 @@ export class HomeComponent implements OnInit {
       });
   }
 
-  //TODO:Remover a API fake e colocar o Back-end de cursos correto.
   private obterAlgunsCursos(){
     this.httpClient
       .get<CursoModel[]>(
-        this.baseUrl + 'assets/API/cursos/lista-todos-cursos.json'
+        this.backendUrl + '/site/cursos', {
+          params: {
+            id: 'qualquer',
+            limite: 5
+          }
+        }
       )
       .subscribe({
         next:res => {
           this.data.cursos.success = true;
           this.gotCursos.splice(0);
-          res.reverse();
-          embaralharMatriz(res);
-          //TODO: Refatorar este loop se houver necessidade, APÓS implementar o Back-End oficial.
           for (let indice = 0; indice < res.length; ++indice) {
             if (res[indice].descontinuado)
               continue;

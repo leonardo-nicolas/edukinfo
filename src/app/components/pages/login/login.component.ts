@@ -3,7 +3,8 @@ import { DarkModeService } from 'src/app/services/dark-mode.service';
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import { environment } from '../../../../environments/environment';
-import { User } from 'src/app/Models/UserData.Model';
+import {UserDataModel} from 'src/app/Models/UserData.Model';
+import {LoginService} from "../../../services/login.service";
 
 @Component({
   selector: 'app-login',
@@ -15,11 +16,14 @@ export class LoginComponent implements OnInit {
   secRecuperarSenha = false;
   loginComErro = false;
   backendUrl: string;
+  mensagemErro: string = "";
+  recuperarSenhaEnviada: boolean = false;
   constructor(
     private activatedRoute:ActivatedRoute,
     private router:Router,
     private http:HttpClient,
-    public darkMode: DarkModeService
+    public darkMode: DarkModeService,
+    private loginService:LoginService
   ) { this.backendUrl = environment.backendUrl; }
   ngOnInit(): void {
     this.checagemDeRotas()
@@ -42,22 +46,41 @@ export class LoginComponent implements OnInit {
   }
 
   enviarForm() {
-    if (!this.secRecuperarSenha) {
-      let dados = new FormData();
-      this.http.post<{
-        jwt: string | undefined,
-        validade: Date | undefined,
-        usuario: User | undefined
-        codErro: number | undefined,
-        mensagem: string | undefined
-      }>(this.backendUrl + '', dados, {
-        responseType:"json"
-      }).subscribe({
-        next: resposta => {
+    if (!this.secRecuperarSenha) // fazer login normal
+      this.fazerLogin();
+    else //recuperar senha
+      this.recuperarSenha();
+  }
 
-        },
-        error:err=>console.log(err)
-      });
-    }
+  private fazerLogin() {
+    let dados = new FormData();
+    dados.append('usuario', '' + (document.getElementById('fieldUsuario') as HTMLInputElement)?.value)
+    dados.append('senha', '' + (document.getElementById('fieldSenha') as HTMLInputElement)?.value);
+    this.http.post<{
+      jwt: string | undefined,
+      validade: Date | undefined,
+      usuario: UserDataModel | undefined
+      codErro: number | undefined,
+      mensagem: string | undefined
+    }>(this.backendUrl + '/usuarios/login', dados, {
+      responseType:"json"
+    }).subscribe({
+      next: resposta => {
+        if(!!resposta.codErro && !!resposta.mensagem){
+          this.mensagemErro = resposta.mensagem;
+          this.loginComErro = true;
+          return;
+        }
+        if (!!resposta.jwt && !!resposta.validade)
+          this.loginService.fazerLogin(resposta.jwt,resposta.validade,resposta.usuario);
+        this.loginComErro = false;
+        this.router.navigate(['/dashboard']);
+      },
+      error:err=>console.log(err)
+    });
+  }
+
+  private recuperarSenha() {
+
   }
 }

@@ -11,6 +11,8 @@ import { pontuarDocumento } from 'src/app/services/funcoesDiversas';
 import { DetailsDDDModel, estados } from "../../../Models/DetailsDDD.Model";
 import {environment} from "../../../../environments/environment";
 import { StatusCodes } from 'src/app/Models/StatusCodes';
+import { User } from '../../../Models/UserData.Model';
+import {LoginService} from "../../../services/login.service";
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -49,7 +51,8 @@ export class SignUpComponent implements OnInit {
     public darkMode:DarkModeService,
     private route:Router,
     private localeService:BsLocaleService,
-    private http:HttpClient
+    private http:HttpClient,
+    private loginService:LoginService
   ) {
     this.baseUrl = environment.baseUrl;
     this.backendUrl = environment.backendUrl;
@@ -122,7 +125,7 @@ export class SignUpComponent implements OnInit {
   readonly validarExistenciaDocumento = () =>
     this.http.get<{userName:string,exists:boolean}>(this.backendUrl + "usuarios/checagem-usuario",{
       params: {
-        "documento": this.modelData.usuario.documento.tipo + this.modelData.usuario.documento.numero.replace(/\D/i, '')
+        "documento": this.modelData.usuario.documento.tipo + this.modelData.usuario.documento.numero.replace(/\D+/i, '')
       }
     }).subscribe({
       next: resultado => {
@@ -204,6 +207,7 @@ export class SignUpComponent implements OnInit {
     this.http.post<{
       jwt: string | null | undefined,
       validade: Date | null | undefined,
+      usuario: UserDataModel | undefined,
       erro: number | string | null | undefined,
       mensagen: string | null | undefined
     }>(this.backendUrl + "usuario/cadastrar", json,
@@ -211,14 +215,15 @@ export class SignUpComponent implements OnInit {
     ).subscribe({
       next: retorno => {
         this.currentAccordion = 999; //Mostra a "bolinha" de "carregando"...
-        if (!!retorno.erro) {
-          this.detalhesErros.erro = parseInt(retorno.erro?.toString() ?? "0");
+        if (!!retorno.erro && !!retorno.mensagen) {
+          this.detalhesErros.erro = typeof(retorno.erro) !== 'number' ? parseInt(retorno.erro) : retorno.erro;
+          this.detalhesErros.mensagem = retorno.mensagen;
           this.modalDeAlerta?.show();
           return;
         }
         this.currentAccordion = 5; //Dá as boas vindas, mostrando um contador para redirecionamento.
-        localStorage.setItem('token',retorno.jwt ?? '');
-        localStorage.setItem('vencimento',retorno.validade?.toISOString() ?? (new Date()).toISOString());
+        if(!!retorno.jwt && !!retorno.validade)
+          this.loginService.fazerLogin(retorno.jwt,retorno.validade,retorno.usuario);
         do {
           setTimeout(()=>{
             --this.contadorRegressivoPosCadastro;

@@ -1,6 +1,6 @@
 <div class="text-center container container-pq">
-  <!-- TODO: Implementar os eventos ngSubmit e o Reset -->
   <form ngForm #formLogin="ngForm" method="post" class="centro" method="post" action="javascript:void(this);" (ngSubmit)="enviarForm();">
+    <!-- Seção de Login -->
     <div [ngClass]="{
       'form-login-escondido':secRecuperarSenha,
       'form-login-exibido':!secRecuperarSenha
@@ -12,10 +12,12 @@
         <label for="fieldUsuario">Usuário</label>
       </div>
       <div class="form-floating">
-        <input class="form-control borda-mais-arredondada" type="password" width="30" id="fieldSenha" name="usuario" placeholder="Sua senha">
+        <input class="form-control borda-mais-arredondada" id="fieldSenha" type="password" width="30" name="senha" placeholder="Sua senha">
         <label for="fieldSenha">Senha</label>
       </div>
+      <div style="width:100%; height:58px;"></div>
     </div>
+    <!-- Seção de recuperação de senha -->
     <div [ngClass]="{
       'form-rec-senha-escondido':!secRecuperarSenha,
       'form-rec-senha-exibido':secRecuperarSenha
@@ -27,8 +29,12 @@
         <label for="fieldUsuario">Digite aqui seu e-mail</label>
       </div>
       <div style="width:100%; height:58px;"></div>
+      <div style="width:100%; height:58px;"></div>
     </div>
-    <alert *ngIf="!secRecuperarSenha && loginComErro" type="danger" [dismissOnTimeout]="10000" [dismissible]="true">
+    <alert [isOpen]="!secRecuperarSenha && loginComErro" type="danger" [dismissOnTimeout]="10000" [dismissible]="true">
+      {{mensagemErro}}
+    </alert>
+    <alert [isOpen]="secRecuperarSenha && recuperarSenhaEnviada" [dismissOnTimeout]="10000" type="danger">
 
     </alert>
     <div>
