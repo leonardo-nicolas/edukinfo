@@ -7,6 +7,7 @@ import {FaqModel, LinhaDoTempoModel, SocioModel} from 'src/app/Models/PaginaSobr
 import { embaralharMatriz } from "../../../services/funcoesDiversas";
 import {Address} from "../../../Models/UserData.Model";
 import { environment } from 'src/environments/environment';
+import {Unidades} from "../../../Models/Unidades";
 
 @Component({
   selector: 'app-about',
@@ -15,13 +16,17 @@ import { environment } from 'src/environments/environment';
 })
 export class AboutComponent implements OnInit {
 
-  public baseUrl:string;
+  public baseUrl;
+  private backendUrl;
   constructor(
     public darkMode:DarkModeService,
     private router:Router,
     private activatedRoute:ActivatedRoute,
     private http:HttpClient
-  ) { this.baseUrl = environment.baseUrl; }
+  ) {
+    this.baseUrl = environment.baseUrl;
+    this.backendUrl = environment.backendUrl;
+  }
 
   @ViewChild('guiasInstitucional',{static:false})
   private guiasInstitucional?:TabsetComponent;
@@ -72,7 +77,7 @@ export class AboutComponent implements OnInit {
 
   trajetoriasLinhaDoTempo:LinhaDoTempoModel[] = [];
   private carregarLinhaDoTempo() {
-    this.http.get<LinhaDoTempoModel[]>(this.baseUrl + 'assets/API/linha-do-tempo.json').subscribe(dados => {
+    this.http.get<LinhaDoTempoModel[]>(this.backendUrl + '/site/linha-do-tempo').subscribe(dados => {
       this.trajetoriasLinhaDoTempo.splice(0);
       dados.forEach(val=>this.trajetoriasLinhaDoTempo.push(val));
     });
@@ -99,19 +104,19 @@ export class AboutComponent implements OnInit {
 
   perguntasFrequentes:FaqModel[] = [];
   private carregarPerguntasFrequentes(){
-    this.http.get<FaqModel[]>(this.baseUrl + 'assets/API/faq.json').subscribe(dados => {
+    this.http.get<FaqModel[]>(this.backendUrl + '/site/faq').subscribe(dados => {
       this.perguntasFrequentes.splice(0);
       dados.forEach(val=>this.perguntasFrequentes.push(val));
     });
   }
 
-  unidades:Address[] = [];
+  unidades:Unidades[] = [];
   private carregarUnidades(){
-    this.http.get<Address[]>(this.baseUrl + 'assets/API/unidades.json').subscribe(dados => {
+    this.http.get<Unidades[]>(this.backendUrl + '/site/unidades').subscribe(dados => {
       this.unidades.splice(0);
       dados.forEach(val=>this.unidades.push(val));
     });
-    embaralharMatriz(this.unidades);
+    //embaralharMatriz(this.unidades);
   }
 
   readonly atribuirUrl = (url:string) => url.replace('@baseUrl%/',this.baseUrl);

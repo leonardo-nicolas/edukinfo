@@ -210,29 +210,28 @@ export class SignUpComponent implements OnInit {
       usuario: UserDataModel | undefined,
       erro: number | string | null | undefined,
       mensagen: string | null | undefined
-    }>(this.backendUrl + "usuario/cadastrar", json,
-      {headers:headerToPost}
-    ).subscribe({
-      next: retorno => {
-        this.currentAccordion = 999; //Mostra a "bolinha" de "carregando"...
-        if (!!retorno.erro && !!retorno.mensagen) {
-          this.detalhesErros.erro = typeof(retorno.erro) !== 'number' ? parseInt(retorno.erro) : retorno.erro;
-          this.detalhesErros.mensagem = retorno.mensagen;
-          this.modalDeAlerta?.show();
-          return;
-        }
-        this.currentAccordion = 5; //Dá as boas vindas, mostrando um contador para redirecionamento.
-        if(!!retorno.jwt && !!retorno.validade)
-          this.loginService.fazerLogin(retorno.jwt,retorno.validade,retorno.usuario);
-        do {
-          setTimeout(()=>{
-            --this.contadorRegressivoPosCadastro;
-          },1000);
-        } while (this.contadorRegressivoPosCadastro > 0);
-        this.route.navigate(['/dashboard']);
-      },
-      error: err => console.log(err)
-    })
+    }>(this.backendUrl + "usuario/cadastrar", json,  {headers:headerToPost})
+      .subscribe({
+        next: retorno => {
+          this.currentAccordion = 999; //Mostra a "bolinha" de "carregando"...
+          if (!!retorno.erro && !!retorno.mensagen) {
+            this.detalhesErros.erro = typeof(retorno.erro) !== 'number' ? parseInt(retorno.erro) : retorno.erro;
+            this.detalhesErros.mensagem = retorno.mensagen;
+            this.modalDeAlerta?.show();
+            return;
+          }
+          this.currentAccordion = 5; //Dá as boas vindas, mostrando um contador para redirecionamento.
+          if(!!retorno.jwt && !!retorno.validade)
+            this.loginService.fazerLogin(retorno.jwt,retorno.validade,retorno.usuario);
+          do {
+            setTimeout(()=>{
+              --this.contadorRegressivoPosCadastro;
+            },1000);
+          } while (this.contadorRegressivoPosCadastro > 0);
+          this.route.navigate(['/dashboard']);
+        },
+        error: err => console.log(err)
+      });
   }
 
   //#region "Caixa Modal"

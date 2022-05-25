@@ -12,7 +12,6 @@ import {LoginService} from "../../../services/login.service";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  //TODO:Implementar chamada de API para Login e para Recuperar Senha, além de Reset de form...
   secRecuperarSenha = false;
   loginComErro = false;
   backendUrl: string;
@@ -39,6 +38,7 @@ export class LoginComponent implements OnInit {
       case undefined:
       case '':
         this.secRecuperarSenha = false;
+        this.recuperarSenhaEnviada = false;
         break;
       default:
         this.router.navigate(['/404']);
@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
 
   private fazerLogin() {
     let dados = new FormData();
-    dados.append('usuario', '' + (document.getElementById('fieldUsuario') as HTMLInputElement)?.value)
+    dados.append('usuario', '' + (document.getElementById('fieldUsuario') as HTMLInputElement)?.value);
     dados.append('senha', '' + (document.getElementById('fieldSenha') as HTMLInputElement)?.value);
     this.http.post<{
       jwt: string | undefined,
@@ -81,6 +81,19 @@ export class LoginComponent implements OnInit {
   }
 
   private recuperarSenha() {
-
+    let dados = new FormData();
+    dados.append('email', '' + (document.getElementById('fieldEmail') as HTMLInputElement)?.value)
+    this.http.post<{codigo:number}>(this.backendUrl + '/usuarios/recuperar-senha', dados, {
+    }).subscribe({
+      next: retorno => {
+        this.recuperarSenhaEnviada = retorno.codigo === 200;
+        if(retorno.codigo === 404)
+          alert('Desculpe, mas este endereço de e-mail não está cadastrado!');
+      },
+      error:err=> {
+        console.log(err);
+        this.recuperarSenhaEnviada = false;
+      }
+    });
   }
 }

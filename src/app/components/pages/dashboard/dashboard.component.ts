@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {DarkModeService} from "../../../services/dark-mode.service";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
+import {LoginService} from "../../../services/login.service";
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +19,8 @@ export class DashboardComponent implements OnInit {
   private readonly backendUrl:string;
   constructor(
     public darkMode:DarkModeService,
-    private http:HttpClient
+    private http:HttpClient,
+    private login:LoginService
   ) {
     this.backendUrl = environment.backendUrl;
   }
@@ -28,7 +30,8 @@ export class DashboardComponent implements OnInit {
   }
 
   obterUsuario(){
-    let usuarioLogadoJWT = "";
+    this.login.getUsuarioLogado();
+    let usuarioLogadoJWT = this.login.Usuario;
     this.http.get(this.backendUrl + '',{
       headers:{
         'authorization':'basic ' + usuarioLogadoJWT

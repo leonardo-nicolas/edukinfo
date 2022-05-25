@@ -1,22 +1,13 @@
 export class UserDataModel {
-  get senha(): string {
-    return this.password;
-  }
-  set senha(value: string ){
-    this.password = value;
-  }
+  get senha(): string { return this.password; }
+  set senha(value: string ){ this.password = value; }
 
-  get enderecos(): Address[] {
-    return this.addresses;
-  }
+  get enderecos(): Address[] { return this.addresses; }
 
-  get telefones(): Phone[] {
-    return this.phones;
-  }
+  get telefones(): Phone[] { return this.phones; }
 
-  get usuario(): User {
-    return this.user;
-  }
+  get usuario(): User { return this.user; }
+
   private user: User = new User();
   private phones: Phone[] = [];
   private addresses: Address[] = [];
@@ -24,45 +15,27 @@ export class UserDataModel {
 }
 
 export class User {
-  get email(): string {
-    return this.mail;
-  }
+  get id(): number|undefined { return this.identificador; }
+  set id(value: number|undefined) { this.identificador = value; }
 
-  set email(value: string) {
-    this.mail = value;
-  }
-  get aniversario(): Date {
-    return this.birthday;
-  }
+  get email(): string { return this.mail; }
+  set email(value: string) { this.mail = value; }
 
-  set aniversario(value: Date) {
-    this.birthday = value;
-  }
-  get genero(): Genre {
-    return this.genre;
-  }
+  get aniversario(): Date { return this.birthday; }
+  set aniversario(value: Date) { this.birthday = value; }
 
-  set genero(value: Genre) {
-    this.genre = value;
-  }
-  get documento(): Document {
-    return this.document;
-  }
+  get genero(): Genre { return this.genre; }
+  set genero(value: Genre) { this.genre = value; }
 
-  get sobrenome(): string {
-    return this.surname;
-  }
+  get documento(): Document { return this.document; }
 
-  set sobrenome(value: string) {
-    this.surname = value;
-  }
-  get nome(): string {
-    return this.name;
-  }
+  get sobrenome(): string { return this.surname; }
+  set sobrenome(value: string) { this.surname = value; }
 
-  set nome(value: string) {
-    this.name = value;
-  }
+  get nome(): string { return this.name; }
+  set nome(value: string) { this.name = value; }
+
+  private identificador?: number;
   private name: string = "";
   private surname: string = "";
   private document: Document = new Document();
@@ -76,57 +49,35 @@ export type GenreOthers = "O" | "o";
 export type Genre = GenreMale | GenreFemale | GenreOthers;
 
 export class Document {
-  get numero(): string {
-    return this.number;
-  }
+  get numero(): string { return this.number; }
+  set numero(value: string) { this.number = value; }
 
-  set numero(value: string) {
-    this.number = value;
-  }
-  get tipo(): TypeOfPerson {
-    return this.type;
-  }
+  get tipo(): TypeOfPerson { return this.type; }
+  set tipo(value: TypeOfPerson) { this.type = value; }
 
-  set tipo(value: TypeOfPerson) {
-    this.type = value;
-  }
   private type: TypeOfPerson = "PF";
   private number: string = "";
 }
 export type TypeOfPerson = 'PF'|'PJ'|'pf'|'pj'|'Pf'|'Pj'|'pF'|'pJ';
 export class Phone {
-  get descricao(): string {
-    return this.description;
-  }
+  get id(): number|undefined { return this.identificador; }
+  set id(value: number|undefined) { this.identificador = value; }
 
-  set descricao(value: string) {
-    this.description = value;
-  }
-  get chamadas(): boolean {
-    return this.canCall;
-  }
+  get descricao(): string { return this.description; }
+  set descricao(value: string) { this.description = value; }
 
-  set chamadas(value: boolean) {
-    this.canCall = value;
-  }
+  get chamadas(): boolean { return this.canCall; }
+  set chamadas(value: boolean) { this.canCall = value; }
 
-  get appsMensageiros(): Messaging {
-    return this.messaging;
-  }
+  get appsMensageiros(): Messaging { return this.messaging; }
 
-  get numero(): string {
-    return this.number;
-  }
-  set numero(value: string) {
-    this.number = value;
-  }
+  get numero(): string { return this.number; }
+  set numero(value: string) { this.number = value; }
 
-  get codigoArea(): number {
-    return this.ddd;
-  }
-  set codigoArea(value: number) {
-    this.ddd = value;
-  }
+  get codigoArea(): number { return this.ddd; }
+  set codigoArea(value: number) { this.ddd = value; }
+
+  private identificador?: number;
   private ddd: number = 0;
   private number: string = "";
   private messaging: Messaging = new Messaging();
@@ -135,34 +86,22 @@ export class Phone {
 }
 
 export class Messaging {
-  get telegram(): boolean {
-    return this.isTelegram;
-  }
+  get id(): number|undefined { return this.identificador; }
+  set id(value: number|undefined) { this.identificador = value; }
 
-  set telegram(value: boolean) {
-    this.isTelegram = value;
-  }
-  get whatsApp(): boolean {
-    return this.isWhatsApp;
-  }
+  get telegram(): boolean { return this.isTelegram; }
+  set telegram(value: boolean) { this.isTelegram = value; }
 
-  set whatsApp(value: boolean) {
-    this.isWhatsApp = value;
-  }
-  get weChat(): boolean {
-    return this.isWeChat;
-  }
+  get whatsApp(): boolean { return this.isWhatsApp; }
+  set whatsApp(value: boolean) { this.isWhatsApp = value; }
 
-  set weChat(value: boolean) {
-    this.isWeChat = value;
-  }
-  get mensagemTexto(): boolean {
-    return this.isSMS;
-  }
+  get weChat(): boolean { return this.isWeChat; }
+  set weChat(value: boolean) { this.isWeChat = value; }
 
-  set mensagemTexto(value: boolean) {
-    this.isSMS = value;
-  }
+  get mensagemTexto(): boolean { return this.isSMS; }
+  set mensagemTexto(value: boolean) { this.isSMS = value; }
+
+  private identificador?: number;
   private isWhatsApp: boolean = false;
   private isTelegram: boolean = false;
   private isWeChat: boolean = false;
@@ -170,69 +109,38 @@ export class Messaging {
 }
 
 export class Address {
-  get descricao(): string {
-    return this.description;
-  }
+  get id(): number|undefined { return this.identificador; }
+  set id(value: number|undefined) { this.identificador = value; }
 
-  set descricao(value: string) {
-    this.description = value;
-  }
-  get finalidade(): string {
-    return this.purpose;
-  }
+  get descricao(): string { return this.description; }
+  set descricao(value: string) { this.description = value; }
 
-  set finalidade(value: string) {
-    this.purpose = value;
-  }
-  get estado(): string {
-    return this.state;
-  }
+  get finalidade(): string { return this.purpose; }
+  set finalidade(value: string) { this.purpose = value; }
 
-  set estado(value: string) {
-    this.state = value;
-  }
-  get municipio(): string {
-    return this.city;
-  }
+  get estado(): string { return this.state; }
+  set estado(value: string) { this.state = value; }
 
-  set municipio(value: string) {
-    this.city = value;
-  }
-  get bairro(): string {
-    return this.neighbor;
-  }
+  get municipio(): string { return this.city; }
+  set municipio(value: string) { this.city = value; }
 
-  set bairro(value: string) {
-    this.neighbor = value;
-  }
-  get complemento(): string|undefined {
-    return this.complement;
-  }
+  get bairro(): string { return this.neighbor; }
+  set bairro(value: string) { this.neighbor = value; }
 
-  set complemento(value: string|undefined) {
-    this.complement = value;
-  }
-  get numero(): string | number | undefined{
-    return this.number;
-  }
+  get complemento(): string|undefined { return this.complement; }
+  set complemento(value: string|undefined) { this.complement = value; }
 
-  set numero(value: string | number | undefined) {
-    this.number = value;
-  }
-  get endereco(): string {
-    return this.address;
-  }
+  get numero(): string | number | undefined{ return this.number; }
+  set numero(value: string | number | undefined) { this.number = value; }
 
-  set endereco(value: string) {
-    this.address = value;
-  }
-  get cep(): string {
-    return this.zipCode;
-  }
+  get endereco(): string { return this.address; }
+  set endereco(value: string) { this.address = value; }
 
-  set cep(value: string) {
-    this.zipCode = value;
-  }
+  get cep(): string { return this.zipCode; }
+
+  set cep(value: string) { this.zipCode = value; }
+
+  private identificador?: number;
   private zipCode: string = "";
   private address: string = "";
   private number?: string|number;

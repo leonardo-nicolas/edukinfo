@@ -4,7 +4,9 @@ function getBaseUrl() {
     .href;
 }
 function getBackendUrl() {
-  return "";
+  return document
+    .getElementsByTagName('base')[0]
+    .href;
 }
 
 export const environment = {
