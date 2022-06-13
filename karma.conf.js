@@ -1,3 +1,5 @@
+// Arquivo: ./karma.conf.js
+// Este arqivo foi gerado automaticamente pelo Angular CLI.
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
@@ -25,7 +27,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/prova-ecommerce-faculdade-av1'),
+      dir: require('path').join(__dirname, './coverage/edukinfo-ssr'),
       subdir: '.',
       reporters: [
         { type: 'html' },

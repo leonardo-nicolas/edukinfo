@@ -1,99 +1,57 @@
-import { Component, OnInit } from '@angular/core';
+// Arquivo: src/app/components/pages/login/login.component.ts
+
+import { Component, Inject, OnInit } from "@angular/core";
 import { DarkModeService } from 'src/app/services/dark-mode.service';
-import {ActivatedRoute, Router} from "@angular/router";
-import {HttpClient} from "@angular/common/http";
-import { environment } from '../../../../environments/environment';
-import {UserDataModel} from 'src/app/Models/UserData.Model';
-import {LoginService} from "../../../services/login.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { HttpClient } from "@angular/common/http";
+import { LoginService } from "../../../services/login.service";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: [ './login.component.scss' ]
 })
 export class LoginComponent implements OnInit {
   secRecuperarSenha = false;
-  loginComErro = false;
   backendUrl: string;
-  mensagemErro: string = "";
-  recuperarSenhaEnviada: boolean = false;
+  secNovaSenha = false;
+
   constructor(
-    private activatedRoute:ActivatedRoute,
-    private router:Router,
-    private http:HttpClient,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
     public darkMode: DarkModeService,
-    private loginService:LoginService
-  ) { this.backendUrl = environment.backendUrl; }
-  ngOnInit(): void {
-    this.checagemDeRotas()
+    @Inject('BACKEND_URL') backendUrl: string
+  ) { this.backendUrl = backendUrl; }
+  ngOnInit() {
+    if (!this.darkMode.suporteDarkMode)
+      return;
+    window.scrollTo(0, 0);
+    this.checagemDeRotas();
   }
 
-  checagemDeRotas(){
+  checagemDeRotas() {
     const route = this.activatedRoute.snapshot.paramMap.get('secao');
     switch (route) {
       case 'recuperarSenha':
         this.secRecuperarSenha = true;
+        this.secNovaSenha = !!this.getQueryStringToken();
         break;
       case null:
       case undefined:
       case '':
         this.secRecuperarSenha = false;
-        this.recuperarSenhaEnviada = false;
+        this.secNovaSenha = false;
         break;
       default:
-        this.router.navigate(['/404']);
+        this.router.navigate([ '/404' ]);
     }
   }
 
-  enviarForm() {
-    if (!this.secRecuperarSenha) // fazer login normal
-      this.fazerLogin();
-    else //recuperar senha
-      this.recuperarSenha();
-  }
+  readonly getQueryStringToken = () => this.activatedRoute.snapshot.queryParamMap.get('token') ?? '';
 
-  private fazerLogin() {
-    let dados = new FormData();
-    dados.append('usuario', '' + (document.getElementById('fieldUsuario') as HTMLInputElement)?.value);
-    dados.append('senha', '' + (document.getElementById('fieldSenha') as HTMLInputElement)?.value);
-    this.http.post<{
-      jwt: string | undefined,
-      validade: Date | undefined,
-      usuario: UserDataModel | undefined
-      codErro: number | undefined,
-      mensagem: string | undefined
-    }>(this.backendUrl + '/usuarios/login', dados, {
-      responseType:"json"
-    }).subscribe({
-      next: resposta => {
-        if(!!resposta.codErro && !!resposta.mensagem){
-          this.mensagemErro = resposta.mensagem;
-          this.loginComErro = true;
-          return;
-        }
-        if (!!resposta.jwt && !!resposta.validade)
-          this.loginService.fazerLogin(resposta.jwt,resposta.validade,resposta.usuario);
-        this.loginComErro = false;
-        this.router.navigate(['/dashboard']);
-      },
-      error:err=>console.log(err)
-    });
-  }
 
-  private recuperarSenha() {
-    let dados = new FormData();
-    dados.append('email', '' + (document.getElementById('fieldEmail') as HTMLInputElement)?.value)
-    this.http.post<{codigo:number}>(this.backendUrl + '/usuarios/recuperar-senha', dados, {
-    }).subscribe({
-      next: retorno => {
-        this.recuperarSenhaEnviada = retorno.codigo === 200;
-        if(retorno.codigo === 404)
-          alert('Desculpe, mas este endereço de e-mail não está cadastrado!');
-      },
-      error:err=> {
-        console.log(err);
-        this.recuperarSenhaEnviada = false;
-      }
-    });
+  clickRecuperaSenha() {
+    this.secRecuperarSenha = !this.secRecuperarSenha;
+    this.secNovaSenha = false;
   }
 }

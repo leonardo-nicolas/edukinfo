@@ -1,3 +1,4 @@
+// Arquivo: src/app/Models/Ibge.Model.ts
 export class IBGEInterno {
   constructor(
     public nomeRegiao:string,

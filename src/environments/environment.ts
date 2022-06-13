@@ -1,19 +1,17 @@
+/**
+ *  Arquivo: src/environments/environment.ts
+ *  Descrição: Arquivo de configuração do ambiente de desenvolvimento.
+ *  Os comentários abaixo em inglês, foram gerados automaticamente, pela linha de comado do Angular.
+ */
 
-function getBaseUrl() {
-  return document
-    .getElementsByTagName('base')[0]
-    .href;
-}
-function getBackendUrl() {
-  return "http://edukinfo.localhost";
-}
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+
 export const environment = {
   production: false,
-  baseUrl:getBaseUrl(),
-  backendUrl:getBackendUrl()
+  backendUrl: "http://edukinfo.localhost/api",
+  baseUrl: "/",
 };
 
 /*
@@ -23,4 +21,4 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
+// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.

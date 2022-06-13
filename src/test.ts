@@ -1,3 +1,5 @@
+// Arquivo: src/test.ts
+// Este arquivo é usado para testar o código. Foi gerado automaticamente pelo Angular.
 // This file is required by karma.conf.js and loads recursively all the .spec and framework files
 
 import 'zone.js/testing';

@@ -18,17 +18,28 @@ form {
     align-self: stretch;
   }
 }
+.li-destaque{
+  //modo normal
+  background-color: rgb(33, 37, 41) !important;
+  a{
+    color:  rgb(248, 249, 250) !important;
+  }
+  //apontando com mouse
+  a:hover{
+    color: rgb(33, 37, 41)!important;
+  }
+}
 .texto-claro {
-  color: var(bs-light);
+  color: var(bs-light) !important;
 }
 .texto-claro:hover {
-  color: var(bs-dark);
+  color: var(bs-dark) !important;
 }
 .texto-escuro {
-  color: var(bs-dark);
+  color: var(bs-dark) !important;
 }
 .texto-escuro:hover {
-  color: var(bs-light);
+  color: var(bs-light) !important;
 }
 .btn-dark-mode-1 {
   visibility: visible;

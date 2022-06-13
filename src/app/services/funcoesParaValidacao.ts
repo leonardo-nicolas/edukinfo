@@ -1,3 +1,4 @@
+// Arquivo: src/app/services/funcoesParaValidacao.ts
 import { formatarDocumento } from './funcoesDiversas';
 
 export function validarCpf(cpf:string|number):boolean{
@@ -86,6 +87,13 @@ export function validarCnpj(cnpj:string|number):boolean {
   return resultado === parseInt(digitos.charAt(1));
 }
 
-export function validarEmail(email:string):boolean {
-  return /^[a-z0-9._\-]+@[a-z0-9_\-]+\.[a-z]+\.([a-z]+)?$/i.test(email);
+export function validarEmail(email:string) {
+  if(typeof(window) === 'undefined') {
+    return /^$/.test(email);
+  }else {
+    let campo = document.createElement("input");
+    campo.type = "email";
+    campo.value = email;
+    return campo.validity.valid;
+  }
 }

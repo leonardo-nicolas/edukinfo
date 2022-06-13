@@ -1,3 +1,4 @@
+// Arquivo: src/app/components/pages/search/search.component.spec.ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchComponent } from './search.component';

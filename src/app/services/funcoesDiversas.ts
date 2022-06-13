@@ -1,3 +1,4 @@
+// Arquivo: src/app/services/funcoesDiversas.ts
 import { TypeOfPerson } from "../Models/UserData.Model";
 
 export function embaralharMatriz<T>(array: T[]) {

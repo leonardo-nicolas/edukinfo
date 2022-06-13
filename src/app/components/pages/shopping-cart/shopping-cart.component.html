@@ -1,0 +1,73 @@
+<!-- Arquivo: src/app/components/pages/shopping-cart/shopping-cart.component.spec -->
+
+<!-- Corpo principal -->
+<div [ngClass]="['container border', !darkMode.isDarkMode ? 'bg-light text-dark' : 'bg-dark bg-opacity-25 text-light']">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col" [ngClass]="darkMode.isDarkMode?'text-light':'text-dark'">#</th>
+      <th scope="col" [ngClass]="darkMode.isDarkMode?'text-light':'text-dark'">Curso</th>
+      <th scope="col" [ngClass]="darkMode.isDarkMode?'text-light':'text-dark'">Valor</th>
+      <th scope="col" [ngClass]="darkMode.isDarkMode?'text-light':'text-dark'">Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of carrinho.cursos; let indice = index;">
+        <td [ngClass]="darkMode.isDarkMode?'text-light':'text-dark'">{{indice + 1}}</td>
+        <td [ngClass]="darkMode.isDarkMode?'text-light':'text-dark'">{{item.nome}}</td>
+        <td [ngClass]="darkMode.isDarkMode?'text-light':'text-dark'">{{item.preco | currency:'BRL':true}}</td>
+        <td [ngClass]="darkMode.isDarkMode?'text-light':'text-dark'">
+          <button class="btn btn-danger borda-mais-arredondada" (click)="carrinho.removerCursoIndex(indice)">Remover</button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th id="linhaQtdeCursos" colspan="3" [ngClass]="darkMode.isDarkMode?'text-light':'text-dark'">Qtde de cursos</th>
+        <td [ngClass]="darkMode.isDarkMode?'text-light':'text-dark'">
+          {{carrinho.totalItens < 10 ? '0' + carrinho.totalItens : carrinho.totalItens}} cursos
+        </td>
+      </tr>
+      <tr>
+        <th id="linhaTotalDeCursos" colspan="3" [ngClass]="darkMode.isDarkMode?'text-light':'text-dark'">Total:</th>
+        <td [ngClass]="darkMode.isDarkMode?'text-light':'text-dark'">
+          {{carrinho.subtotal | currency:'BRL':true}}
+        </td>
+      </tr>
+      <tr>
+        <th id="linhaCupomDesconto" colspan="2" [ngClass]="darkMode.isDarkMode?'text-light':'text-dark'">Cupom</th>
+        <td [ngClass]="darkMode.isDarkMode?'text-light':'text-dark'">
+          <div class="form-floating mb-3">
+            <input #cupom type="text" class="form-control" style="text-transform: uppercase;" id="cupomDesconto"
+                   (blur)= "carrinho.aplicarDesconto(cupom.value)" placeholder="Se tiver um cupom, aplique aqui!">
+            <label for="cupomDesconto">Cupom de desconto</label>
+          </div>
+        </td>
+        <td [ngClass]="darkMode.isDarkMode?'text-light':'text-dark'">
+          <button class="btn btn-success borda-mais-arredondada" (click)="carrinho.aplicarDesconto(cupom.value)">
+            <span class="nf nf-fa-ticket"></span> Aplicar
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <th id="linhaPercDesconto" colspan="3" [ngClass]="darkMode.isDarkMode?'text-light':'text-dark'">Desconto:</th>
+        <td [ngClass]="darkMode.isDarkMode?'text-light':'text-dark'">
+          {{carrinho.desconto}}% ({{(carrinho.subtotal * carrinho.desconto) / 100 | currency:'BRL':true}})
+        </td>
+      </tr>
+      <tr>
+        <th id="linhaSubtotalCompleto" colspan="3" [ngClass]="darkMode.isDarkMode?'text-light':'text-dark'">Subtotal completo:</th>
+        <td [ngClass]="darkMode.isDarkMode?'text-light':'text-dark'">
+          {{carrinho.subtotal - ((carrinho.subtotal * carrinho.desconto) / 100) | currency:'BRL':true}}
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <button type="button" class="btn btn-success borda-mais-arredondada" routerLink="/checkout">
+            <span class="nf nf-fa-credit_card"></span> Finalizar Compra <span class="nf nf-fa-money"></span>
+          </button>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>

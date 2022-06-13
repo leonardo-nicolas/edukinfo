@@ -1,5 +1,5 @@
+// Arquivo: src/app/services/rota-de-pesquisa.service.ts
 import { Inject, Injectable } from '@angular/core';
-import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,8 @@ export class RotaDePesquisaService {
 
   private baseUrl:string
   constructor(
+    @Inject('BASE_URL') baseUrl:string
   ) {
-    this.baseUrl = environment.baseUrl;
+    this.baseUrl = baseUrl;
   }
 }

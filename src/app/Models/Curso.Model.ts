@@ -1,3 +1,4 @@
+// Arquivo: src/app/Models/Curso.Model.ts
 export interface PicCurso {
   url: string;
   altTxt: string;
@@ -13,3 +14,4 @@ export interface CursoModel {
   gradeMaterias?: string[];
   imagensSlideCurso: PicCurso[];
 }
+

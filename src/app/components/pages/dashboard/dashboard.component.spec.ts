@@ -1,3 +1,4 @@
+// Arquivo: src/app/components/pages/dashboard/dashboard.component.spec.ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';

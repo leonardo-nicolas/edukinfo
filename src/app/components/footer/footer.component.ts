@@ -10,16 +10,15 @@ import {environment} from "../../../environments/environment";
 export class FooterComponent implements OnInit {
   public baseUrl:string;
   constructor(
-    public darkMode:DarkModeService
+    public darkMode:DarkModeService,
+    @Inject('BASE_URL') baseUrl: string
   ) {
-    this.baseUrl = environment.baseUrl;
+    this.baseUrl = baseUrl;
     let data = new Date();
     this.anoCorrente = data.getFullYear();
   }
   public anoCorrente: number;
-  ngOnInit(): void {
-
-  }
+  ngOnInit(){}
 
   scrollParaTopo(){
     window.scrollTo({ top: 0, behavior: 'smooth' });

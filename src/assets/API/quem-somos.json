@@ -17,12 +17,10 @@
     "contribuicao": "",
     "cargos": [
       "Desenvolvedor Fullstack",
-      "Gerente de Infraestrutura",
       "Professor de Front-End com Angular",
       "Professor de Back-End com C#/ASP.NET",
       "Professor de Back-End com PHP/Laravel",
-      "Professor de Back-End com NodeJS/NestJS",
-      "Professor de Back-End com NodeJS/ExpressJS",
+      "Professor de Back-End com Node.JS",
       "Professor de Back-End com Java/SpringBoot"
     ]
   },
@@ -33,9 +31,10 @@
     "contribuicao": "",
     "cargos": [
       "Desenvolvedor Fullstack",
+      "Engenheiro de Infraestrutura",
       "Analista de sistemas embarcados e de dados",
-      "Professor de Back-End com Python/Django",
-      "Professor de Back-End com Python/Flask"
+      "Professor de Back-End com Python",
+      "Especialista em Linux baseado no Red Hat"
     ]
   },
   {
@@ -46,6 +45,7 @@
     "cargos": [
       "Desenvolvedor Fullstack",
       "Cientista de Dados",
+      "Professor de Back-End com Node.JS",
       "Professor de Python Para Ciência de Dados",
       "Professor de PowerBI",
       "Professor de Pacote Office"
@@ -59,6 +59,8 @@
     "cargos": [
       "Desenvolvedor Fullstack",
       "Diretor Financeiro",
+      "Analista de programação de hardware e firmware",
+      "Engenheiro do kernel Linux",
       "Professor de App Mobile com React Native"
     ]
   },
@@ -70,7 +72,7 @@
     "cargos": [
       "Desenvolvedor Fullstack",
       "Gerente de Designer",
-      "Professor de Back-End"
+      "Professor de Back-End em várias linguagens e frameworks"
     ]
   }
 ]

@@ -1,3 +1,4 @@
+// Arquivo: src/app/components/pages/sign-up/sign-up.component.ts
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { DarkModeService } from "../../../services/dark-mode.service";
 import { BsLocaleService } from "ngx-bootstrap/datepicker";
@@ -9,10 +10,9 @@ import { validarCnpj, validarCpf, validarEmail } from "../../../services/funcoes
 import { Router } from "@angular/router";
 import { pontuarDocumento } from 'src/app/services/funcoesDiversas';
 import { DetailsDDDModel, estados } from "../../../Models/DetailsDDD.Model";
-import {environment} from "../../../../environments/environment";
 import { StatusCodes } from 'src/app/Models/StatusCodes';
-import { User } from '../../../Models/UserData.Model';
 import {LoginService} from "../../../services/login.service";
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -52,10 +52,12 @@ export class SignUpComponent implements OnInit {
     private route:Router,
     private localeService:BsLocaleService,
     private http:HttpClient,
-    private loginService:LoginService
+    private loginService:LoginService,
+    @Inject('BASE_URL') baseUrl:string,
+    @Inject('BACKEND_URL') backendUrl:string
   ) {
-    this.baseUrl = environment.baseUrl;
-    this.backendUrl = environment.backendUrl;
+    this.baseUrl = baseUrl;
+    this.backendUrl = backendUrl;
   }
   /**
    * Indica o menu de assistente...
@@ -69,7 +71,7 @@ export class SignUpComponent implements OnInit {
     this.localeService.use('pt-br');
   }
   /**
-   * clique no botão 'Limpar form'
+   * clique do botão 'Limpar form'
    */
   resetForm(){
     this.modelData.usuario.nome = '';
@@ -145,7 +147,7 @@ export class SignUpComponent implements OnInit {
    * Enquanto os dados estiverem INVÁLIDOS, o botão de cadastro de usuários fica desativado.
    */
   botaoCadastroDesativado = true;
-  validarCampos(){
+  validarCampos():boolean{
     this.modelarDocumento();
     let isPF = (['pf','PF','pF','Pf']).some(val=>val===this.modelData.usuario.documento.tipo);
     this.existenciaDeInfoValida.documento = isPF ?
@@ -166,6 +168,7 @@ export class SignUpComponent implements OnInit {
       this.leituraConfirmada
     ];
     this.botaoCadastroDesativado = testesDeValidos.some(val=>!val);
+    return !testesDeValidos.some(val=>!val);
   }
 
   documentoModelado ="";
@@ -200,6 +203,9 @@ export class SignUpComponent implements OnInit {
   detalhesErros: { erro: number | null, mensagem: string | null } = { erro: 0, mensagem: '' };
 
   enviarDados(){
+    if(!this.validarCampos())
+      return;
+    this.currentAccordion = 999; //Mostra a "bolinha" de "carregando"...
     let json = JSON.stringify(this.modelData);
     let headerToPost = new HttpHeaders();
     headerToPost.set('content-type','application/json;charset=utf-8');
@@ -210,10 +216,9 @@ export class SignUpComponent implements OnInit {
       usuario: UserDataModel | undefined,
       erro: number | string | null | undefined,
       mensagen: string | null | undefined
-    }>(this.backendUrl + "usuario/cadastrar", json,  {headers:headerToPost})
+    }>(this.backendUrl + "/usuarios/cadastrar", json,  {headers:headerToPost})
       .subscribe({
         next: retorno => {
-          this.currentAccordion = 999; //Mostra a "bolinha" de "carregando"...
           if (!!retorno.erro && !!retorno.mensagen) {
             this.detalhesErros.erro = typeof(retorno.erro) !== 'number' ? parseInt(retorno.erro) : retorno.erro;
             this.detalhesErros.mensagem = retorno.mensagen;
@@ -223,15 +228,19 @@ export class SignUpComponent implements OnInit {
           this.currentAccordion = 5; //Dá as boas vindas, mostrando um contador para redirecionamento.
           if(!!retorno.jwt && !!retorno.validade)
             this.loginService.fazerLogin(retorno.jwt,retorno.validade,retorno.usuario);
-          do {
-            setTimeout(()=>{
-              --this.contadorRegressivoPosCadastro;
-            },1000);
-          } while (this.contadorRegressivoPosCadastro > 0);
-          this.route.navigate(['/dashboard']);
+          this.timerRedirecionamento();
         },
         error: err => console.log(err)
       });
+  }
+
+  timerRedirecionamento(){
+    do {
+      setTimeout(()=>{
+        this.contadorRegressivoPosCadastro = this.contadorRegressivoPosCadastro - 1;
+      },1000);
+    } while (this.contadorRegressivoPosCadastro > 0);
+    this.route.navigate(['/dashboard']);
   }
 
   //#region "Caixa Modal"
@@ -268,7 +277,7 @@ export class SignUpComponent implements OnInit {
     this.limparDados(operation);
     this.fecharModal(modal);
   }
-  aoAlterarDadosDoModal(data:'phone'|'address'):void{
+  aoAlterarDadosDoModal(data:'phone'|'address'){
     switch(data){
       case 'phone':
         this.aoAlterarDadosDoTelefone();
@@ -316,20 +325,22 @@ export class SignUpComponent implements OnInit {
   //#region "Telefone"
 
   readonly dadosModalTelefone:Phone = new Phone();
-  private listOfDDD?:DetailsDDDModel[];
+  private listOfDDD:DetailsDDDModel[] = [];
   regexValidaNumTel = /^(([2-4]\d{3})|((9[6-9])\d{3}))-?\d{4}$/;
   private carregarTodosOsDDDs(){
-    this.http.get<DetailsDDDModel[]>(this.baseUrl + 'assets/API/listaDeDDDs.json').subscribe({
-      next:value => {
-        this.listOfDDD = value;
-        this.listOfDDD.forEach(val=>{
+    if(!this.darkMode.suporteDarkMode)
+      return;
+    this.http.get<DetailsDDDModel[]>(this.baseUrl + 'assets/API/listaDeDDDs.json').subscribe(valor => {
+        this.listOfDDD.splice(0);
+        valor.forEach(ddd => this.listOfDDD.push(ddd));
+        this.listOfDDD.forEach(ddd=>{
           let optEl = document.createElement('option');
-          optEl.value = `${val.prefixo}`;
-          optEl.innerHTML = `${val.prefixo} - ${val.estado}`;
+          optEl.value = `${ddd.prefixo}`;
+          optEl.innerHTML = `${ddd.prefixo} - ${ddd.estado}`;
           document.getElementById('field-ddd')?.appendChild(optEl);
         })
       }
-    });
+    );
   }
   formatarTelefone(posicao: number) : string {
     let numero = this.modelData.telefones[posicao].numero;
@@ -354,6 +365,8 @@ export class SignUpComponent implements OnInit {
     return `${parte1}-${parte2}`;
   }
   changeDDD(value:string){
+    if(!this.darkMode.suporteDarkMode)
+      return;
     let div = document.getElementById("detailsOfDDDs");
     let detDDD = this.listOfDDD?.filter(val => val.prefixo === parseInt(value))[0];
     let nomeEstado = estados.filter(val => val.sigla === detDDD?.estado ?? "")[0];
@@ -369,6 +382,8 @@ export class SignUpComponent implements OnInit {
     div?.innerHTML = elementos;
   }
   onChangeSelectDDD(){
+    if(!this.darkMode.suporteDarkMode)
+      return;
     let value = document.getElementById('field-ddd') as HTMLSelectElement;
     this.changeDDD(value?.value ?? "");
     this.aoAlterarDadosDoModal('phone');
@@ -397,7 +412,7 @@ export class SignUpComponent implements OnInit {
     this.dadosModalTelefone.appsMensageiros.weChat = false;
     this.dadosModalTelefone.appsMensageiros.mensagemTexto = false;
   }
-  private carregarDadosParaAtualizarTelefone(posicao:number):void{
+  private carregarDadosParaAtualizarTelefone(posicao:number){
     this.dadosModalTelefone.codigoArea = this.modelData.telefones[posicao].codigoArea;
     this.dadosModalTelefone.chamadas = this.modelData.telefones[posicao].chamadas;
     this.dadosModalTelefone.numero = this.modelData.telefones[posicao].numero;
@@ -407,7 +422,7 @@ export class SignUpComponent implements OnInit {
     this.dadosModalTelefone.appsMensageiros.weChat = this.modelData.telefones[posicao].appsMensageiros.weChat;
     this.dadosModalTelefone.appsMensageiros.whatsApp = this.modelData.telefones[posicao].appsMensageiros.whatsApp;
   }
-  private atualizarTelefone():void{
+  private atualizarTelefone(){
     this.modelData.telefones[this.indexDataToEdit].codigoArea = this.dadosModalTelefone.codigoArea;
     this.modelData.telefones[this.indexDataToEdit].chamadas = this.dadosModalTelefone.chamadas;
     this.modelData.telefones[this.indexDataToEdit].numero = this.dadosModalTelefone.numero;
@@ -418,7 +433,7 @@ export class SignUpComponent implements OnInit {
     this.modelData.telefones[this.indexDataToEdit].appsMensageiros.whatsApp = this.dadosModalTelefone.appsMensageiros.whatsApp;
     this.indexDataToEdit = -1;
   }
-  private adicionarTelefone():void{
+  private adicionarTelefone(){
     let dataPhone = new Phone();
     dataPhone.codigoArea = this.dadosModalTelefone.codigoArea;
     dataPhone.chamadas = this.dadosModalTelefone.chamadas;
@@ -430,7 +445,7 @@ export class SignUpComponent implements OnInit {
     dataPhone.appsMensageiros.whatsApp = this.dadosModalTelefone.appsMensageiros.whatsApp;
     this.modelData.telefones.push(dataPhone);
   }
-  private removerTelefone(index:number):void{
+  private removerTelefone(index:number){
     let msgConfirm = 'Tem certeza que deseja remover o ';
     msgConfirm += `"${this.modelData.telefones[index].descricao}", cujo o número é `;
     msgConfirm += `(${this.modelData.telefones[index].codigoArea}) ${this.modelData.telefones[index].numero}`;
@@ -449,10 +464,10 @@ export class SignUpComponent implements OnInit {
   private todosEstados:string[] = [];
 
   private carregarEstados(){
+    if(!this.darkMode.suporteDarkMode)
+      return;
     this.http.get<IbgeBase[]>('https://servicodados.ibge.gov.br/api/v1/localidades/estados', {
-      params:{
-        "view":"nivelado"
-      }
+      params:{ "view":"nivelado" }
     }).subscribe({
       next:value => {
         let _regiao:IBGEInterno[] = [
@@ -488,6 +503,8 @@ export class SignUpComponent implements OnInit {
   }
   readonly dadosModalEndereco:Address = new Address();
   buscarCep() {
+    if(!this.darkMode.suporteDarkMode)
+      return;
     this.aoAlterarDadosDoModal('address');
     if(!this.regexTestaCep.test(this.dadosModalEndereco.cep)){
       this.cepInvalido = true;
@@ -514,6 +531,8 @@ export class SignUpComponent implements OnInit {
     });
   }
   onChangeSelectProvince() {
+    if(!this.darkMode.suporteDarkMode)
+      return;
     this.aoAlterarDadosDoModal('address');
     let estado = this.dadosModalEndereco.estado;
     this.http.get<Array<{ "municipio-nome"?: string }>>(
@@ -564,7 +583,7 @@ export class SignUpComponent implements OnInit {
     this.dadosModalEndereco.numero = "";
     this.dadosModalEndereco.descricao = "";
   }
-  private carregarDadosParaAtualizarEndereco(posicao:number):void{
+  private carregarDadosParaAtualizarEndereco(posicao:number){
     this.dadosModalEndereco.estado = this.modelData.enderecos[posicao].estado;
     this.dadosModalEndereco.cep = this.modelData.enderecos[posicao].cep;
     this.dadosModalEndereco.bairro = this.modelData.enderecos[posicao].bairro;
@@ -575,7 +594,7 @@ export class SignUpComponent implements OnInit {
     this.dadosModalEndereco.numero = this.modelData.enderecos[posicao].numero;
     this.dadosModalEndereco.descricao = this.modelData.enderecos[posicao].descricao;
   }
-  private atualizarEndereco():void{
+  private atualizarEndereco(){
     this.modelData.enderecos[this.indexDataToEdit].estado = this.dadosModalEndereco.estado;
     this.modelData.enderecos[this.indexDataToEdit].cep = this.dadosModalEndereco.cep;
     this.modelData.enderecos[this.indexDataToEdit].bairro = this.dadosModalEndereco.bairro;
@@ -587,7 +606,7 @@ export class SignUpComponent implements OnInit {
     this.modelData.enderecos[this.indexDataToEdit].descricao = this.dadosModalEndereco.descricao;
     this.indexDataToEdit = -1;
   }
-  private adicionarEndereco():void{
+  private adicionarEndereco(){
     let dataAddress = new Address();
     dataAddress.estado = this.dadosModalEndereco.estado;
     dataAddress.cep = this.dadosModalEndereco.cep;
@@ -600,7 +619,7 @@ export class SignUpComponent implements OnInit {
     dataAddress.descricao = this.dadosModalEndereco.descricao;
     this.modelData.enderecos.push(dataAddress);
   }
-  private removerEndereco(index:number):void{
+  private removerEndereco(index:number){
     let msgConfirm = 'Tem certeza que deseja remover este endereço?';
     if(confirm(msgConfirm))
       this.modelData.telefones.splice(index,1);

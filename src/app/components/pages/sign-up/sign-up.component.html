@@ -1,4 +1,6 @@
+<!-- Arquivo: src/app/components/pages/sign-up/sign-up.component.html -->
 <form method="post" #formCadastro="ngForm" action="javascript:void(this);" class="container-xg container" (reset)="resetForm()" (ngSubmit)="enviarDados()" ngForm>
+
   <!-- Apresentação -->
   <div *ngIf="currentAccordion === 0" class="text-center centro borda-mais-arredondada">
     <h1 class="h1">Que bom termos você como nosso cliente!</h1>
@@ -16,11 +18,12 @@
 
     </div>
     <div class="text-end">
-      <button (click)="currentAccordion=currentAccordion+1;" class="btn btn-primary borda-mais-arredondada">
+      <button type="button" (click)="currentAccordion=currentAccordion+1;" class="btn btn-primary borda-mais-arredondada">
         Próximo passo <span class="nf nf-fa-arrow_right"></span>
       </button>
     </div>
   </div>
+
   <!-- Dados de Acesso -->
   <div *ngIf="currentAccordion === 1" class="centro borda-mais-arredondada">
     <h1 class="h1">Dados de acesso</h1>
@@ -77,11 +80,11 @@
       </div>
       <div class="form-floating text-dark">
         <input type="password" id="fieldConfirmarSenha" name="confirmaSenha" [(ngModel)]="confirmacaoSenha"
-               [ngClass]="{
+           [ngClass]="{
               'form-control bg-white opacity-100 borda-mais-arredondada':true,
               'is-invalid':modelData.senha === '' || modelData.senha !== confirmacaoSenha,
               'is-valid':modelData.senha !== '' && modelData.senha === confirmacaoSenha
-            }" (change)="validatePwd()" (keyup)="validatePwd()"
+           }" (change)="validatePwd()" (keyup)="validatePwd()"
                placeholder="Sμ@-$€nh4" required minlength="7" maxlength="15" [pattern]="regexTestSenha.source">
         <label for="fieldConfirmarSenha">Confirme sua senha*</label>
       </div>
@@ -120,18 +123,19 @@
     <div class="container">
       <div class="row">
         <div class="col text-start">
-          <button (click)="currentAccordion=currentAccordion-1;" class="btn btn-primary borda-mais-arredondada ">
+          <button type="button" (click)="currentAccordion=currentAccordion-1;" class="btn btn-primary borda-mais-arredondada ">
             <span class="nf nf-fa-arrow_left"></span> Passo anterior
           </button>
         </div>
         <div class="col text-end">
-          <button (click)="currentAccordion=currentAccordion+1;" class="btn btn-primary borda-mais-arredondada ">
+          <button type="button" (click)="currentAccordion=currentAccordion+1;" class="btn btn-primary borda-mais-arredondada ">
             Próximo passo <span class="nf nf-fa-arrow_right"></span>
           </button>
         </div>
       </div>
     </div>
   </div>
+
   <!-- Dados Pessoais -->
   <div *ngIf="currentAccordion === 2" class="centro borda-mais-arredondada">
     <h1 class="h1">Dados Pessoais</h1>
@@ -195,7 +199,8 @@
           existenciaDeInfoValida.documento ? 'is-valid' : 'is-invalid'
         ]" [(ngModel)]="modelData.usuario.documento.numero">
         <label for="fieldDocument">
-          Informe seu {{modelData.usuario.documento.tipo === 'PJ' ? 'CNPJ' : 'CPF'}}*</label>
+          Informe seu {{modelData.usuario.documento.tipo === 'PJ' ? 'CNPJ' : 'CPF'}}*
+        </label>
       </div>
       <alert [isOpen]="existenciaDeInfoValida.userExistenteDocumento" type="danger">
         <h3 class="h3">
@@ -220,7 +225,7 @@
             </div>
           </div>
           <div class="col-2">
-            <button [ngClass]="[
+            <button type="button" [ngClass]="[
               'animated-button btn-largo borda-mais-arredondada btn me-2',
               darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
             ]" (click)="dtBday.toggle()" [attr.aria-expanded]="dtBday.isOpen">
@@ -284,10 +289,12 @@
                 WeChat:
                 <span [ngClass]="['nf',telefone.appsMensageiros.weChat ?'nf-fa-check color-success' : 'nf-fa-remove color-danger']"></span>
               </p>
-              <button class="btn btn-danger borda-mais-arredondada padding-zero" (click)="removerDados(indice,'phone')">
+              <button type="button" class="btn btn-danger borda-mais-arredondada padding-zero"
+                      (click)="removerDados(indice,'phone')">
                 <span class="nf nf-fa-trash"></span> Remover
               </button>
-              <button class="btn btn-primary borda-mais-arredondada padding-zero" (click)="abrirCaixaModal(modalAddPhone,'U','phone',indice)">
+              <button type="button" class="btn btn-primary borda-mais-arredondada padding-zero"
+                      (click)="abrirCaixaModal(modalAddPhone,'U','phone',indice)">
                 <span class="nf nf-fa-pencil"></span> Editar
               </button>
             </div>
@@ -295,16 +302,17 @@
         </div>
         <div class="row">
           <div class="col">
-            <button (click)="abrirCaixaModal(modalAddPhone,'C','phone')" [ngClass]="[
-                'animated-button hover-blue borda-mais-arredondada btn me-2',
-                darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
-            ]">
-              <span class="line-animation line-animation-main"></span>
-              <span class="line-animation line-animation-main"></span>
-              <span class="line-animation line-animation-main"></span>
-              <span class="line-animation line-animation-main"></span>
-              <span class="nf nf-mdi-phone_plus"></span>
-              Adicionar um telefone
+            <button (click)="abrirCaixaModal(modalAddPhone,'C','phone')"
+              type="button" [ngClass]="[
+                  'animated-button hover-blue borda-mais-arredondada btn me-2',
+                  darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
+              ]">
+                <span class="line-animation line-animation-main"></span>
+                <span class="line-animation line-animation-main"></span>
+                <span class="line-animation line-animation-main"></span>
+                <span class="line-animation line-animation-main"></span>
+                <span class="nf nf-mdi-phone_plus"></span>
+                Adicionar um telefone
             </button>
           </div>
         </div>
@@ -334,10 +342,11 @@
               <p class="card-text"><strong>Cidade:</strong> {{endereco.municipio}}</p>
               <p class="card-text"><strong>Estado:</strong> {{endereco.estado}}</p>
               <p class="card-text"><strong>CEP:</strong> {{endereco.cep}}</p>
-              <button class="btn btn-danger borda-mais-arredondada padding-zero" (click)="removerDados(indice,'address')">
+              <button class="btn btn-danger borda-mais-arredondada padding-zero" type="button" (click)="removerDados(indice,'address')">
                 <span class="nf nf-fa-trash"></span> Remover
               </button>
-              <button class="btn btn-primary borda-mais-arredondada padding-zero" (click)="abrirCaixaModal(modalAddAddress,'U','address',indice)">
+              <button class="btn btn-primary borda-mais-arredondada padding-zero" type="button"
+                      (click)="abrirCaixaModal(modalAddAddress,'U','address',indice)">
                 <span class="nf nf-fa-pencil"></span> Editar
               </button>
             </div>
@@ -345,16 +354,17 @@
         </div>
         <div class="row">
           <div class="col">
-            <button (click)="abrirCaixaModal(modalAddAddress,'C','address')" [ngClass]="[
-                'animated-button hover-blue borda-mais-arredondada btn me-2',
-                darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
-            ]">
-              <span class="line-animation line-animation-main"></span>
-              <span class="line-animation line-animation-main"></span>
-              <span class="line-animation line-animation-main"></span>
-              <span class="line-animation line-animation-main"></span>
-              <span class="nf nf-mdi-google_maps"></span>
-              Adicionar um Endereço
+            <button (click)="abrirCaixaModal(modalAddAddress,'C','address')"
+               type="button" [ngClass]="[
+                  'animated-button hover-blue borda-mais-arredondada btn me-2',
+                  darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
+              ]">
+                <span class="line-animation line-animation-main"></span>
+                <span class="line-animation line-animation-main"></span>
+                <span class="line-animation line-animation-main"></span>
+                <span class="line-animation line-animation-main"></span>
+                <span class="nf nf-mdi-google_maps"></span>
+                Adicionar um Endereço
             </button>
           </div>
         </div>
@@ -363,18 +373,19 @@
     <div class="container">
       <div class="row">
         <div class="col text-start">
-          <button (click)="currentAccordion=currentAccordion-1;" class="btn btn-primary borda-mais-arredondada">
+          <button type="button" (click)="currentAccordion=currentAccordion-1;" class="btn btn-primary borda-mais-arredondada">
             <span class="nf nf-fa-arrow_left"></span> Passo anterior
           </button>
         </div>
         <div class="col text-end">
-          <button (click)="currentAccordion=currentAccordion+1;" class="btn btn-primary borda-mais-arredondada ">
+          <button type="button" (click)="currentAccordion=currentAccordion+1;" class="btn btn-primary borda-mais-arredondada ">
             Próximo passo <span class="nf nf-fa-arrow_right"></span>
           </button>
         </div>
       </div>
     </div>
   </div>
+
   <!-- Contrato e Termos e Uso -->
   <div *ngIf="currentAccordion === 3" id="termos-de-uso" class="centro borda-mais-arredondada">
     <h1 class="h1">Termos de uso e política de privacidade</h1>
@@ -406,18 +417,19 @@
       </alert>
       <div class="row">
         <div class="col text-start">
-          <button (click)="currentAccordion=currentAccordion-1;" class="btn btn-primary borda-mais-arredondada ">
+          <button type="button" (click)="currentAccordion=currentAccordion-1;" class="btn btn-primary borda-mais-arredondada ">
             <span class="nf nf-fa-arrow_left"></span> Passo anterior
           </button>
         </div>
         <div class="col text-end">
-          <button (click)="currentAccordion=currentAccordion+1;" class="btn btn-primary borda-mais-arredondada ">
+          <button type="button" (click)="currentAccordion=currentAccordion+1;" class="btn btn-primary borda-mais-arredondada ">
             Próximo passo <span class="nf nf-fa-arrow_right"></span>
           </button>
         </div>
       </div>
     </div>
   </div>
+
   <!-- Confirmação de dados -->
   <div *ngIf="currentAccordion === 4" class="centro borda-mais-arredondada">
     <h1 class="h1">Finalização</h1>
@@ -534,7 +546,7 @@
     <div class="container">
       <div class="row">
         <div class="col text-start">
-          <button (click)="currentAccordion=currentAccordion-1;" class="btn btn-primary borda-mais-arredondada ">
+          <button type="button" (click)="currentAccordion=currentAccordion-1;" class="btn btn-primary borda-mais-arredondada ">
             <span class="nf nf-fa-arrow_left"></span> Passo anterior
           </button>
         </div>
@@ -567,33 +579,37 @@
       </div>
     </div>
   </div>
-</form>
-<!-- "bolinha" de carregando... -->
-<div *ngIf="currentAccordion === 999" class="text-center container container-pq">
-  <div class="centro">
-    <div style="width:300px !important; height:300px !important;"
-         [ngClass]="['spinner-border', darkMode.isDarkMode ? 'text-light' : 'text-dark']"
-         role="status">
-      <span class="visually-hidden">Carregando, por favor aguarde...</span>
+
+  <!-- "bolinha" de carregando... -->
+  <div *ngIf="currentAccordion === 999" class="text-center container container-pq">
+    <div class="centro">
+      <div style="width:300px !important; height:300px !important;"
+           [ngClass]="['spinner-border', darkMode.isDarkMode ? 'text-light' : 'text-dark']"
+           role="status">
+        <span class="visually-hidden">Carregando, por favor aguarde...</span>
+      </div>
     </div>
   </div>
-</div>
-<!-- Término e boas-vindas ao usuário (além de registrar sessão) -->
-<div *ngIf="currentAccordion === 5" class="centro borda-mais-arredondada">
-  <div [ngClass]="{
+
+  <!-- Término e boas-vindas ao usuário (além de registrar sessão) -->
+  <div *ngIf="currentAccordion === 5" class="centro borda-mais-arredondada">
+    <div [ngClass]="{
           'bg-opacity-75 bg-dark text-light': darkMode.isDarkMode,
           'bg-light text-dark' : !darkMode.isDarkMode,
           'borda-mais-arredondada espacamento-padding':true
       }">
-    <h1 class="h1">Cadastro Concluído!</h1>
-    <h3 class="h3">
-      Seja muito
-      {{(modelData.usuario.genero === 'M' || modelData.usuario.genero === 'm') ? 'bem-vindo' : 'bem-vinda'}}
-      {{modelData.usuario.nome}}!!!
-    </h3>
-    <h6 class="h6">Voltando para a página inicial em {{contadorRegressivoPosCadastro}}</h6>
+      <h1 class="h1">Cadastro Concluído!</h1>
+      <h3 class="h3">
+        Seja muito
+        {{(modelData.usuario.genero === 'M' || modelData.usuario.genero === 'm') ? 'bem-vindo' : 'bem-vinda'}}
+        {{modelData.usuario.nome}}!!!
+      </h3>
+      <h6 class="h6">Voltando para a página inicial em {{contadorRegressivoPosCadastro}}</h6>
+    </div>
   </div>
-</div>
+
+</form>
+
 
 <!-- Caixa modal para adicionar telefone -->
 <div bsModal #modalAddPhone="bs-modal" class="modal fade" tabindex="-1"
@@ -677,11 +693,11 @@
         </div>
       </div>
       <div class="modal-footer text-end">
-        <button class="btn btn-danger borda-mais-arredondada" (click)="cancelarOperacao(modalAddPhone,'phone')">
+        <button type="button" class="btn btn-danger borda-mais-arredondada" (click)="cancelarOperacao(modalAddPhone,'phone')">
           <span class="nf nf-mdi-cancel"></span> Cancelar
         </button>
         <button class="btn btn-success borda-mais-arredondada" [disabled]="isButtonDisabledModal"
-                (click)="fecharModalComOK(modalAddPhone,'phone')">
+          type="button" (click)="fecharModalComOK(modalAddPhone,'phone')">
           <span [ngClass]="{
             'nf':true,
             'nf-mdi-phone_plus': operation === 'C',
@@ -693,6 +709,7 @@
     </div>
   </div>
 </div>
+
 <!-- Caixa Modal para adicionar Endereço -->
 <div bsModal #modalAddAddress="bs-modal" class="modal fade" tabindex="-1"
      role="dialog" aria-labelledby="dialogo-endereco">
@@ -726,7 +743,7 @@
             <label for="field-cep">CEP *</label>
           </div>
           <div class="col-2">
-            <button class="btn btn-primary btn-largo borda-mais-arredondada" (click)="buscarCep()">
+            <button type="button" class="btn btn-primary btn-largo borda-mais-arredondada" (click)="buscarCep()">
               <span class="nf nf-fa-search"></span>
             </button>
           </div>
@@ -785,10 +802,10 @@
         </div>
       </div>
       <div class="modal-footer text-end">
-        <button class="btn btn-danger borda-mais-arredondada" (click)="cancelarOperacao(modalAddAddress,'address')">
+        <button type="button" class="btn btn-danger borda-mais-arredondada" (click)="cancelarOperacao(modalAddAddress,'address')">
           <span class="nf nf-mdi-cancel"></span> Cancelar
         </button>
-        <button class="btn btn-success borda-mais-arredondada" [disabled]="isButtonDisabledModal"
+        <button type="button" class="btn btn-success borda-mais-arredondada" [disabled]="isButtonDisabledModal"
                 (click)="fecharModalComOK(modalAddAddress,'address')">
           <span [ngClass]="{
             'nf':true,
@@ -801,13 +818,14 @@
     </div>
   </div>
 </div>
-<!-- Caixa Modal para adicionar Endereço -->
+
+<!-- Caixa Modal para relatar erros -->
 <div bsModal #modalDeAlerta="bs-modal" class="modal fade" tabindex="-1"
-     role="dialog" aria-labelledby="dialogo-endereco">
+     role="dialog" aria-labelledby="dialogo-msg-erro">
   <div class="modal-dialog modal-md">
     <div [ngClass]="{'modal-content':true,'fundo-modal-dark-mode':darkMode.isDarkMode}">
       <div class="modal-header">
-        <h4 id="dialogo-endereco" class="modal-title pull-left">
+        <h4 id="dialogo-msg-erro" class="modal-title pull-left">
           {{operation === 'C' ? 'Adicionar novo endereço' : 'Editar endereço'}}
         </h4>
         <button type="button" [class]="['close pull-right btn-close', darkMode.isDarkMode ? 'text-light' : 'text-dark']"
@@ -825,7 +843,7 @@
       </div>
       <div class="modal-footer text-end">
         <!-- Quando clica no botão 'fechar' dentro do modal, automaticamente volta para a confirmação de dados-->
-        <button class="btn btn-danger borda-mais-arredondada" (click)="currentAccordion = 5;fecharModal(modalDeAlerta)">
+        <button class="btn btn-danger borda-mais-arredondada" type="button" (click)="currentAccordion = 5;fecharModal(modalDeAlerta)">
           <span class="nf nf-fa-close"></span> Fechar
         </button>
       </div>

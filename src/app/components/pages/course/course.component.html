@@ -1,3 +1,4 @@
+<!-- Arquivo: src/app/components/pages/course/course.component.html -->
 <div *ngIf="carregamento.concluido && !carregamento.comErro" class="container text-center">
   <h1 class="h1">{{dadosCurso.nome}}</h1>
   <carousel>
@@ -11,9 +12,15 @@
         <div [ngClass]="['font-bolder preco-destaque bg-primary borda-mais-arredondada text-light']">
           {{dadosCurso.preco.toLocaleString('pt-br',{style:'currency',currency:'BRL'})}}
         </div>
-      <button id="addNoCarrinho" class="btn btn-primary" type="button">
+      <button *ngIf="!carrinho.existeCurso(dadosCurso)" [disabled]="!login.existeLogin" id="addNoCarrinho"
+              class="btn btn-primary" (click)="carrinho.addCurso(dadosCurso)" type="button">
         <span class="nf nf-mdi-cart"></span>
         Compar este curso
+      </button>
+      <button *ngIf="carrinho.existeCurso(dadosCurso)" [disabled]="!login.existeLogin" id="removerDoCarrinho"
+              class="btn btn-danger" (click)="carrinho.removerCurso(dadosCurso)" type="button">
+        <span class="nf nf-mdi-cart_off"></span>
+        Remover este curso
       </button>
     </div>
     <div class="col">

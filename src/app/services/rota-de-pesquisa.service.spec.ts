@@ -1,3 +1,4 @@
+// Arquivo: src/app/services/rota-de-pesquisa.service.spec.ts
 import { TestBed } from '@angular/core/testing';
 
 import { RotaDePesquisaService } from './rota-de-pesquisa.service';

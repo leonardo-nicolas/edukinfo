@@ -1,6 +1,54 @@
-@for $paragrafo from 2 to 50 {
-  #termos-de-uso p:nth-child(#{$paragrafo}):before {
-    content: "__";
-    color: transparent;
-  }
+// Arquivo: src/app/components/pages/sign-up/termos-uso/termos-uso.component.scss
+table {
+  border-collapse:collapse;
+  border-spacing:0;
+  empty-cells:show
 }
+td, th {
+  vertical-align:top;
+  font-size:12pt;
+}
+h1, h2, h3, h4, h5, h6 {
+  clear:both;
+}
+ol, ul {
+  margin:0; padding:0;
+}
+li {
+  list-style: none;
+  margin:0;
+  padding:0;
+}
+span.footnodeNumber {
+  padding-right:1em;
+}
+span.annotation_style_by_filter {
+  font-size:95%;
+  font-family:Arial, sans-serif;
+  background-color:#fff000;
+  margin:0; border:0;
+  padding:0;
+}
+span.heading_numbering {
+  margin-right: 0.8rem;
+}
+* {
+  margin:0;
+}
+.P1 {
+  font-size:12pt;
+  font-family:Ubuntu, Arial, sans-serif;
+  writing-mode:horizontal-tb;
+  direction:ltr;
+}
+.Link {
+  color:#4f81bd;
+}
+.T1 {
+  font-weight:bold;
+}
+.T2 {
+  font-weight:bold;
+}
+/* ODF styles with no properties representable as CSS:
+.T3  { } */

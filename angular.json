@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "prova-ecommerce-faculdade-av1": {
+    "edukinfo-ssr": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/prova-ecommerce-faculdade-av1/browser",
+            "outputPath": "dist/edukinfo-ssr/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -41,7 +41,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "10mb"
+                  "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "prova-ecommerce-faculdade-av1:build:production"
+              "browserTarget": "edukinfo-ssr:build:production"
             },
             "development": {
-              "browserTarget": "prova-ecommerce-faculdade-av1:build:development"
+              "browserTarget": "edukinfo-ssr:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "prova-ecommerce-faculdade-av1:build"
+            "browserTarget": "edukinfo-ssr:build"
           }
         },
         "test": {
@@ -107,21 +107,58 @@
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/prova-ecommerce-faculdade-av1/server",
-            "main": "src/server.ts",
+            "outputPath": "dist/edukinfo-ssr/server",
+            "main": "server.ts",
             "tsConfig": "tsconfig.server.json",
-            "bundleDependencies": false,
-            "optimization": false
-          }
-        },
-        "prerender": {
-          "builder": "@nguniversal/builders:static-generator",
+            "inlineStyleLanguage": "scss"
+          },
           "configurations": {
             "production": {
-              "browserTarget": "prova-ecommerce-faculdade-av1:build:production"
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
             },
             "development": {
-              "browserTarget": "prova-ecommerce-faculdade-av1:build:development"
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "edukinfo-ssr:build:development",
+              "serverTarget": "edukinfo-ssr:server:development"
+            },
+            "production": {
+              "browserTarget": "edukinfo-ssr:build:production",
+              "serverTarget": "edukinfo-ssr:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "edukinfo-ssr:build:production",
+              "serverTarget": "edukinfo-ssr:server:production"
+            },
+            "development": {
+              "browserTarget": "edukinfo-ssr:build:development",
+              "serverTarget": "edukinfo-ssr:server:development"
             }
           },
           "defaultConfiguration": "production"
@@ -129,5 +166,5 @@
       }
     }
   },
-  "defaultProject": "prova-ecommerce-faculdade-av1"
+  "defaultProject": "edukinfo-ssr"
 }

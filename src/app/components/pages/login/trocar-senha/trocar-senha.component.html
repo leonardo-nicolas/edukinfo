@@ -1,0 +1,99 @@
+<!-- Arquivo: src/app/components/pages/login/login.component.html -->
+
+<div *ngIf="!!usuarioParaRecuperarSenha">
+  <h1 class="h1 mb-3 fw-normal">
+    Olá {{usuarioParaRecuperarSenha}}!
+  </h1>
+  <div *ngIf="!erroDeToken || (!!erroDeToken && !erroDeToken)">
+    <h4 class="h4 mb-3 fw-normal">
+      Informe e confirme sua nova senha!
+    </h4>
+    <div class="form-floating text-dark">
+      <input #senha type="password" id="fieldRecuperacaoSenha" placeholder="Sμ@-$€nh4"
+             [ngClass]="[
+          'form-control bg-white opacity-100 borda-mais-arredondada',
+          senhaAtendeRequisitos ? 'is-valid' : 'is-invalid'
+        ]" (ngModelChange)="validatePwd()" (keyup)="validatePwd()" [(ngModel)]="senhaNova.senha"
+             required minlength="7" maxlength="15" [pattern]="regexTesteSenha" name="senha">
+      <label for="fieldRecuperacaoSenha" class="text-dark">Informe uma senha*</label>
+    </div>
+    <div class="form-floating text-dark">
+      <input type="password" id="fieldRecuperacaoConfirmarSenha" name="confirmaSenha"
+             [(ngModel)]="senhaNova.confirmarSenha" [ngClass]="{
+            'form-control bg-white opacity-100 borda-mais-arredondada':true,
+            'is-invalid':!senhaAtendeRequisitos,'is-valid':senhaAtendeRequisitos}"
+            (ngModelChange)="validatePwd()" (keyup)="validatePwd()"
+            placeholder="Sμ@-$€nh4" required minlength="7" maxlength="15" [pattern]="regexTesteSenha">
+      <label for="fieldRecuperacaoConfirmarSenha">Confirme sua senha*</label>
+    </div>
+    <alert type="warning">
+      <p><strong>Observação IMPORTANTE:</strong></p>
+      <p>A senha deve ao mínimo:</p>
+      <ul class="nf-ul">
+        <li [ngClass]="{
+          'nf-fa-warning text-danger': !validacaoSenha.lwr,
+          'nf-fa-check text-success': validacaoSenha.lwr
+        }">&nbsp;&nbsp;Possuir alguma letra <strong>em minúsculo</strong>.</li>
+        <li [ngClass]="{
+          'nf-fa-warning text-danger': !validacaoSenha.uppr,
+          'nf-fa-check text-success': validacaoSenha.uppr
+        }">&nbsp;&nbsp;Possuir alguma letra <strong>EM MAIÚSCULO</strong>.</li>
+        <li [ngClass]="{
+          'nf-fa-warning text-danger': !validacaoSenha.num,
+          'nf-fa-check text-success': validacaoSenha.num
+        }">&nbsp;&nbsp;Possuir <strong>algum número</strong>.</li>
+        <li [ngClass]="{
+          'nf-fa-warning text-danger': !validacaoSenha.spec,
+          'nf-fa-check text-success': validacaoSenha.spec
+        }">&nbsp;&nbsp;Possuir alguma <strong>"letra" (na verdade caractéres) especiais</strong>.</li>
+        <li [ngClass]="{
+          'nf-fa-warning text-danger': !validacaoSenha.entre7e15,
+          'nf-fa-check text-success': validacaoSenha.entre7e15
+        }">&nbsp;&nbsp;A senha deve possuir entre <strong>7 caractéres</strong> e <strong>15 caractéres</strong>.</li>
+        <li [ngClass]="{
+          'nf-fa-warning text-danger': !validacaoSenha.iguais,
+          'nf-fa-check text-success': validacaoSenha.iguais
+        }">&nbsp;&nbsp;A senha e a confirmação de senha <strong>têm que serem iguais</strong>.</li>
+      </ul>
+      <h5 class="h5">Recomenda-se <span class="fst-italic font-bold">NÃO UTILIZAR</span> a mesma senha que você utiliza em outros serviços, porém isto fica à seu critério!</h5>
+    </alert>
+  </div>
+
+  <alert [dismissible]="true" [isOpen]="!!erroDeToken && erroDeToken"
+  [dismissOnTimeout]="900000" [type]="tipoAlerta">{{msgObtida}}</alert>
+
+</div>
+
+
+<alert [dismissible]="true" [dismissOnTimeout]="900000"
+type="danger" (onClose)="erroDesconhecido = false"
+[isOpen]="erroDesconhecido">{{msgObtida}}</alert>
+
+<alert [dismissible]="true" [dismissOnTimeout]="900000"
+type="danger" (onClose)="senhaTrocada = false"
+[isOpen]="senhaTrocada">{{msgObtida}}</alert>
+
+<div>
+  <button (click)="resetarSenha()" [disabled]="desativaBotaoEnvio"
+  [ngClass]="['animated-button hover-blue borda-mais-arredondada btn me-2',
+  darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark']">
+    <span *ngIf="recuperandoSenha" class="line-animation line-animation-main"></span>
+    <span *ngIf="recuperandoSenha" class="line-animation line-animation-main"></span>
+    <span *ngIf="recuperandoSenha" class="line-animation line-animation-main"></span>
+    <span *ngIf="recuperandoSenha" class="line-animation line-animation-main"></span>
+    <span class="nf nf-mdi-lock_reset"></span>
+    Recuperar minha senha
+  </button>
+  <button type="reset" [ngClass]="[
+  'animated-button hover-red borda-mais-arredondada btn me-2',
+  darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark']">
+    <span class="line-animation line-animation-red"></span>
+    <span class="line-animation line-animation-red"></span>
+    <span class="line-animation line-animation-red"></span>
+    <span class="line-animation line-animation-red"></span>
+    <span class="nf nf-mdi-eraser"></span>
+    Limpar tudo
+  </button>
+</div>
+
+

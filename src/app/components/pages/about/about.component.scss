@@ -1,3 +1,4 @@
+// Arquivo: src/app/components/pages/about/about.component.scss
 @import "../../../../assets/styles/linha-do-tempo";
 
 .foto-socio {
@@ -11,12 +12,27 @@
   object-fit: contain;
   resize: both;
 }
+
+li .nav-item .maior-tamanho-guias {
+  background-color: #fff !important;
+  .nav-link {
+    font-size: 10rem !important;
+  }
+}
+
 .container-socios {
   display: flex;
 }
 .container-socios-grupo {
   min-height: calc(100vh - 90.98px + 40px);
+  width: 100%;
+  background-color: var(--bs-body-bg);
   display: table;
+}
+.altura-maxima{
+  min-height: calc(100vh - 90.98px + 40px);
+  background-color: var(--bs-body-bg);
+  width: 100%;
 }
 .container-socios-foto {
   width: auto;
@@ -51,4 +67,8 @@
     padding: 0;
     border: none;
   }
+}
+
+.tabset >  a {
+  font-size: 1.22rem !important;
 }

@@ -1,16 +1,10 @@
-function getBaseUrl() {
-  return document
-    .getElementsByTagName('base')[0]
-    .href;
-}
-function getBackendUrl() {
-  return document
-    .getElementsByTagName('base')[0]
-    .href;
-}
-
+/**
+ *  Arquivo: src/environments/environment.prod.ts
+ *  Descrição: Arquivo de configuração do ambiente de produção.
+ *  Este arquivo substitui 'enviroment.ts', depois do build para produção.
+ */
 export const environment = {
   production: true,
-  baseUrl:getBaseUrl(),
-  backendUrl:getBackendUrl()
+  backendUrl: "http://edukinfo.localhost/api",
+  baseUrl: "/",
 };

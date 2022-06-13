@@ -1,10 +1,9 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {DarkModeService} from "../../../services/dark-mode.service";
-import {embaralharMatriz} from 'src/app/services/funcoesDiversas';
+// Arquivo: src/app/components/pages/home/home.component.ts
+import { Component, Inject, OnInit } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { DarkModeService } from "../../../services/dark-mode.service";
 import { CarrosselHome } from 'src/app/Models/CarrosselHome.Model';
-import {CursoModel} from "../../../Models/Curso.Model";
-import {environment} from "../../../../environments/environment";
+import { CursoModel } from "../../../Models/Curso.Model";
 
 @Component({
   selector: 'app-home',
@@ -23,15 +22,19 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private httpClient:HttpClient,
-    public darkMode:DarkModeService
+    public darkMode:DarkModeService,
+    @Inject('BASE_URL') baseUrl: string,
+    @Inject('BACKEND_URL') backendUrl: string
   ) {
-    this.baseUrl = environment.baseUrl;
-    this.backendUrl = environment.backendUrl;
+    this.baseUrl = baseUrl;
+    this.backendUrl = backendUrl;
   }
 
-  ngOnInit(): void {
-    this.obterTodasFotosCarrossel();
-    this.obterAlgunsCursos();
+  ngOnInit() {
+    if(this.darkMode.suporteDarkMode) {
+      this.obterTodasFotosCarrossel();
+      this.obterAlgunsCursos();
+    }
   }
 
   readonly atribuirUrl = (url:string) => url.replace('@baseUrl%/',this.baseUrl);

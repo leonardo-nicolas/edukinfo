@@ -1,9 +1,9 @@
+// Arquivo: src/app/components/pages/search/search.component.ts
 import { HttpClient } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CursoModel } from '../../../Models/Curso.Model';
 import { DarkModeService } from 'src/app/services/dark-mode.service';
-import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-search',
@@ -19,10 +19,12 @@ export class SearchComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     public darkMode: DarkModeService,
-    private http:HttpClient
+    private http:HttpClient,
+    @Inject('BASE_URL') baseUrl: string,
+    @Inject('BACKEND_URL') backendUrl: string
   ) {
-    this.baseUrl = environment.baseUrl;
-    this.backendUrl = environment.backendUrl;
+    this.baseUrl = baseUrl;
+    this.backendUrl = backendUrl;
   }
 
   carregamento = {
@@ -35,7 +37,8 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
       this.keywordSearch = params['q'] ?? this.keywordSearch;
-      this.buscarCursosAPI(this.keywordSearch);
+      if(this.darkMode.suporteDarkMode)
+        this.buscarCursosAPI(this.keywordSearch);
     });
   }
 

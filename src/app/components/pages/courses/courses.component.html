@@ -1,6 +1,7 @@
+<!-- Arquivo: src/app/components/pages/courses/courses.component.html -->
 <div *ngIf="carregamento.concluido && !carregamento.comErro" class="container">
   <div class="row flex-row text-center justify-content-lg-center">
-    <div *ngFor="let curso of listagemCursos" [ngClass]="{
+    <div *ngFor="let curso of listagemCursos; let indice = index;" [ngClass]="{
             'card margem-cartao text-start':true,
             'fundo-dark-cartao':darkMode.isDarkMode
           }" style="width:17.5rem;">
@@ -13,8 +14,20 @@
         <h5 class="card-title">{{curso.nome}}</h5>
         <p class="card-text">{{curso.descricao}}</p>
         <p class="card-text">Por apenas {{curso.preco.toLocaleString('pt-br',{style:'currency',currency:'BRL'})}}</p>
-        <a class="card-link" [routerLink]="['/curso',curso.id]">Detalhes completo</a>
-        <a class="card-link">Adicionar ao carrinho</a>
+        <div class="text-start">
+          <button class="btn btn-primary" [routerLink]="['/curso',curso.id]">Detalhes completo</button>
+          <button *ngIf="!carrinho.existeCurso(curso)" class="btn btn-primary" [disabled]="!login.existeLogin" triggers="mouseenter:mouseleave"
+             [popover]="!login.existeLogin ? 'Faça seu Login (Ou cadastre-se) primeiro, para comprar!' : 'Clique aqui para adicionar ao carrinho!'"
+             (click)="adicionarAoCarrinho(indice)">Adicionar ao carrinho
+          </button>
+          <button *ngIf="carrinho.existeCurso(curso)" class="btn btn-danger"
+                  [disabled]="!login.existeLogin" triggers="mouseenter:mouseleave"
+                  [popover]="!login.existeLogin ? 'Faça seu Login (Ou cadastre-se) primeiro, para comprar!' : 'Clique aqui para remover do carrinho!'"
+                  (click)="carrinho.removerCurso(curso)">
+            <span class="nf nf-mdi-cart_off"></span>
+            Remover este curso
+          </button>
+        </div>
       </div>
     </div>
   </div>

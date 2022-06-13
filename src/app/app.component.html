@@ -1,7 +1,22 @@
+<!--
+ * Arquivo: src/app/app.component.html
+-->
 <app-menu></app-menu>
 <main class="containet-xl container-principal topo-no-fixo">
-  <router-outlet></router-outlet>
+  <router-outlet (compositionend)="compEnd($event)" ></router-outlet>
 </main>
-
+<!--
+    <div class="text-center container container-pq">
+      <div class="centro">
+        <div style="
+          width:100% !important; max-width: 400px !important; min-width: 250px !important;
+          height:100% !important; max-height: 400px !important; min-height: 250px !important;
+        "
+             class="spinner-border text-main" role="status">
+          <span class="visually-hidden">Carregando, por favor aguarde...</span>
+        </div>
+      </div>
+    </div>
+-->
 <app-footer></app-footer>
 

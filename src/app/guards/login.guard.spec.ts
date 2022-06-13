@@ -1,3 +1,4 @@
+// Arquivo: src/app/guards/login.guard.spec.ts
 import { TestBed } from '@angular/core/testing';
 
 import { LoginGuard } from './login.guard';

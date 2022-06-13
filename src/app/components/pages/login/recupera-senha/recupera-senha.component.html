@@ -1,0 +1,44 @@
+<!-- Arquivo: src/app/components/pages/login/recupera-senha/recupera-senha.component.html -->
+
+<div>
+  <h1 class="h1 mb-3 fw-normal">Esqueceu sua senha?</h1>
+  <h4 class="h4 mb-3 fw-normal">Calma, vamos recuperar!</h4>
+  <div class="form-floating">
+    <input #fieldEmail type="email" width="30" id="fieldEmail" name="email"
+           class="form-control borda-mais-arredondada" [(ngModel)]="email"
+           placeholder="fulanodetal@email.com.br">
+    <label for="fieldEmail" class="text-dark">Digite aqui seu e-mail</label>
+  </div>
+  <div style="width:100%; height:58px;"></div>
+</div>
+
+<alert [isOpen]="exibeAlerta" (onClose)="fechaAlerta()"
+  [dismissOnTimeout]="900000" [type]="tipoAlerta ?? 'info'">
+      {{msgAlerta ?? ''}}
+</alert>
+
+<div>
+  <button [disabled]="email === '' || !fieldEmail.validity.valid"
+          (click)="recuperarSenha()" [ngClass]="[
+      'animated-button hover-blue borda-mais-arredondada btn me-2',
+      darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
+  ]">
+    <span class="line-animation line-animation-main"></span>
+    <span class="line-animation line-animation-main"></span>
+    <span class="line-animation line-animation-main"></span>
+    <span class="line-animation line-animation-main"></span>
+    <span class="nf nf-mdi-lock_reset"></span>
+    Recuperar minha senha
+  </button>
+  <button type="reset" [ngClass]="[
+      'animated-button hover-red borda-mais-arredondada btn me-2',
+      darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
+  ]">
+    <span class="line-animation line-animation-red"></span>
+    <span class="line-animation line-animation-red"></span>
+    <span class="line-animation line-animation-red"></span>
+    <span class="line-animation line-animation-red"></span>
+    <span class="nf nf-mdi-eraser"></span>
+    Limpar tudo
+  </button>
+</div>

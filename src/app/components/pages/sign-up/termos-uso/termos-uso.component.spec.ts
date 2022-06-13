@@ -1,3 +1,4 @@
+// Arquivo: src/app/components/pages/sign-up/termos-uso/termos-uso.component.spec.ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TermosUsoComponent } from './termos-uso.component';

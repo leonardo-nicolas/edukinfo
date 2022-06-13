@@ -1,73 +1,23 @@
+<!-- Arquivo: src/app/components/pages/login/login.component.html -->
+
 <div class="text-center container container-pq">
-  <form ngForm #formLogin="ngForm" method="post" class="centro" method="post" action="javascript:void(this);" (ngSubmit)="enviarForm();">
+  <form ngForm #formLogin="ngForm" method="post" class="centro" method="post" action="javascript:void(this);">
     <!-- Seção de Login -->
-    <div [ngClass]="{
-      'form-login-escondido':secRecuperarSenha,
-      'form-login-exibido':!secRecuperarSenha
-     }">
-      <h1 class="h1 mb-3 fw-normal">Faça seu login</h1>
-      <h4 class="h4 mb-3 fw-normal">Entre com seu nome de usuário e sua senha</h4>
-      <div class="form-floating">
-        <input type="email" width="30" id="fieldUsuario" name="usuario" class="form-control borda-mais-arredondada" placeholder="fulanodetal@email.com.br">
-        <label for="fieldUsuario">Usuário</label>
-      </div>
-      <div class="form-floating">
-        <input class="form-control borda-mais-arredondada" id="fieldSenha" type="password" width="30" name="senha" placeholder="Sua senha">
-        <label for="fieldSenha">Senha</label>
-      </div>
-      <div style="width:100%; height:58px;"></div>
-    </div>
+    <app-logon *ngIf="!secRecuperarSenha && !secNovaSenha"></app-logon>
+
     <!-- Seção de recuperação de senha -->
-    <div [ngClass]="{
-      'form-rec-senha-escondido':!secRecuperarSenha,
-      'form-rec-senha-exibido':secRecuperarSenha
-    }">
-      <h1 class="h1 mb-3 fw-normal">Esqueceu sua senha?</h1>
-      <h4 class="h4 mb-3 fw-normal">Calma, vamos recuperar!</h4>
-      <div class="form-floating">
-        <input #email type="email" width="30" id="fieldEmail" name="usuario" class="form-control borda-mais-arredondada" placeholder="fulanodetal@email.com.br">
-        <label for="fieldUsuario">Digite aqui seu e-mail</label>
-      </div>
-      <div style="width:100%; height:58px;"></div>
-      <div style="width:100%; height:58px;"></div>
-    </div>
-    <!-- Caixas de alertas -->
-    <alert *ngIf="!secRecuperarSenha" [isOpen]="loginComErro" type="danger" [dismissOnTimeout]="10000" [dismissible]="true">
-      {{mensagemErro}}
-    </alert>
-    <alert *ngIf="secRecuperarSenha" [isOpen]="recuperarSenhaEnviada" [dismissOnTimeout]="10000" type="success">
-      Foi enviado um e-mail para {{email.value}}. Por favor, verifique a caixa de entrada ou de spam!
-    </alert>
-    <div>
-      <button [ngClass]="[
-          'animated-button hover-blue borda-mais-arredondada btn me-2',
-          darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
-      ]">
-        <span class="line-animation line-animation-main"></span>
-        <span class="line-animation line-animation-main"></span>
-        <span class="line-animation line-animation-main"></span>
-        <span class="line-animation line-animation-main"></span>
-        <span *ngIf="!secRecuperarSenha" class="nf nf-oct-sign_in"></span>
-        <span *ngIf="secRecuperarSenha" class="nf nf-mdi-lock_reset"></span>
-        {{secRecuperarSenha ? 'Recuperar minha senha' : 'Login'}}
-      </button>
-      <button type="reset" [ngClass]="[
-          'animated-button hover-red borda-mais-arredondada btn me-2',
-          darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
-      ]">
-        <span class="line-animation line-animation-red"></span>
-        <span class="line-animation line-animation-red"></span>
-        <span class="line-animation line-animation-red"></span>
-        <span class="line-animation line-animation-red"></span>
-        <span class="nf nf-mdi-eraser"></span>
-        Limpar tudo
-      </button>
-    </div>
+    <app-recupera-senha *ngIf="secRecuperarSenha && !secNovaSenha"></app-recupera-senha>
+
+    <!-- Seção de Mudança de senha COM TOKEN -->
+    <app-trocar-senha *ngIf="secNovaSenha && secRecuperarSenha"
+                      [token]="getQueryStringToken()"></app-trocar-senha>
+
+    <!-- Botões para cadastro ou recuperação de senha -->
     <div>
       <button [routerLink]="['/login', secRecuperarSenha ? '':'recuperarSenha']"
-      (click)="secRecuperarSenha=!secRecuperarSenha" [ngClass]="[
-          'btn-large-diskak me-2 borda-mais-arredondada animated-button hover-yellow',
-          darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
+      (click)="clickRecuperaSenha()" type="button" [ngClass]="[
+        'btn-large-diskak me-2 borda-mais-arredondada animated-button hover-yellow',
+        darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
       ]">
         <span class="line-animation line-animation-yellow"></span>
         <span class="line-animation line-animation-yellow"></span>
@@ -79,7 +29,7 @@
       </button>
     </div>
     <div>
-      <button routerLink="/cadastro" [ngClass]="[
+      <button routerLink="/cadastro" type="button" [ngClass]="[
           'btn-large-diskak me-2 borda-mais-arredondada animated-button hover-green',
           darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark'
       ]">

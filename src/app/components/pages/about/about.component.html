@@ -1,100 +1,111 @@
-<tabset type="pills" #guiasInstitucional [justified]="true" [className]="darkMode.isDarkMode ? 'bg-dark' : 'bg-light'">
-  <tab heading="Sobre a Eduk Info" (selectTab)="aoEscolherGuia($event,0)">
-    <div class="container">
-      <h1 class="h1 text-center">História da <span class="fonte-projeto">Eduk Info</span></h1>
-      <h4 class="h4 text-center">Conheça um pouco nossa trajetória</h4>
-      <section class="linha-do-tempo">
-        <section *ngFor="let linhaDoTempo of trajetoriasLinhaDoTempo; let indice = index;"
-                 [ngClass]="['container-linha-do-tempo', indice % 2 === 0 ? 'linha-do-tempo-direita' : 'linha-do-tempo-esquerda']">
-          <section [ngClass]="['conteudo-linha-do-tempo bg-dark',
-            darkMode.isDarkMode ? 'text-light' : 'bg-opacity-25 text-dark'
-          ]">
-            <img [src]="atribuirUrl(linhaDoTempo.imagem)" [alt]="linhaDoTempo.altImg"  width="100%"
-                 [title]="linhaDoTempo.tituloImg" class="borda-mais-arredondada">
-            <h5 class="h5">{{linhaDoTempo.titulo}}</h5>
-            <p>{{linhaDoTempo.texto}}</p>
+<!-- Arquivo: src/app/components/pages/about/about.component.html -->
+<tabset type="pills" #guiasInstitucional [justified]="true"
+        [className]="(darkMode.isDarkMode ? 'bg-dark' : 'bg-light')">
+  <tab customClass="bg-light tabset" heading="Sobre a Eduk Info" (selectTab)="aoEscolherGuia($event,0)">
+    <div class="altura-maxima">
+      <div class="container">
+        <h1 class="h1 text-center">História da <span class="fonte-projeto">Eduk Info</span></h1>
+        <h4 class="h4 text-center">Conheça um pouco nossa trajetória</h4>
+        <section class="linha-do-tempo">
+          <section *ngFor="let linhaDoTempo of trajetoriasLinhaDoTempo; let indice = index;"
+                   [ngClass]="['container-linha-do-tempo', indice % 2 === 0 ? 'linha-do-tempo-direita' : 'linha-do-tempo-esquerda']">
+            <section [ngClass]="['conteudo-linha-do-tempo bg-dark',
+              darkMode.isDarkMode ? 'text-light' : 'bg-opacity-25 text-dark'
+            ]">
+              <img [src]="atribuirUrl(linhaDoTempo.imagem)" [alt]="linhaDoTempo.altImg"  width="100%"
+                   [title]="linhaDoTempo.tituloImg" class="borda-mais-arredondada">
+              <h5 class="h5">{{linhaDoTempo.titulo}}</h5>
+              <p>{{linhaDoTempo.texto}}</p>
+            </section>
           </section>
         </section>
-      </section>
-      <h4 class="h4 text-center">E, até hoje, a gente continua fazendo história!</h4>
+        <h4 class="h4 text-center">E, até hoje, a gente continua fazendo história!</h4>
+      </div>
     </div>
   </tab>
-  <tab heading="Quem somos" (selectTab)="aoEscolherGuia($event,1)">
-    <div class="container container-socios-grupo">
-      <div class="centro">
-        <div *ngFor="let socio of sociosDaEmpresa" [ngClass]="{
-          'row borda-mais-arredondada my-2 p-3 justify-content-between': true,
-          'bg-dark text-light': darkMode.isDarkMode,
-          'bg-light text-dark': !darkMode.isDarkMode
-        }">
-          <div class="col-2 container-socios align-items-center text-center justify-content-center container-socios-foto">
-            <div class="alinhar-no-meio-da-vertical text-center alinhar-ao-meio">
-              <img [src]="atribuirUrl(socio.foto)" class="foto-socio" [alt]="socio.nome.toUpperCase()"/>
+  <tab customClass="bg-light tabset" heading="Quem somos" (selectTab)="aoEscolherGuia($event,1)">
+    <div class="container-socios-grupo">
+      <div class="container">
+        <div class="centro">
+          <div *ngFor="let socio of sociosDaEmpresa" [ngClass]="{
+            'row borda-mais-arredondada my-2 p-3 justify-content-between': true,
+            'bg-dark text-light': darkMode.isDarkMode,
+            'bg-light text-dark': !darkMode.isDarkMode
+          }">
+            <div class="col-2 container-socios align-items-center text-center justify-content-center container-socios-foto">
+              <div class="alinhar-no-meio-da-vertical text-center alinhar-ao-meio">
+                <img [src]="atribuirUrl(socio.foto)" class="foto-socio" [alt]="socio.nome.toUpperCase()"/>
+              </div>
             </div>
-          </div>
-          <div class="col text-center align-items-center alinhar-ao-meio container-socios mx-1">
-            <div class="alinhar-no-meio-da-vertical alinhar-ao-meio">
-              <h1 class="h1">{{socio.nome}}</h1>
-              <h5 class="h5">{{formataMatricula(socio.matricula)}}</h5>
-              <p class="text-center">
-                Sócio, {{preencheCargos(socio.cargos)}}
-              </p>
+            <div class="col text-center align-items-center alinhar-ao-meio container-socios mx-1">
+              <div class="alinhar-no-meio-da-vertical alinhar-ao-meio">
+                <h1 class="h1">{{socio.nome}}</h1>
+                <h5 class="h5">{{formataMatricula(socio.matricula)}}</h5>
+                <p class="text-center">
+                  Sócio, {{preencheCargos(socio.cargos)}}
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </tab>
-  <tab heading="Missão, Visão e Valores" (selectTab)="aoEscolherGuia($event,2)">
-    <div class="container text-justified">
-      <app-about-collective></app-about-collective>
+  <tab customClass="bg-light tabset" heading="Missão, Visão e Valores" (selectTab)="aoEscolherGuia($event,2)">
+    <div class="text-justified altura-maxima">
+      <div class="container">
+        <app-about-collective></app-about-collective>
+      </div>
     </div>
   </tab>
   <!-- TODO: Colocar link para abrir direto no aplicativo de mapa -->
-  <!-- TODO: Colocar as fotos das instalações das unidades -->
   <!-- TODO: Colocar uma prévia de visualização de mapa. -->
-  <tab heading="Nossas Redes" (selectTab)="aoEscolherGuia($event,3)">
-    <div class="container container-socios-grupo">
-      <div class="centro">
-        <div class="row flex-row text-center justify-content-lg-center">
-          <div *ngFor="let unidade of unidades" style="width: 15rem;" [ngClass]="{
-              'card m-1':true,
-              'fundo-dark-cartao':darkMode.isDarkMode
-            }">
-            <div class="card-img">
-              <carousel>
-                <slide>
-
-                </slide>
-              </carousel>
-              <img [src]="atribuirUrl('@baseUrl%/assets/images/AdobeStock_231662305.jpeg')" [alt]="'Localização da ' + unidade.descricao" style="display: block; width: 100%;">
-            </div>
-            <div class="card-body cartao-unidade">
-              <h5 class="card-title">{{unidade.descricao}}</h5>
-              <p class="card-text">{{unidade.endereco}} {{unidade.numero}}</p>
-              <p *ngIf="unidade.complemento !== ''" class="card-text">{{unidade.complemento}}</p>
-              <p class="card-text">{{unidade.bairro}}</p>
-              <p class="card-text">{{unidade.municipio}} - {{unidade.estado}}</p>
-              <p class="card-text">CEP: {{formataCep(unidade.cep)}}</p>
-              <a href="https://maps.google.com/" target="_tab" class="btn btn-primary">Abrir no Google Maps</a>
+  <tab customClass="bg-light tabset" heading="Nossas Redes" (selectTab)="aoEscolherGuia($event,3)">
+    <div class="container-socios-grupo altura-maxima">
+      <div class="container">
+        <div class="centro">
+          <div class="row flex-row text-center justify-content-lg-center">
+            <div *ngFor="let unidade of unidades" style="width: 15rem;" [ngClass]="{
+                'card m-1':true,
+                'fundo-dark-cartao':darkMode.isDarkMode
+              }">
+              <div class="card-img">
+                <carousel>
+                  <slide *ngFor="let slide of unidade.fotos">
+                    <img [src]="atribuirUrl(slide.url)"
+                         [alt]="slide.altTxt" [title]="slide.descricao" style="display: block; width: 100%;">
+                  </slide>
+                </carousel>
+              </div>
+              <div class="card-body cartao-unidade">
+                <h5 class="card-title">{{unidade.descricao}}</h5>
+                <p class="card-text">{{unidade.endereco}} {{unidade.numero}}</p>
+                <p *ngIf="unidade.complemento !== ''" class="card-text">{{unidade.complemento}}</p>
+                <p class="card-text">{{unidade.bairro}}</p>
+                <p class="card-text">{{unidade.municipio}} - {{unidade.estado}}</p>
+                <p class="card-text">CEP: {{formataCep(unidade.cep)}}</p>
+                <a href="https://maps.google.com/" target="_tab" class="btn btn-primary">Abrir no Google Maps</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </tab>
-  <tab heading="Perguntas Frequentes" (selectTab)="aoEscolherGuia($event,4)">
-    <div class="container container-socios-grupo">
-      <div class="centro">
-        <div *ngFor="let faq of perguntasFrequentes" [ngClass]="{
-          'row borda-mais-arredondada my-2 p-3 justify-content-between': true,
-          'bg-dark text-light': darkMode.isDarkMode,
-          'bg-light text-dark': !darkMode.isDarkMode
-        }">
-          <div class="col padding-zero margem-totalmente-zero alinhar-ao-meio">
-            <div class="text-start margem-totalmente-zero alinhar-no-inicio">
-              <h5 class="h5 text-start">{{faq.pergunta}}</h5>
-              <p class="text-justified">{{faq.resposta}}</p>
+  <tab customClass="bg-light tabset" heading="Perguntas Frequentes" (selectTab)="aoEscolherGuia($event,4)">
+    <div class="container-socios-grupo altura-maxima">
+      <div class="container">
+        <div class="centro">
+          <div *ngFor="let faq of perguntasFrequentes" [ngClass]="{
+            'row borda-mais-arredondada my-2 p-3 justify-content-between': true,
+            'bg-dark text-light': darkMode.isDarkMode,
+            'bg-light text-dark': !darkMode.isDarkMode
+          }">
+            <div class="col padding-zero margem-totalmente-zero alinhar-ao-meio">
+              <div class="text-start margem-totalmente-zero alinhar-no-inicio">
+                <h5 class="h5 text-start">{{faq.pergunta}}</h5>
+                <p class="text-justified">{{faq.resposta}}</p>
+              </div>
             </div>
           </div>
         </div>

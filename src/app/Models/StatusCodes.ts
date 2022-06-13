@@ -1,4 +1,4 @@
-
+// Arquivo: src/app/Models/StatusCodes.ts
 export enum StatusCodes
 {
     Desconhecido = 0,

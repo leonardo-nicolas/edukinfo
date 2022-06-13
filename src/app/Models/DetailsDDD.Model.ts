@@ -1,3 +1,4 @@
+// Arquivo: src/app/Models/DetailsDDD.Model.ts
 export interface DetailsDDDModel {
   prefixo:number;
   estado:string;

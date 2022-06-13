@@ -1,0 +1,243 @@
+<!-- Arquivo: src/app/components/pages/checkout/checkout.component.html -->
+<form ngForm class="align-content-center text-center container container-xg" #frmCheckout="ngForm" method="post"
+      (reset)="checkout.limparTudo()" (ngSubmit)="realizarPagamento($event)">
+  <div class="centro"><!--  -->
+    <div class="row g-5">
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-primary">Seu carrinho de compras do curso...</span>
+          <span class="badge bg-primary rounded-pill">{{carrinho.totalItens}}</span>
+        </h4>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-sm"
+              *ngFor="let curso of carrinho.cursos; let posicaoArray = index;">
+            <div>
+              <h6 class="my-0">{{posicaoArray+1}}. {{curso.descricao}}</h6>
+              <small class="text-muted">{{curso.descricao}}</small>
+            </div>
+            <span class="text-muted">{{curso.preco|currency:'BRL':true}}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Subtotal</span>
+            <strong>{{carrinho.subtotal|currency:'BRL':true}}</strong>
+          <li class="list-group-item d-flex justify-content-between bg-light" *ngIf="carrinho.codigoCupom !== ''">
+            <div class="text-success">
+              <h6 class="my-0">Cupom de Desconto</h6>
+              <small>{{carrinho.codigoCupom}} ({{carrinho.desconto}}%)</small>
+            </div>
+            <span class="text-success">
+            {{(carrinho.subtotal * carrinho.desconto) / 100 | currency:'BRL':true}}
+          </span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total completo</span>
+            <strong>{{carrinho.subtotal - ((carrinho.subtotal * carrinho.desconto) / 100) | currency:'BRL':true}}</strong>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-7 col-lg-8">
+
+          <h4 class="mb-3">Selecione o meio de pagamento em que deseja</h4>
+          <div class="my-3">
+            <div class="form-switch">
+              <input id="cartao-de-credito" type="radio"  [checked]="false"
+                     class="form-check-input" [required]="true" value="cc"
+                     [(ngModel)]="meioPgtoInutil"
+                     (ngModelChange)="meioPgtoChange($event)" name="meioPgto">
+              <label class="form-check-label" for="cartao-de-credito">
+                Cartão de Crédito
+              </label>
+            </div>
+            <div class="form-switch">
+              <input id="pix" type="radio" class="form-check-input"
+                     name="meioPgto" [checked]="false" value="pix"
+                     [(ngModel)]="meioPgtoInutil"
+                     (ngModelChange)="meioPgtoChange($event)" [required]="true">
+              <label class="form-check-label" for="pix">
+                PIX (Liberação Imediata)
+              </label>
+            </div>
+            <div class="form-switch">
+              <input id="boleto-bancario" type="radio" class="form-check-input"
+                     value="boleto" [checked]="false" name="meioPgto"
+                     [(ngModel)]="meioPgtoInutil"
+                     (ngModelChange)="meioPgtoChange($event)" [required]="true">
+              <label class="form-check-label" for="boleto-bancario">
+                Boleto Bancário
+              </label>
+            </div>
+          </div>
+
+          <!-- Cartão de Crédito -->
+          <div class="row gy-3" *ngIf="meioPgto.cartaoDeCredito">
+            <div class="col-md-6">
+              <label for="cc-name" class="form-label">
+                Nome impresso no cartão
+              </label>
+              <input type="text" class="form-control" id="cc-name" name="titularCartao"
+                     [required]="meioPgto.cartaoDeCredito" [(ngModel)]="checkout.cardHolder"
+                     placeholder="FULANO DE TAL">
+              <small class="text-muted">
+                O nome deve estar IGUAL ao escrito no cartao!
+              </small>
+            </div>
+
+            <div class="col-md-6">
+              <label for="cc-number" class="form-label">Número do Cartão</label>
+              <input type="text" class="form-control" id="cc-number"
+                     [(ngModel)]="checkout.cardNumber" name="numCartao"
+                     placeholder="Ex.: 1234 5678 9098 7654" [required]="meioPgto.cartaoDeCredito">
+            </div>
+
+            <div class="col-md-6">
+              <label for="cc-expiration" class="form-label">Data de Validade</label>
+              <input bsDatepicker #dtExpire="bsDatepicker" id="cc-expiration"
+                     type="text" id="cc-expiration" name="validadeCC"
+                     placeholder="Ex.: 01/01/2001" class="form-control"
+                     [required]="meioPgto.cartaoDeCredito"
+                     [(bsValue)]="checkout.cardExpiration"
+                     [bsConfig]="{dateInputFormat:'MMMM - YYYY', minDate: hoje,
+                     adaptivePosition:true,clearButtonLabel:'Redefinir',
+                     clearPosition:'center',isAnimated:true}">
+              <small class="text-muted">Será utilizado SOMENTE o mês e o ano.</small>
+              <br><small class="text-muted">O dia será descartado.</small>
+            </div>
+
+            <div class="col-md-6">
+              <label for="cc-cvv" class="form-label">CVV</label>
+              <input type="text" class="form-control" id="cc-cvv" name="cvv"
+                     [(ngModel)]="checkout.cardCVC" placeholder="Ex.: 123"
+                     [required]="meioPgto.cartaoDeCredito">
+            </div>
+
+            <div class="col-md-6">
+              <label for="cc-cvv" class="form-label">Documento</label>
+              <select #tipoPessoa id="cc-type-client" class="form-select"
+                      name="tipoCliente" [value]="login.Usuario?.usuario
+                      ?.documento?.tipo?.toLowerCase() ?? ''" [required]="meioPgto.cartaoDeCredito"
+              (change)="mudarTipoCliente(tipoPessoa.value)">
+                <option value="">Selecione</option>
+                <option value="pf">Pessoa Física (CPF)</option>
+                <option value="pj">Pessoa Jurídica (CNPJ)</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label *ngIf="tipoPessoa.value === 'pf'" for="cc-cvv"
+                     class="form-label">CPF</label>
+              <label *ngIf="tipoPessoa.value === 'pj'" for="cc-cvv"
+                     class="form-label">CNPJ</label>
+              <label *ngIf="tipoPessoa.value === ''" for="cc-cvv"
+                     class="form-label">CPF ou CNPJ??</label>
+              <input type="text" class="form-control" id="cc-cpf"
+                     [(ngModel)]="checkout.cardDocument" [placeholder]="phDoc"
+                     [required]="meioPgto.cartaoDeCredito" name="documento">
+            </div>
+
+
+            <div class="col-12">
+              <label for="endereco-cobranca" class="form-label">Endereço</label>
+              <input type="text" class="form-control" id="endereco-cobranca"
+                     [required]="true" [(ngModel)]="endereco.endereco"
+                     placeholder="Ex.: Rua Margarida Mascarenhas"
+                     name="endereco">
+            </div>
+
+            <div class="col-6">
+              <label for="numero" class="form-label">Número</label>
+              <input type="text" class="form-control" placeholder="Ex.: 123"
+                     [(ngModel)]="endereco.numero" id="numero" name="numero">
+            </div>
+            <div class="col-6">
+              <label for="complemento" class="form-label">Complemento</label>
+              <input type="text" class="form-control"  id="complemento"
+                     placeholder="Ex.: Lt 321 Qd A" name="complemento"
+                     [(ngModel)]="endereco.complemento">
+            </div>
+
+            <div class="col-5">
+              <label for="bairro" class="form-label">Bairro</label>
+              <input type="text" class="form-control" id="bairro"
+                     [required]="true" name="bairro"
+                     placeholder="Ex.: Flamengo" [(ngModel)]="endereco.bairro">
+            </div>
+
+            <div class="col-md-4">
+              <label for="estados" class="form-label">Estado</label>
+              <select class="form-select" id="estados" [required]="true"
+                      name="estado" (change)="mudancaSelectEstados()"
+                      [(ngModel)]="endereco.estado">
+                <option value="">Selecione seu estado</option>
+              </select>
+            </div>
+
+            <div class="col-md-3">
+              <label for="cidade" class="form-label">Cidade</label>
+              <input type="text" class="form-control" id="cidade" name="cidade"
+                     [typeahead]="cidades"
+                     [required]="true" [(ngModel)]="endereco.municipio">
+            </div>
+
+            <div class="col-md-12">
+              <label for="cep" class="form-label">CEP</label>
+              <input type="text" class="form-control" id="cep" [required]="true" name="cep"
+                     [(ngModel)]="endereco.cep" placeholder="Ex.: 12.345-678">
+            </div>
+          </div>
+
+          <!-- QrCode/PIX -->
+          <div class="row gy-3" *ngIf="meioPgto.PIX">
+            <button class="btn btn-primary" type="button" (click)="gerarPix()">
+              <span class="nf nf-fae-wallet"></span>
+               Gerar pagamento com PIX
+              <img src="/assets/images/pix.svg" width="16"
+                   height="16" alt="PIX"
+                   title="PIX powered by Banco Central do Brasil">
+            </button>
+            <div *ngIf="!!codigoPixCopiaCola" class="col-md-12">
+              <div class="row">
+                <div class="col-12">
+                  <label for="cc-cvv" class="form-label">Copia e Cola</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-11">
+                  <input type="text" class="form-control" id="pix-cp" name="pixCpCl"
+                         [readOnly]="true" [required]="meioPgto.PIX"
+                         [value]="codigoPixCopiaCola">
+                </div>
+                <div class="col-1">
+                  <button type="button" class="btn btn-primary"
+                          (click)="copiarPix()">
+                    <span class="nf nf-mdi-content_copy"></span>
+
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="!!srcQrCodePIX" class="col-md-12">
+              <h1 class="h1 text-center">QrCode</h1>
+              <img alt="QrCode para pagamento com PIX" [src]="srcQrCodePIX">
+            </div>
+          </div>
+
+          <hr class="my-4">
+
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Continuar
+            <small class="text-white" *ngIf="meioPgto.PIX">
+              (Verificar o pagamento)
+            </small>
+            <small class="text-white" *ngIf="meioPgto.cartaoDeCredito">
+              (Processar pagamento)
+            </small>
+            <small class="text-white" *ngIf="meioPgto.boletoBancario">
+              (Gerar boleto)
+            </small>
+          </button>
+
+      </div>
+    </div>
+  </div>
+</form>
+
+

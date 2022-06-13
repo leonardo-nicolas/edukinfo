@@ -1,5 +1,5 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {environment} from "../../../../environments/environment";
+// Arquivo: src/app/components/pages/error/not-found.component.ts
+import { Component, Inject, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-not-found',
@@ -7,13 +7,11 @@ import {environment} from "../../../../environments/environment";
   styleUrls: ['./not-found.component.scss']
 })
 export class NotFoundComponent implements OnInit {
-  public baseUrl:string
-
-  constructor() {
-    this.baseUrl = environment.baseUrl;
-  }
+  constructor(
+    @Inject('BASE_URL') public baseUrl:string
+  ) {}
   fundoUrl!:string;
-  ngOnInit(): void {
+  ngOnInit() {
     this.fundoUrl = `${this.baseUrl}assets/images/404.svg`
   }
 

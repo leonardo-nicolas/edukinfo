@@ -1,3 +1,4 @@
+// Arquivo: src/app/components/pages/about/about-collective/about-collective.component.scss
 .container-principal {
   display: table;
   width: 100%;
@@ -7,4 +8,88 @@
   display: table-cell;
   vertical-align: middle;
   horiz-align: center;
+}
+
+table {
+  border-collapse:collapse; border-spacing:0; empty-cells:show
+}
+td, th {
+  vertical-align:top; font-size:12pt;
+}
+h1, h2, h3, h4, h5, h6 {
+  clear:both;
+}
+ol, ul {
+  margin:0; padding:0;
+}
+li {
+  list-style: none;
+  margin:0;
+  padding:0;
+}
+span.footnodeNumber {
+  padding-right:1em;
+}
+span.annotation_style_by_filter {
+  font-size:95%;
+  font-family:Arial, sans-serif;
+  background-color:#fff000;
+  margin:0;
+  border:0;
+  padding:0;
+}
+span.heading_numbering {
+  margin-right: 0.8rem;
+}
+* {
+  margin:0;
+}
+.P2 {
+  font-size:12pt;
+  line-height:115%;
+  font-family: 'Liberation Serif', sans-serif;
+  writing-mode:horizontal-tb;
+  direction:ltr;
+  margin: 0 0 0.265cm;
+  text-indent:0;
+}
+.P3 {
+  font-size:10.5pt;
+  line-height:115%;
+  font-family:Ubuntu, Arial, 'Segoe UI', 'Open Sans', 'JetBrains Mono', sans-serif;
+  writing-mode:horizontal-tb;
+  direction:ltr;
+  margin: 0 0 0.265cm;
+  text-indent:0;
+  //color:#181e1f;
+  letter-spacing:normal;
+  font-style:normal;
+  font-weight:normal;
+}
+.P4 {
+  font-size:12pt;
+  line-height:115%;
+  font-family:Ubuntu, Arial, 'Segoe UI', 'Open Sans', 'JetBrains Mono', sans-serif;
+  writing-mode:horizontal-tb;
+  direction:ltr;
+  margin: 0 0 0.265cm;
+  text-indent:0;
+}
+.Strong_20_Emphasis {
+  font-weight:bold;
+}
+.T6 {
+  //color:#181e1f;
+  font-size:10.5pt;
+  letter-spacing:normal;
+  font-style:normal;
+  font-weight:normal;
+}
+.T7 {
+  //color:#181e1f;
+  font-family:Ubuntu, Arial, 'Segoe UI', 'Open Sans', 'JetBrains Mono', sans-serif;
+  font-size:10.5pt;
+  letter-spacing:normal;
+  font-style:normal;
+  font-weight:bold;
 }

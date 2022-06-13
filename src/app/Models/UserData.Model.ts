@@ -1,3 +1,4 @@
+// Arquivo: src/app/Models/UserData.Model.ts
 export class UserDataModel {
   get senha(): string { return this.password; }
   set senha(value: string ){ this.password = value; }

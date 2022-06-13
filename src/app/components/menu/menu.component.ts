@@ -1,7 +1,8 @@
 import { Component, HostListener, Inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { DarkModeService } from '../../services/dark-mode.service';
 import {environment} from "../../../environments/environment";
+import {LoginService} from "../../services/login.service";
 
 @Component({
   selector: 'app-menu',
@@ -14,35 +15,24 @@ export class MenuComponent implements OnInit {
     menuProdutos:true,
     menuCursos:true
   }
-  navbarFixaNoTopo(): boolean{
-    return window.innerWidth >= 1200;
+  navbarFixaNoTopo(){
+    return typeof(window) !== 'undefined' && window.innerWidth >= 1200;
   }
   public baseUrl:string
   constructor(
     private activatedRoute: ActivatedRoute,
-    public darkMode: DarkModeService
-  ) { this.baseUrl = environment.baseUrl; }
+    public darkMode: DarkModeService,
+    public login: LoginService,
+    public router: Router,
+    @Inject('BASE_URL') baseUrl:string
+  ) { this.baseUrl = baseUrl; }
   keywordSearch:string="";
   ngOnInit(): void {
-    this.adicionarEventoSearchInput();
+    this.login.getUsuarioLogado();
     this.preencherModelSearch();
   }
 
   isSearching:boolean=false;
-  estaLogado():boolean {
-    return false;
-  }
-  private adicionarEventoSearchInput(){
-    document.getElementById('searchInput')?.addEventListener('keyup',e => {
-      e.preventDefault();
-      if ( e.key === 'Enter'){
-        document
-          .getElementById("frmPesquisa")
-          ?.getElementsByTagName('button')[0]
-          ?.click();
-      }
-    });
-  }
 
   private preencherModelSearch(){
     this.activatedRoute.queryParams.subscribe(params => {
@@ -65,6 +55,17 @@ export class MenuComponent implements OnInit {
         this.isCollapsed.menuProdutos = true;
         this.isCollapsed.menuCursos = !this.isCollapsed.menuCursos;
         break;
+    }
+  }
+
+  async digitandoPesquisa(eventoTecla: KeyboardEvent) {
+    if(typeof(HTMLInputElement) === "undefined")
+      return;
+    if (eventoTecla.key === 'Enter') {
+      this.isSearching = true;
+      this.keywordSearch = (<HTMLInputElement>eventoTecla.target).value;
+      await this.router.navigate(['/search'], { queryParams: { q: this.keywordSearch } });
+      this.isSearching = false;
     }
   }
 }

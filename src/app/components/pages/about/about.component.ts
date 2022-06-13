@@ -1,18 +1,18 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+// Arquivo: src/app/components/pages/about/about.component.ts
+import { Component, Inject, OnInit, ViewChild, ViewEncapsulation } from "@angular/core";
 import { DarkModeService } from "../../../services/dark-mode.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { TabDirective, TabsetComponent } from "ngx-bootstrap/tabs";
 import { HttpClient } from "@angular/common/http";
-import {FaqModel, LinhaDoTempoModel, SocioModel} from 'src/app/Models/PaginaSobre.Model';
+import { FaqModel, LinhaDoTempoModel, SocioModel } from "../../../Models/PaginaSobre.Model";
 import { embaralharMatriz } from "../../../services/funcoesDiversas";
-import {Address} from "../../../Models/UserData.Model";
-import { environment } from 'src/environments/environment';
-import {Unidades} from "../../../Models/Unidades";
+import { Unidades } from "../../../Models/Unidades";
 
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss']
+  styleUrls: ['./about.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AboutComponent implements OnInit {
 
@@ -22,20 +22,24 @@ export class AboutComponent implements OnInit {
     public darkMode:DarkModeService,
     private router:Router,
     private activatedRoute:ActivatedRoute,
-    private http:HttpClient
+    private http:HttpClient,
+    @Inject('BASE_URL') baseUrl:string,
+    @Inject('BACKEND_URL') backendUrl:string
   ) {
-    this.baseUrl = environment.baseUrl;
-    this.backendUrl = environment.backendUrl;
+    this.baseUrl = baseUrl;
+    this.backendUrl = backendUrl;
   }
 
   @ViewChild('guiasInstitucional',{static:false})
   private guiasInstitucional?:TabsetComponent;
 
   ngOnInit(): void {
-    this.carregarLinhaDoTempo();
-    this.carregarSociosEmpresa();
-    this.carregarUnidades();
-    this.carregarPerguntasFrequentes();
+    if(this.darkMode.suporteDarkMode) {
+      this.carregarLinhaDoTempo();
+      this.carregarSociosEmpresa();
+      this.carregarUnidades();
+      this.carregarPerguntasFrequentes();
+    }
     this.activatedRoute.paramMap.subscribe(secao=> this.redirecionamentoCerto(secao.get("secao")));
   }
   async redirecionamentoCerto(rota:string|null|undefined){

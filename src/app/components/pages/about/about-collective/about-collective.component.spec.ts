@@ -1,3 +1,4 @@
+// Arquivo: src/app/components/pages/about/about-collective/about-collective.component.spec.ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AboutCollectiveComponent } from './about-collective.component';

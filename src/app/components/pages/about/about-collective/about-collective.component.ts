@@ -1,3 +1,4 @@
+// Arquivo: src/app/components/pages/about/about-collective/about-collective.component.ts
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,7 +10,6 @@ export class AboutCollectiveComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit() { }
 
 }

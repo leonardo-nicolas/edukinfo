@@ -1,8 +1,10 @@
+// Arquivo: src/app/components/pages/courses/courses.component.ts
 import { Component, Inject, OnInit } from '@angular/core';
 import { DarkModeService } from 'src/app/services/dark-mode.service';
 import { CursoModel } from "../../../Models/Curso.Model";
 import { HttpClient } from "@angular/common/http";
-import {environment} from "../../../../environments/environment";
+import {LoginService} from "../../../services/login.service";
+import {CarrinhoService} from "../../../services/carrinho.service";
 
 @Component({
   selector: 'app-courses',
@@ -12,13 +14,20 @@ import {environment} from "../../../../environments/environment";
 export class CoursesComponent implements OnInit {
   //TODO: trocar a API fake pelo Back-End oficial, quando o mesmo estiver pronto!
   public baseUrl:string;
-  // public backendUrl:string,
+  private backendUrl: string;
 
 
   constructor(
     private http:HttpClient,
-    public darkMode:DarkModeService
-  ) { this.baseUrl = environment.baseUrl; }
+    public login:LoginService,
+    public carrinho:CarrinhoService,
+    public darkMode:DarkModeService,
+    @Inject('BASE_URL') baseUrl:string,
+    @Inject('BACKEND_URL') backendUrl:string
+  ) {
+    this.baseUrl = baseUrl;
+    this.backendUrl = backendUrl;
+  }
 
   listagemCursos: CursoModel[] = [];
 
@@ -27,15 +36,16 @@ export class CoursesComponent implements OnInit {
     comErro:false
   }
 
-  ngOnInit(): void {
-    this.carregaTodosCursos();
+  ngOnInit() {
+    if(this.darkMode.suporteDarkMode)
+      this.carregaTodosCursos();
   }
 
   private carregaTodosCursos() {
     this.carregamento.concluido = false;
     this.http
       .get<CursoModel[]>(
-        this.baseUrl+"assets/API/cursos/lista-todos-cursos.json",
+        this.backendUrl+"/site/cursos",
         {}
       )
       .subscribe({
@@ -58,4 +68,8 @@ export class CoursesComponent implements OnInit {
       });
   }
   readonly atribuirUrl = (url: string) => url.replace("@baseUrl%/", this.baseUrl);
+
+  adicionarAoCarrinho(id: number) {
+    this.carrinho.addCurso(this.listagemCursos[id])
+  }
 }

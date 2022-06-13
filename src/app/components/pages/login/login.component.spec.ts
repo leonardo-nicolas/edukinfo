@@ -1,3 +1,4 @@
+// Arquivo: src/app/components/pages/login/login.component.spec.ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';

@@ -1,3 +1,4 @@
+// Arquivo: src/app/Models/PageSobre.Model.ts
 export interface LinhaDoTempoModel {
   imagem:string;
   altImg: string;

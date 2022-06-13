@@ -31,17 +31,13 @@
           <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" aria-current="page" routerLink="home" routerLinkActive="active">Início</a>
           </li><!-- Fecha o Menu 'Início' -->
-          <!--
-          <li class="nav-item" routerLinkActive="active">
-            <a class="nav-link" [routerLink]="['/sobre','']" routerLinkActive="active">Quem Somos</a>
-          </li> Fecha o Menu 'Nossa História' -->
           <!-- Menu de Cursos de TI e dados ⬇ -->
           <li [ngClass]="['nav-item', 'dropdown']" dropdown routerLinkActive="active">
             <a [ngClass]="['nav-link', 'dropdown-toggle']" dropdownToggle routerLinkActive="active"
               id="dropdownCursosTIeDados" data-bs-toggle="dropdown" aria-expanded="false">Cursos de T.I e Dados</a>
             <ul class="dropdown-menu borda-mais-arredondada" *dropdownMenu aria-labelledby="dropdownCursosTIeDados">
               <!-- Curso de Programação -->
-              <li class="bg-dark" routerLinkActive="active">
+              <li class="li-destaque" routerLinkActive="active">
                 <a class="dropdown-item texto-claro" routerLinkActive="active" [routerLink]="['/cursos','programacao','']">
                   Cursos de programação
                   <span class="nf nf-fa-file_code_o"></span>
@@ -84,7 +80,7 @@
                 </a>
               </li>
               <!-- Curso de Dados -->
-              <li class="bg-dark" routerLinkActive="active">
+              <li class="li-destaque" routerLinkActive="active">
                 <a class="dropdown-item texto-claro" routerLinkActive="active" [routerLink]="['/cursos','dados','']">
                   Cursos de Dados
                   <span class="nf nf-fa-database"></span>
@@ -101,14 +97,6 @@
                   <span class="nf nf-mdi-chart_gantt"></span>
                 </a>
               </li>
-              <!-- Curso de Dadps => Machine Learning -->
-              <li routerLinkActive="active">
-                <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/cursos','dados','analise']">
-                  <span class="jetbrains-font">~~&gt;</span>Machine Learning
-                  <span class="nf nf-mdi-robot"></span>
-                  <span class="nf nf-fae-brain"></span>
-                </a>
-              </li>
               <!-- Curso de Dados => Banco de Dados -->
               <li routerLinkActive="active">
                 <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/cursos','dados','sgdb']">
@@ -122,19 +110,13 @@
                 </a>
               </li>
               <!-- Curso de Devops -->
-              <li class="bg-dark" routerLinkActive="active">
+              <li class="li-destaque" routerLinkActive="active">
                 <a class="dropdown-item texto-claro" routerLinkActive="active" [routerLink]="['/cursos','devops','']">
                   Curso de DevOps
-                </a>
-              </li>
-              <!-- Curso de Devops => Versionamento-->
-              <li routerLinkActive="active">
-                <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/cursos','devops','scm']">
-                  <span class="jetbrains-font">~~&gt;</span>Versionamento
-                  <span class="nf nf-mdi-git"></span>
-                  <span class="nf nf-dev-github_badge"></span>
                   <span class="nf nf-fa-gitlab"></span>
-                  <span class="nf nf-mdi-bitbucket"></span>
+                  <span class="nf nf-fa-github"></span>
+                  <span class="nf nf-dev-jenkins"></span>
+                  <span class="nf nf-dev-docker"></span>
                 </a>
               </li>
               <!-- Curso de Devops => Container e Produção -->
@@ -145,41 +127,57 @@
                   <span class="nf nf-mdi-ship_wheel"></span>
                   <span class="nf nf-dev-aws"></span>
                   <span class="nf nf-mdi-azure"></span>
-                  <span class="nf nf-dev-heroku"></span>
+                  <span class="nf nf-dev-google_cloud_platform"></span>
                 </a>
               </li>
               <!-- Curso de IOT -->
-              <li class="bg-dark" routerLinkActive="active">
+              <li class="li-destaque" routerLinkActive="active">
                 <a class="dropdown-item texto-claro" routerLinkActive="active" [routerLink]="['/cursos','iot','']">
-                  IOT
+                  Internet das coisas
                   <span class="nf nf-fa-microchip"></span>
                   <span class="nf nf-mdi-raspberrypi"></span>
                   <span class="nf nf-mdi-select_inverse"></span>
                 </a>
               </li>
-              <!-- Curso de IOT => Arduino -->
+              <!-- Curso de IOT => Automações -->
               <li routerLinkActive="active">
-                <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/cursos','iot','arduino']">
-                  <span class="jetbrains-font">~~&gt;</span>Arduino
+                <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/cursos','iot','automacoes']">
+                  <span class="jetbrains-font">~~&gt;</span>Automações
                   <span class="nf nf-mdi-raspberrypi"></span>
                   <span class="nf nf-mdi-infinity"></span>
+                  <span class="nf nf-linux-raspberry_pi"></span>
+                  <span class="nf nf-mdi-select_inverse"></span>
                 </a>
               </li>
               <!-- Curso de IOT => RaspBerry Pi -->
               <li routerLinkActive="active">
-                <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/cursos','iot','raspberrypi']">
-                  <span class="jetbrains-font">~~&gt;</span>Raspberry Pi
-                  <span class="nf nf-mdi-raspberrypi"></span>
-                  <span class="nf nf-linux-raspberry_pi"></span>
+                <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/cursos','iot','ml']">
+                  <span class="jetbrains-font">~~&gt;</span>Machine Learning
+                  <span class="nf nf-fa-amazon"></span>
+                  <span class="nf nf-fa-google"></span>
+                  <span class="nf nf-mdi-microsoft"></span>
+                  <span class="nf nf-fae-brain"></span>
+                  <span class="nf nf-mdi-robot"></span>
                 </a>
               </li>
               <!-- Redes e Servidores -->
-              <li class="bg-dark" routerLinkActive="active">
+              <li class="li-destaque" routerLinkActive="active">
                 <a class="dropdown-item texto-claro" routerLinkActive="active" [routerLink]="['/cursos','redes','']">
                   Redes e Servidores
                   <span class="nf nf-oct-server"></span>
                   <span class="nf nf-mdi-server_network"></span>
                   <span class="nf nf-fa-server"></span>
+                  <span class="nf nf-mdi-lan_connect"></span>
+                </a>
+              </li>
+              <!-- Curso de IOT => RaspBerry Pi -->
+              <li routerLinkActive="active">
+                <a class="dropdown-item" routerLinkActive="active" [routerLink]="['/cursos','iot','ml']">
+                  <span class="jetbrains-font">~~&gt;</span>Infraestrutura
+                  <span class="nf nf-oct-server"></span>
+                  <span class="nf nf-dev-aws"></span>
+                  <span class="nf nf-mdi-azure"></span>
+                  <span class="nf nf-dev-google_cloud_platform"></span>
                   <span class="nf nf-mdi-lan_connect"></span>
                 </a>
               </li>
@@ -191,8 +189,8 @@
                id="dropdownDemaisCursos" data-bs-toggle="dropdown" aria-expanded="false">Outros Cursos</a>
               <ul class="dropdown-menu borda-mais-arredondada" *dropdownMenu aria-labelledby="dropdownCursosTIeDados">
                 <!-- Curso de Designer -->
-                <li class="bg-dark" routerLinkActive="active">
-                  <a class="dropdown-item texto-claro" routerLinkActive="active" [routerLink]="['/cursos','designer','']">
+                <li class="li-destaque" routerLinkActive="active">
+                  <a class="dropdown-item texto-claro text-white" routerLinkActive="active" [routerLink]="['/cursos','designer','']">
                     Cursos de Designer
                     <span class="nf nf-mdi-pencil"></span>
                     <span class="nf nf-mdi-drawing"></span>
@@ -228,7 +226,7 @@
                   </a>
                 </li>
                 <!-- Curso de Edição -->
-                <li class="bg-dark" routerLinkActive="active">
+                <li class="li-destaque" routerLinkActive="active">
                   <a class="dropdown-item texto-claro" routerLinkActive="active" [routerLink]="['/cursos','edicao','']">
                     Cursos de Edição
                     <span class="nf nf-fa-database"></span>
@@ -254,7 +252,7 @@
                   </a>
                 </li>
                 <!-- Curso de Informática Básica -->
-                <li class="bg-dark" routerLinkActive="active">
+                <li class="li-destaque" routerLinkActive="active">
                   <a class="dropdown-item texto-claro" routerLinkActive="active" [routerLink]="['/cursos','iniciante','informatica']">
                     Informática Básica
                     <span class="nf nf-fa-child"></span>
@@ -266,7 +264,7 @@
                   </a>
                 </li>
                 <!-- Curso de Redes Sociais -->
-                <li class="bg-dark" routerLinkActive="active">
+                <li class="li-destaque" routerLinkActive="active">
                   <a class="dropdown-item texto-claro" routerLinkActive="active" [routerLink]="['/cursos','social','divulgacao']">
                     Divulgação em Redes Sociais
                     <span class="nf nf-fa-facebook_square"></span>
@@ -283,16 +281,52 @@
           </li>
         </ul><!-- Fecha Menu principal -->
 
+        <!-- Opções de usuário logado e modo escuro. -->
+        <div class="text-center justify-content-center ">
+          <div *ngIf="login.existeLogin" class="btn-group" dropdown>
+            <button id="button-basic" dropdownToggle type="button" class="btn me-2 btn-primary dropdown-toggle borda-mais-arredondada"
+                    aria-controls="dropdown-basic">
+              {{login.Usuario?.usuario?.nome}} <span class="caret"></span>
+            </button>
+            <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu"
+                role="menu" aria-labelledby="button-basic">
+              <li role="menuitem">
+                <a class="dropdown-item" routerLink="dashboard">
+                  <span class="nf nf-fa-dashboard"></span>
+                  Minha conta
+                </a>
+              </li>
+              <li role="menuitem">
+                <a class="dropdown-item" routerLink="cart">
+                  <span class="nf nf-fa-shopping_cart"></span>
+                  Meu Carrinho de compras
+                </a>
+              </li>
+              <li class="divider dropdown-divider"></li>
+              <li role="menuitem">
+                <a class="dropdown-item" (click)="login.encerrarSecao()">
+                  <span class="nf nf-fa-sign_out"></span>
+                  Encerrar sessão
+                </a>
+              </li>
+            </ul>
+          </div>
+          <button *ngIf="!login.existeLogin" type="button" [ngClass]="'btn me-2 btn-primary borda-mais-arredondada'" [routerLink]="['login','']">
+            Acessar/Cadastrar
+          </button>
+          <btn-dark-mode [ngClass]="'btn-dark-mode-2'"></btn-dark-mode>
+        </div>
+
         <!-- Form de pesquisa -->
-        <form method="get" id="frmPesquisa" action="javascript:void(this);">
-          <input id="searchInput" type="search" name="search" placeholder="Pesquise nossos cursos"
+        <form ngForm method="get" id="frmPesquisa" action="javascript:void(this);">
+          <input id="searchInput" type="search" name="search" (keyup)="digitandoPesquisa($event)" placeholder="Pesquise nossos cursos"
             class="form-control borda-mais-arredondada" aria-label="Search" [(ngModel)]="keywordSearch">
           <button type="button" routerLink="/search" [queryParams]="{q:keywordSearch}"
-                  [ngClass]="{
-                    'btn borda-mais-arredondada btn-secondary':true,
-                    'margem-zero':false,
-                    'animated-button':isSearching
-                  }">
+            [ngClass]="{
+              'btn borda-mais-arredondada btn-secondary':true,
+              'margem-zero':false,
+              'animated-button':isSearching
+            }">
               <span *ngIf="isSearching" class="line-animation"></span>
               <span *ngIf="isSearching" class="line-animation"></span>
               <span *ngIf="isSearching" class="line-animation"></span>
@@ -300,13 +334,6 @@
             <img [src]="baseUrl + 'assets/images/icons/search-icon.svg'" width="16" height="16" alt="Pesquisar">
           </button>
         </form>
-        <div class="text-center justify-content-center ">
-          <button type="button" [ngClass]="'btn me-2 btn-primary borda-mais-arredondada'"
-                  *ngIf="!(!!estaLogado())" [routerLink]="['login','']">
-            Acessar/Cadastrar
-          </button>
-          <btn-dark-mode [ngClass]="'btn-dark-mode-2'"></btn-dark-mode>
-        </div>
       </div>
     </div>
   </nav>

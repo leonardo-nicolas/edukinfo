@@ -1,3 +1,4 @@
+// Arquivo: src/app/components/pages/course/course.component.spec.ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { CourseComponent } from './course.component';

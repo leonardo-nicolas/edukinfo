@@ -1,3 +1,4 @@
+// Arquivo: src/app/components/pages/about/about.component.spec.ts
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AboutComponent } from './about.component';

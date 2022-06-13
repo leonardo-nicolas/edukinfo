@@ -1,0 +1,52 @@
+<!-- Arquivo: src/app/components/pages/login/logon/logon.component.html -->
+<div>
+  <h1 class="h1 mb-3 fw-normal">Faça seu login</h1>
+  <h4 class="h4 mb-3 fw-normal">
+    Entre com seu nome de usuário e sua senha
+  </h4>
+  <div class="form-floating text-dark">
+    <input type="email" width="30" id="fieldUsuario" name="usuario"
+           class="form-control borda-mais-arredondada" [(ngModel)]="usuario"
+           placeholder="fulanodetal@email.com.br">
+    <label for="fieldUsuario">Usuário</label>
+  </div>
+  <div class="form-floating text-dark">
+    <input class="form-control borda-mais-arredondada" id="fieldSenha"
+           type="password" width="30" name="senha" [(ngModel)]="senha"
+           placeholder="Sua senha">
+    <label for="fieldSenha">Senha</label>
+  </div>
+</div>
+
+<alert [isOpen]="!!existeErro && existeErro" type="danger" (onClose)="fechaMsgErro()"
+       [dismissible]="true" [dismissOnTimeout]="tempoDismissAlerta*1000">
+  {{_msgErro}}
+</alert>
+
+<div class="fonte-branca">
+  <button type="button" (click)="clickLogin()"
+      [disabled]="(usuario === '' || senha === '') || carregando"
+      [ngClass]="[
+          'animated-button  hover-blue borda-mais-arredondada btn me-2',
+          darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark fonte-branca'
+      ]" style="color:#ffffff !important;">
+    <span class="line-animation line-animation-main"></span>
+    <span class="line-animation line-animation-main"></span>
+    <span class="line-animation line-animation-main"></span>
+    <span class="line-animation line-animation-main"></span>
+    <span class="nf nf-oct-sign_in"></span>
+    Login
+  </button>
+
+  <button type="reset" [ngClass]="[
+            'animated-button hover-red borda-mais-arredondada btn me-2',
+            darkMode.isDarkMode ? 'bg-with-dark-mode-on' : 'btn-dark fonte-branca'
+        ]" style="color:#ffffff !important;">
+    <span class="line-animation line-animation-red"></span>
+    <span class="line-animation line-animation-red"></span>
+    <span class="line-animation line-animation-red"></span>
+    <span class="line-animation line-animation-red"></span>
+    <span class="nf nf-mdi-eraser"></span>
+    Limpar tudo
+  </button>
+</div>

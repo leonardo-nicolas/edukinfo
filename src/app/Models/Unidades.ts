@@ -1,4 +1,5 @@
-import {Address} from "./UserData.Model";
+// Arquivo: src/app/Models/Unidades.ts
+import { Address } from "./UserData.Model";
 import {PicCurso} from "./Curso.Model";
 
 export class Unidades extends Address {
