@@ -135,7 +135,7 @@
 		"mae": "Sophia Analu",
 		"pai": "Isaac Lucas Theo Ramos",
 		"email": "milena.antonia.ramos@embraer.com",
-		"senha": "MgPAm8zWQX&", /* Aqui possui uma observação importante: Foi adicionado o "&" no final da senha. */
+		"senha": "MgPAm8zWQX&",
 		"cep": "73062303",
 		"endereco": "Conjunto AR 13 Conjunto 3",
 		"numero": 609,
@@ -160,7 +160,7 @@
 		"mae": "Sebastiana Cristiane",
 		"pai": "Leandro Pedro Novaes",
 		"email": "isadora.livia.novaes@outloock.com.br",
-		"senha": "WDRJyI8L8m",
+		"senha": "WDRJyI8L8m&",
 		"cep": "69901230",
 		"endereco": "Rua das Palmeiras",
 		"numero": 476,
